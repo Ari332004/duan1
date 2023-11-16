@@ -9443,6 +9443,10 @@ footer {
   margin-bottom: 60px;
 }
 
+.coupon_area .row {
+  justify-content: right;
+}
+
 .footer_widgets.other_widgets .footer_top {
   padding-bottom: 0;
   border-bottom: 0;
