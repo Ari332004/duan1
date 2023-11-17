@@ -23,23 +23,23 @@
         <!--login area start-->
         <div class="col-lg-6 col-md-6">
           <div class="account_form">
-            <h2>login</h2>
+            <h2>Đăng nhập</h2>
             <form action="#">
               <p>
-                <label>Username or email <span>*</span></label>
+                <label>Email <span>*</span></label>
                 <input type="text">
               </p>
               <p>
-                <label>Passwords <span>*</span></label>
+                <label>Mật khẩu <span>*</span></label>
                 <input type="password">
               </p>
               <div class="login_submit">
-                <a href="#">Lost your password?</a>
+                <a href="#">Quên mật khẩu?</a>
                 <label for="remember">
                   <input id="remember" type="checkbox">
                   Remember me
                 </label>
-                <button type="submit">login</button>
+                <button type="submit">Đăng nhập</button>
 
               </div>
 
@@ -51,18 +51,22 @@
         <!--register area start-->
         <div class="col-lg-6 col-md-6">
           <div class="account_form register">
-            <h2>Register</h2>
+            <h2>Đăng ký</h2>
             <form action="#">
               <p>
-                <label>Email address <span>*</span></label>
+                <label>Email <span>*</span></label>
                 <input type="text">
               </p>
               <p>
-                <label>Passwords <span>*</span></label>
+                <label>Mật khẩu <span>*</span></label>
                 <input type="password">
               </p>
+              <p>
+                <label>Xac nhận mật khẩu <span>*</span></label>
+                <input type="re_password">
+              </p>
               <div class="login_submit">
-                <button type="submit">Register</button>
+                <button type="submit">Đăng ký</button>
               </div>
             </form>
           </div>

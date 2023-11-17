@@ -9,11 +9,8 @@ if (isset($_GET['act'])) {
         case 'home':
             include_once './views/home/home.php';
             break;
-        case 'dangky':
-            include_once './views/login/dangky.php';
-            break;
-        case 'dangnhap':
-            include_once './views/login/dangnhap.php';
+        case 'login':
+            include_once './views/login/login.php';
             break;
         case 'quenmk':
             include_once './views/login/quenmk.php';

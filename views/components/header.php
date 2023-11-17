@@ -246,7 +246,7 @@
             </div>
             <div class="col-lg-4">
               <div class="logo">
-                <a href="index.html"><img src="assets/img/logo/logo.png" alt="" /></a>
+                <a href="index.php"><img src="assets/img/logo/logo.png" alt="" /></a>
               </div>
             </div>
             <div class="col-lg-4">
