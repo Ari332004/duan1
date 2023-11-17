@@ -24,8 +24,8 @@ if (isset($_GET['act'])) {
         case 'product':
             include_once './views/product/product.php';
             break;
-        case 'order':
-            include_once './views/product/order.php';
+        case 'productdetail':
+            include_once './views/product/productdetail.php';
             break;
         case 'cart':
             include_once './views/product/cart.php';
