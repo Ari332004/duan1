@@ -204,8 +204,9 @@
                 <li class="top_links">
                   <a href="#">Account <i class="ion-chevron-down"></i></a>
                   <ul class="dropdown_links">
-                    <li><a href="login.html">Login</a></li>
-                    <li><a href="login.html">Register</a></li>
+                    <li><a href="login.html">Đăng nhập</a></li>
+                    <li><a href="login.html">Đăng ký</a></li>
+                    <li><a href="admin/index.php?page=sanpham?act=list">Quản trị</a></li>
                   </ul>
                 </li>
               </ul>

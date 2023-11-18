@@ -2,10 +2,24 @@
 include_once './header.php';
 
 
-if (isset($_GET['page'])) {
+if (isset($_GET['page']) && isset($_GET['act'])) {
     $page = $_GET['page'];
+    $act = $_GET['act'];
 
     switch ($page) {
+        case 'sanpham':
+          switch ($act){
+            case 'list':
+              include_once './sanpham/sanpham.php';
+              break;
+            case 'edit':
+              include_once './sanpham/edit_sanpham.php';
+              break;
+            case 'search':
+              include_once './sanpham/search_sanpham.php';
+              break;
+          }
+          break;
         case 'home':
             include_once './views/home/home.php';
             break;

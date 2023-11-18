@@ -1,3 +1,7 @@
+<?php 
+  $page = 'page='.$_GET['page'] ?? 'sanpham';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -42,31 +46,31 @@
 
       <ul class="list-unstyled components">
         <li class="active">
-          <a href="./index.html">
+          <a href="./index.php?<?= $page?>&act=list">
             <i class="bi bi-list-ul"></i>
             List
           </a>
         </li>
         <li class="">
-          <a href="./page/edit.html">
+          <a href="index.php?<?= $page?>&act=edit">
             <i class="bi bi-pencil-square"></i>
             Edit
           </a>
         </li>
         <li class="">
-          <a href="./page/search.html">
+          <a href="./index.php?<?= $page?>&act=search">
             <i class="bi bi-search"></i>
             Search
           </a>
         </li>
         <li class="">
-          <a href="./page/search.html">
+          <a href="./index.php?<?= $page?>&act=statistical">
             <i class="bi bi-clipboard-data"></i>
             statistical
           </a>
         </li>
         <li class="">
-          <a href="./page/breed.html">
+          <a href="../index.php">
             <i class="bi bi-box-arrow-left"></i>
             Logout
           </a>
@@ -78,21 +82,21 @@
     <div id="content">
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">Sản phẩm</a>
+          <a class="navbar-brand" href="./index.php?page=sanpham&act=list">Sản phẩm</a>
         </div>
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">Chi tiết sản phẩm</a>
+          <a class="navbar-brand" href="./index.php?page=sanphamct&act=list">Chi tiết sản phẩm</a>
         </div>
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">Tài khoản</a>
+          <a class="navbar-brand" href="./index.php?page=taikhoan&act=list">Tài khoản</a>
         </div>
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">Bình luận</a>
+          <a class="navbar-brand" href="./index.php?page=binhluan&act=list">Bình luận</a>
         </div>
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">Danh mục</a>
+          <a class="navbar-brand" href="./index.php?page=loai&act=list">Danh mục</a>
         </div>
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">Đơn hàng</a>
+          <a class="navbar-brand" href="./index.php?page=donhang&act=list">Đơn hàng</a>
         </div>
       </nav>
