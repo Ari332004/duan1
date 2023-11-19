@@ -25,13 +25,9 @@
             </select>
           </div>
 
-          <label for="input-brand" class="col-sm-3 col-form-label" style="text-align: right">Thương hiệu</label>
+          <label for="input-gia" class="col-sm-3 col-form-label" style="text-align: right">Giá</label>
           <div class="col-sm-3">
-            <select class="form-control" id="input-brand" name="thuonghieu">
-              <option value="">Thương hiệu</option>
-              <option value="Dog">Dog</option>
-              <option value="Cat">Cat</option>
-            </select>
+            <input type="number" class="form-control" id="input-gia" placeholder="Giá" name="gia" />
           </div>
         </div>
         <div class="form-group row mb-3">

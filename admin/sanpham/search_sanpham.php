@@ -17,18 +17,9 @@
         </div>
         <div class="form-group row mb-3">
           <label for="input-loai" class="col-sm-3 col-form-label">Loại</label>
-          <div class="col-sm-3">
+          <div class="col-sm-9">
             <select class="form-control" id="input-loai" name="loai">
               <option value="">Loại hàng</option>
-              <option value="Dog">Dog</option>
-              <option value="Cat">Cat</option>
-            </select>
-          </div>
-
-          <label for="input-brand" class="col-sm-3 col-form-label" style="text-align: right">Thương hiệu</label>
-          <div class="col-sm-3">
-            <select class="form-control" id="input-brand" name="thuonghieu">
-              <option value="">Thương hiệu</option>
               <option value="Dog">Dog</option>
               <option value="Cat">Cat</option>
             </select>
@@ -37,7 +28,8 @@
         <div class="form-group row mb-3">
           <label for="input-mota" class="col-sm-3 col-form-label">Mô tả</label>
           <div class="col-sm-9">
-            <textarea name="mota" class="form-control" id="input-mota" cols="30" rows="5" placeholder="Mô tả"></textarea>
+            <textarea name="mota" class="form-control" id="input-mota" cols="30" rows="5"
+              placeholder="Mô tả"></textarea>
           </div>
         </div>
         <button type="button" class="btn btn-primary" id="find-btn" name="findBtn">
