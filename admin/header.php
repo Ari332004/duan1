@@ -31,6 +31,10 @@
   table .btn.btn-danger {
     font-size: 14px;
   }
+
+  .hide {
+    display: none;
+  }
   </style>
   <link rel="stylesheet" href="./admin.css" />
 </head>

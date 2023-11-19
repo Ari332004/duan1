@@ -6,13 +6,13 @@
         <div class="form-group row mb-3">
           <label for="input-name" class="col-sm-3 col-form-label">Tên sản phẩm</label>
           <div class="col-sm-9">
-            <input type="text" class="form-control" id="input-name" placeholder="Input Name" />
+            <input type="text" class="form-control" id="input-name" placeholder="Tên sản phẩm" name="tensp" />
           </div>
         </div>
         <div class="form-group row mb-3">
           <label for="input-loai" class="col-sm-3 col-form-label">Loại</label>
           <div class="col-sm-3">
-            <select class="form-control" id="input-loai">
+            <select class="form-control" id="input-loai" name="loai">
               <option value="">Loại hàng</option>
               <option value="Dog">Dog</option>
               <option value="Cat">Cat</option>
@@ -21,7 +21,7 @@
 
           <label for="input-brand" class="col-sm-3 col-form-label" style="text-align: right">Thương hiệu</label>
           <div class="col-sm-3">
-            <select class="form-control" id="input-loai">
+            <select class="form-control" id="input-brand" name="thuonghieu">
               <option value="">Thương hiệu</option>
               <option value="Dog">Dog</option>
               <option value="Cat">Cat</option>
@@ -29,17 +29,15 @@
           </div>
         </div>
         <div class="form-group row mb-3">
-          <label for="input-name" class="col-sm-3 col-form-label">Mô tả</label>
+          <label for="input-mota" class="col-sm-3 col-form-label">Mô tả</label>
           <div class="col-sm-9">
-            <textarea name="" class="form-control" id="input-name" cols="30" rows="5" placeholder="Mô tả"></textarea>
+            <textarea name="mota" class="form-control" id="input-mota" cols="30" rows="5"
+              placeholder="Mô tả"></textarea>
           </div>
         </div>
-        <button type="button" class="btn btn-primary" id="submit-btn">
+        <button type="button" class="btn btn-primary" id="submit-btn" name="submitBtn">
           Submit
         </button>
-        <!-- <button type="button" class="btn btn-warning" id="healthy-btn">
-                  Show Healthy Pet
-                </button> -->
       </form>
     </div>
   </div>
@@ -66,9 +64,9 @@
         <td>${pet.date}</td>
         <td>${pet.date}</td>
         <td>
-          <button class="btn btn-danger" onclick="deletePet('${index}')">
-            Delete
-          </button>
+          <a class="btn btn-danger">
+            Xóa
+          </a>
         </td>
       </tr>
       <tr>
@@ -79,9 +77,9 @@
         <td>${pet.date}</td>
         <td>${pet.date}</td>
         <td>
-          <button class="btn btn-danger" onclick="deletePet('${index}')">
-            Delete
-          </button>
+          <a class="btn btn-danger">
+            Xóa
+          </a>
         </td>
       </tr>
     </tbody>
