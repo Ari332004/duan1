@@ -82,21 +82,41 @@
     <div id="content">
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-          <a class="navbar-brand" href="./index.php?page=sanpham&act=list">Sản phẩm</a>
-        </div>
-        <div class="container-fluid">
-          <a class="navbar-brand" href="./index.php?page=sanphamct&act=list">Chi tiết sản phẩm</a>
-        </div>
-        <div class="container-fluid">
-          <a class="navbar-brand" href="./index.php?page=taikhoan&act=list">Tài khoản</a>
-        </div>
-        <div class="container-fluid">
-          <a class="navbar-brand" href="./index.php?page=binhluan&act=list">Bình luận</a>
-        </div>
-        <div class="container-fluid">
-          <a class="navbar-brand" href="./index.php?page=loai&act=list">Danh mục</a>
-        </div>
-        <div class="container-fluid">
-          <a class="navbar-brand" href="./index.php?page=donhang&act=list">Đơn hàng</a>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button"
+                  data-bs-toggle="dropdown" aria-expanded="false">
+                  Sản Phẩm
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li>
+                    <a class="dropdown-item" href="./index.php?page=sanpham&act=list">Sản Phẩm
+                    </a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="./index.php?page=sanphamct&act=list">Sản phẩm chi tiết
+                    </a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="./index.php?page=anh&act=list">Ảnh sản phẩm
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./index.php?page=taikhoan&act=list">Tài khoản</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./index.php?page=binhluan&act=list">Bình luận</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./index.php?page=loai&act=list">Danh mục</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./index.php?page=donhang&act=list">Đơn hàng</a>
+              </li>
+            </ul>
+          </div>
         </div>
       </nav>
