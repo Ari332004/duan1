@@ -1,5 +1,5 @@
 <?php
-// include_once './controllers/sanphamController.php';
+include_once '../controllers/admin/sanphamController.php';
 
 include_once './header.php';
 

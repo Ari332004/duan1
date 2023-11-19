@@ -48,7 +48,7 @@
   <table class="table table-striped">
     <thead>
       <tr>
-        <th scope="col">STT</th>
+        <th scope="col">Mã</th>
         <th scope="col">Tên</th>
         <th scope="col">Loại</th>
         <th scope="col">Giá</th>
