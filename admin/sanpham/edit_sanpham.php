@@ -51,7 +51,7 @@
         <th scope="col">STT</th>
         <th scope="col">Tên</th>
         <th scope="col">Loại</th>
-        <th scope="col">Thương hiệu</th>
+        <th scope="col">Giá</th>
         <th scope="col">Mô tả</th>
         <th scope="col">Ngày thêm</th>
         <th scope="col">Hành động</th>

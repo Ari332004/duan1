@@ -45,7 +45,7 @@
         <th scope="col">STT</th>
         <th scope="col">Tên</th>
         <th scope="col">Loại</th>
-        <th scope="col">Thương hiệu</th>
+        <th scope="col">Giá</th>
         <th scope="col">Mô tả</th>
         <th scope="col">Ngày thêm</th>
         <th scope="col">Hành động</th>
@@ -53,12 +53,12 @@
     </thead>
     <tbody>
       <tr>
-        <th scope="row">${pet.id}</th>
-        <td>${pet.weight}</td>
-        <td>${pet.length}</td>
-        <td>${pet.date}</td>
-        <td>${pet.date}</td>
-        <td>${pet.date}</td>
+        <th scope="row">1</th>
+        <td>ab</td>
+        <td>1</td>
+        <td>45535</td>
+        <td>$435</td>
+        <td>gdgffb</td>
         <td>
           <a class="btn btn-danger">
             Xóa
@@ -66,12 +66,12 @@
         </td>
       </tr>
       <tr>
-        <th scope="row">${pet.id}</th>
-        <td>${pet.weight}</td>
-        <td>${pet.length}</td>
-        <td>${pet.date}</td>
-        <td>${pet.date}</td>
-        <td>${pet.date}</td>
+        <th scope="row">2</th>
+        <td>ab</td>
+        <td>1</td>
+        <td>45535</td>
+        <td>$435</td>
+        <td>gdgffb</td>
         <td>
           <a class="btn btn-danger">
             Xóa
