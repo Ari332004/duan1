@@ -1,5 +1,5 @@
 <?php 
-  $page = 'page='.$_GET['page'] ?? 'sanpham';
+  $page = 'page='.$_GET['page'] ?? 'page=sanpham';
 ?>
 
 <!DOCTYPE html>

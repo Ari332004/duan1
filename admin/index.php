@@ -1,4 +1,6 @@
 <?php
+include_once './controllers/sanphamController.php';
+
 include_once './header.php';
 
 
@@ -20,11 +22,31 @@ if (isset($_GET['page']) && isset($_GET['act'])) {
               break;
           }
           break;
-        case 'home':
-            include_once './views/home/home.php';
+        case 'taikhoan':
+            switch ($act){
+                case 'list':
+                  include_once './taikhoan/taikhoan.php';
+                  break;
+                case 'edit':
+                  include_once './taikhoan/edit_taikhoan.php';
+                  break;
+                case 'search':
+                  include_once './taikhoan/search_taikhoan.php';
+                  break;
+              }
             break;
-        case 'login':
-            include_once './views/login/login.php';
+        case 'sanphamct':
+            switch ($act){
+                case 'list':
+                  include_once './sanphamct/sanphamct.php';
+                  break;
+                case 'edit':
+                  include_once './sanphamct/edit_sanphamct.php';
+                  break;
+                case 'search':
+                  include_once './sanphamct/search_sanphamct.php';
+                  break;
+              }
             break;
         case 'quenmk':
             include_once './views/login/quenmk.php';
@@ -44,7 +66,7 @@ if (isset($_GET['page']) && isset($_GET['act'])) {
 
     }
 } else {
-    include_once './loai/loai.php';
+    include_once './sanpham/sanpham.php';
 }
 
 

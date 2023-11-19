@@ -70,7 +70,7 @@
         <td>${pet.date}</td>
         <td>${pet.date}</td>
         <td>
-          <a class="btn btn-warning" id="edit-btn"> Edit </a>
+          <a class="btn btn-warning edit-btn"> Edit </a>
         </td>
       </tr>
       <tr>
@@ -81,7 +81,7 @@
         <td>${pet.date}</td>
         <td>${pet.date}</td>
         <td>
-          <a class="btn btn-warning" id="edit-btn"> Edit </a>
+          <a class="btn btn-warning edit-btn"> Edit </a>
         </td>
       </tr>
     </tbody>
@@ -91,13 +91,15 @@
 </div>
 <script>
 const submitBtn = document.getElementById("submit-btn");
-const editBtn = document.getElementById("edit-btn");
+const editBtns = document.querySelectorAll(".edit-btn");
 const form = document.getElementById("container-form");
 
 submitBtn.addEventListener("click", function(e) {
   form.classList.add("hide");
 });
-editBtn.addEventListener("click", function(e) {
-  form.classList.remove("hide");
-});
+for (const editBtn of editBtns) {
+  editBtn.addEventListener("click", function(e) {
+    form.classList.remove("hide");
+  });
+}
 </script>
