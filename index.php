@@ -27,6 +27,9 @@ if (isset($_GET['act'])) {
         case 'cart':
             include_once './views/product/cart.php';
             break;
+        case 'checkout':
+            include_once './views/product/checkout.php';
+            break;
 
     }
 } else {
