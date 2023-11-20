@@ -1,5 +1,5 @@
 <?php
-include_once '../controllers/admin/sanphamController.php';
+include_once '../controllers/adminController.php';
 
 include_once './header.php';
 
@@ -51,13 +51,13 @@ if (isset($_GET['page']) && isset($_GET['act'])) {
         case 'loai':
           switch ($act){
             case 'list':
-              include_once './loai/loai.php';
+              echo loai();
               break;
             case 'edit':
-              include_once './loai/edit_loai.php';
+              echo loai_them_sua();
               break;
             case 'search':
-              include_once './loai/search_loai.php';
+              echo loai_search();
               break;
           }
             break;

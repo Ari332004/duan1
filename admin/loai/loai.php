@@ -21,28 +21,20 @@
         </tr>
       </thead>
       <tbody>
+        <?php foreach ($dataAll as $key => $value) : ?>
         <tr>
           <td><input type="checkbox" name="check[]" value="<?= $value['id']; ?>" class="check"></td>
-          <th scope="row">1</th>
-          <td>ab</td>
+          <th><?= $value['id']; ?></th>
+          <td><?= $value['ten_dm']; ?></td>
           <td>
-            <a class="btn btn-danger">
+            <a href="index.php?DTL=<?= $value['id']; ?>&page=loai&act=list" class="btn btn-danger"
+              onclick="confirm('Bạn có muốn xóa hay không?')">
               Xóa
             </a>
-            <a class="btn btn-warning"> Sửa </a>
+            <a href="index.php?idTL=<?= $value['id']; ?>&page=loai&act=edit" class="btn btn-warning"> Sửa </a>
           </td>
         </tr>
-        <tr>
-          <td><input type="checkbox" name="check[]" value="<?= $value['id']; ?>" class="check"></td>
-          <th scope="row">2</th>
-          <td>ab</td>
-          <td>
-            <a class="btn btn-danger">
-              Xóa
-            </a>
-            <a class="btn btn-warning"> Sửa </a>
-          </td>
-        </tr>
+        <?php endforeach ?>
       </tbody>
     </table>
   </div>
