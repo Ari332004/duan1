@@ -2,7 +2,7 @@
   <div class="row justify-content-center align-items-center mt-4 hide" id="container-form">
     <div class="col-lg-6 col-lg-offset-4">
       <form action="" method="post" enctype="multipart/form-data">
-        <legend class="text-center">Quản lý tài khoản</legend>
+        <legend class="text-center">Chỉnh sửa tài khoản</legend>
         <div class="form-group row mb-3">
           <label for="id" class="col-sm-3 col-form-label">Mã tài khoản</label>
           <div class="col-sm-9">

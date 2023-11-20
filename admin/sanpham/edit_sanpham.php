@@ -38,7 +38,7 @@
           </div>
         </div>
         <button type="button" class="btn btn-primary" id="submit-btn" name="submitBtn">
-          Submit
+          Cập nhật
         </button>
       </form>
     </div>

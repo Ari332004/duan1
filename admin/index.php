@@ -48,8 +48,18 @@ if (isset($_GET['page']) && isset($_GET['act'])) {
                   break;
               }
             break;
-        case 'quenmk':
-            include_once './views/login/quenmk.php';
+        case 'loai':
+          switch ($act){
+            case 'list':
+              include_once './loai/loai.php';
+              break;
+            case 'edit':
+              include_once './loai/edit_loai.php';
+              break;
+            case 'search':
+              include_once './loai/search_loai.php';
+              break;
+          }
             break;
         case 'user':
             include_once './views/user/user.php';
