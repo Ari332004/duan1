@@ -1,3 +1,32 @@
+<?php
+  $msg = "";
+  $h2 = "THÊM MỚI DANH MỤC";
+  $idTL = $_GET['idTL'] ?? "";
+  if ($idTL != "") {
+    $h2 = "CHỈNH SỬA DANH MỤC";
+    $result = loai_select_by_id($idTL);
+  } else {
+    $result = '';
+  }
+  if (isset($_POST['submit'])) {
+    $name = $_POST['name'] ?? "";
+    $id = $_POST['id'] ?? "";
+    if ($name != "" && $id != "") {
+      if ($idTL != "") {
+        $kq = loai_update($id, $name);
+        $msg = "Chỉnh sửa thành công";
+        $color = "green";
+      } else {
+        $kq = loai_insert($name);
+        $msg = "Thêm mới thành công";
+        $color = "green";
+      }
+    } else {
+      $msg = "Vui lòng nhập đầy đủ thông tin";
+      $color = "red";
+    }
+  }
+?>
 <div class="container" id="main">
   <div class="row justify-content-center align-items-center mt-4">
     <div class="col-lg-6 col-lg-offset-4">

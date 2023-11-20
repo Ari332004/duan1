@@ -1,3 +1,35 @@
+<?php
+  $dataAll = loai_select_all();
+
+  if (isset($_GET['DTL'])) {
+    loai_delete($_GET['DTL']);
+
+    header('Location: index.php?page=loai&act=list');
+  }
+
+  $arrID = [];
+
+  function deleteItems()
+  {
+    foreach ($_POST['check'] as $id) {
+      $arrID[] = $id;
+    }
+    loai_delete_multi($arrID);
+
+    header('Location: index.php?page=loai&act=list');
+  }
+
+  function loai_delete_multi($arrID)
+  {
+    foreach ($arrID as $id) {
+      loai_delete($id);
+    }
+  }
+
+  if (isset($_POST['btnDelete'])) {
+    deleteItems();
+  }
+?>
 <form action="" method="post">
   <legend class="text-center mb-4">Danh sách danh mục</legend>
 
@@ -24,7 +56,7 @@
         <?php foreach ($dataAll as $key => $value) : ?>
         <tr>
           <td><input type="checkbox" name="check[]" value="<?= $value['id']; ?>" class="check"></td>
-          <th><?= $value['id']; ?></th>
+          <td><?= $value['id']; ?></td>
           <td><?= $value['ten_dm']; ?></td>
           <td>
             <a href="index.php?DTL=<?= $value['id']; ?>&page=loai&act=list" class="btn btn-danger"

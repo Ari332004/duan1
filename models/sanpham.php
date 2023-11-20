@@ -2,15 +2,14 @@
   function san_pham_insert($tensp, $loai, $gia, $mota)
   {
     $ngay_them = date('Y-m-d');
-    $sql = "INSERT INTO sanpham(ten_sp, ma_dm, gia, ngay_nhap, mota) VALUES (?,?,?,?,?,?)";
+    $sql = "INSERT INTO sanpham(ten_sp, ma_dm, gia, ngay_nhap, mota) VALUES (?,?,?,?,?)";
     pdo_execute($sql, $tensp, $loai, $gia, $ngay_them, $mota);
   }
   
   function san_pham_update($idsp, $tensp, $loai, $gia, $mota)
   {
-    $ngay_them = date('Y-m-d');
-      $sql = "UPDATE sanpham SET ten_sp=?,ma_dm=?,gia=?,ngay_nhap=?,mota=? WHERE id=?";
-      pdo_execute($sql, $tensp, $loai, $gia, $ngay_them, $mota, $idsp);
+      $sql = "UPDATE sanpham SET ten_sp=?,ma_dm=?,gia=?,mota=? WHERE id=?";
+      pdo_execute($sql, $tensp, $loai, $gia, $mota, $idsp);
   }
   
   function san_pham_delete($idsp)
