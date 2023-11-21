@@ -183,9 +183,16 @@
                 <li class="top_links">
                   <a href="#">Account <i class="ion-chevron-down"></i></a>
                   <ul class="dropdown_links">
-                    <li><a href="login.html">Đăng nhập</a></li>
-                    <li><a href="login.html">Đăng ký</a></li>
+                    <?php if (!isset($_SESSION['user'])) { ?>
+                    <li><a href="index.php?act=login">Đăng nhập</a></li>
+                    <li><a href="index.php?act=login">Đăng ký</a></li>
+                    <?php } else { ?>
+                    <li><a href="index.php?act=hoso">Hồ sơ</a></a></li>
+                    <li><a href="index.php?act=dangxuat">Đăng xuất</a></a></li>
+                    <?php if($_SESSION['user']['vai_tro'] == 1): ?>
                     <li><a href="admin/index.php?page=sanpham&act=list">Quản trị</a></li>
+                    <?php endif; ?>
+                    <?php } ?>
                   </ul>
                 </li>
               </ul>
