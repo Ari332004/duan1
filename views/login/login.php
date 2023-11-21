@@ -47,7 +47,7 @@
              </p>
              <p>
                <label>Xác nhận mật khẩu <span>*</span></label>
-               <input type="re_password" name="repassdk">
+               <input type="password" name="repassdk">
              </p>
              <div class="login_submit">
                <button type="submit" name="dangky">Đăng ký</button>
