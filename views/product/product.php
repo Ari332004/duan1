@@ -34,7 +34,7 @@
                   </form>
                 </div>
                 <div class="widget_list widget_categories">
-                  <h2>Product categories</h2>
+                  <h2>Danh mục</h2>
                   <ul>
                     <li><a href="#">Categories1 <span>6</span></a> </li>
                     <li><a href="#"> Categories2 <span>10</span></a> </li>
@@ -45,7 +45,7 @@
                   </ul>
                 </div>
                 <div class="widget_list widget_categories">
-                  <h2>Select By Color</h2>
+                  <h2>Màu</h2>
                   <ul>
                     <li><a href="#">Black <span>6</span></a> </li>
                     <li><a href="#"> Blue <span>10</span></a> </li>
