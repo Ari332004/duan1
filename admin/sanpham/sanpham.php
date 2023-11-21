@@ -1,11 +1,7 @@
 <?php
   $dataAll = san_pham_select_all();
 
-  if(isset($_GET['DSP'])){
-    san_pham_delete($_GET['DSP']);
   
-    header('Location: index.php?act=sanpham');
-  }
   
   $dataloai = loai_select_all_sp();
   // Thêm biến arrID để lưu trữ các ID của các mục đã chọn.
@@ -75,7 +71,7 @@
           <td><?= $value['gia']; ?> VNĐ</td>
           <td><?= $value['ngay_nhap']; ?></td>
           <td>
-            <a href="index.php?DSP=<?= $value['id']; ?>&page=sanpham&act=list" class="btn btn-danger"
+            <a href="index.php?DSP=<?= $value['id']; ?>&page=sanpham&act=xoa" class="btn btn-danger"
               onclick="confirm('Bạn có muốn xóa hay không?')">
               Xóa
             </a>

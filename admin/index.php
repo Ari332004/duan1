@@ -16,6 +16,13 @@ if (isset($_GET['page']) && isset($_GET['act'])) {
             case 'list':
               include_once './sanpham/sanpham.php';
               break;
+            case 'xoa':
+              if(isset($_GET['DSP'])){
+                  san_pham_delete($_GET['DSP']);
+                
+              }
+              include_once './sanpham/sanpham.php';
+              break;
             case 'edit':
               include_once './sanpham/edit_sanpham.php';
               break;
@@ -27,6 +34,9 @@ if (isset($_GET['page']) && isset($_GET['act'])) {
         case 'taikhoan':
             switch ($act){
                 case 'list':
+                  include_once './taikhoan/taikhoan.php';
+                  break;
+                case 'xoa':
                   include_once './taikhoan/taikhoan.php';
                   break;
                 case 'edit':
@@ -53,6 +63,13 @@ if (isset($_GET['page']) && isset($_GET['act'])) {
         case 'loai':
           switch ($act){
             case 'list':
+              include_once './loai/loai.php';
+              break;
+            case 'xoa':
+
+              if (isset($_GET['DTL'])) {
+                loai_delete($_GET['DTL']);
+              }
               include_once './loai/loai.php';
               break;
             case 'edit':

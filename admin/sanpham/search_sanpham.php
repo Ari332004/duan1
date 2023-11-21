@@ -75,7 +75,7 @@
           <td><?= $value['gia']; ?> VNĐ</td>
           <td><?= $value['ngay_nhap']; ?></td>
           <td>
-            <a href="index.php?DSP=<?= $value['id']; ?>&page=sanpham&act=search" class="btn btn-danger"
+            <a href="index.php?DSP=<?= $value['id']; ?>&page=sanpham&act=xoa" class="btn btn-danger"
               onclick="confirm('Bạn có muốn xóa hay không?')">
               Xóa
             </a>

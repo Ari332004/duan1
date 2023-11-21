@@ -77,7 +77,7 @@
               placeholder="Mô tả"><?= $result['mota'] ?? "" ?></textarea>
           </div>
         </div>
-        <button class="btn btn-primary" id="submit-btn" name="submit">Thêm mới</button>
+        <button class="btn btn-primary" id="submit-btn" name="submit"><?= $idSP ? 'Cập nhật':'Thêm mới' ?></button>
         <input type="reset" class="btn btn-primary" name="nhaplai"></input>
         <a href="index.php?act=list&page=sanpham" class="btn btn-primary" name="danhsach">Danh sach</a>
         <div class="error-msg" style="color: <?= $color ?>;"><?= $msg ?></div>

@@ -110,7 +110,19 @@
                           alt=""></a>
                       <a class="secondary_img" href="product-details.html"><img src="assets/img/product/product16.jpg"
                           alt=""></a>
-
+                      <div class="product_action">
+                        <div class="hover_action">
+                          <a href="#"><i class="fa fa-plus"></i></a>
+                          <div class="action_button">
+                            <ul>
+                              <li>
+                                <a title="add to cart" href="cart.html"><i class="fa fa-shopping-basket"
+                                    aria-hidden="true"></i></a>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
                       <div class="quick_button">
                         <a href="product-details.html" title="quick_view">Xem sản phẩm</a>
                       </div>
@@ -168,7 +180,19 @@
                           alt=""></a>
                       <a class="secondary_img" href="product-details.html"><img src="assets/img/product/product23.jpg"
                           alt=""></a>
-
+                      <div class="product_action">
+                        <div class="hover_action">
+                          <a href="#"><i class="fa fa-plus"></i></a>
+                          <div class="action_button">
+                            <ul>
+                              <li>
+                                <a title="add to cart" href="cart.html"><i class="fa fa-shopping-basket"
+                                    aria-hidden="true"></i></a>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
                       <div class="quick_button">
                         <a href="product-details.html" title="quick_view">Xem sản phẩm</a>
                       </div>
@@ -220,7 +244,19 @@
                           alt=""></a>
                       <a class="secondary_img" href="product-details.html"><img src="assets/img/product/product11.jpg"
                           alt=""></a>
-
+                      <div class="product_action">
+                        <div class="hover_action">
+                          <a href="#"><i class="fa fa-plus"></i></a>
+                          <div class="action_button">
+                            <ul>
+                              <li>
+                                <a title="add to cart" href="cart.html"><i class="fa fa-shopping-basket"
+                                    aria-hidden="true"></i></a>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
                       <div class="quick_button">
                         <a href="product-details.html" title="quick_view">Xem sản phẩm</a>
                       </div>
@@ -278,7 +314,19 @@
                           alt=""></a>
                       <a class="secondary_img" href="product-details.html"><img src="assets/img/product/product18.jpg"
                           alt=""></a>
-
+                      <div class="product_action">
+                        <div class="hover_action">
+                          <a href="#"><i class="fa fa-plus"></i></a>
+                          <div class="action_button">
+                            <ul>
+                              <li>
+                                <a title="add to cart" href="cart.html"><i class="fa fa-shopping-basket"
+                                    aria-hidden="true"></i></a>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
                       <div class="quick_button">
                         <a href="product-details.html" title="quick_view">Xem sản phẩm</a>
                       </div>
@@ -330,7 +378,19 @@
                           alt=""></a>
                       <a class="secondary_img" href="product-details.html"><img src="assets/img/product/product20.jpg"
                           alt=""></a>
-
+                      <div class="product_action">
+                        <div class="hover_action">
+                          <a href="#"><i class="fa fa-plus"></i></a>
+                          <div class="action_button">
+                            <ul>
+                              <li>
+                                <a title="add to cart" href="cart.html"><i class="fa fa-shopping-basket"
+                                    aria-hidden="true"></i></a>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
                       <div class="quick_button">
                         <a href="product-details.html" title="quick_view">Xem sản phẩm</a>
                       </div>

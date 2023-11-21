@@ -1,11 +1,6 @@
 <?php
+  
   $dataAll = loai_select_all();
-
-  if (isset($_GET['DTL'])) {
-    loai_delete($_GET['DTL']);
-
-    header('Location: index.php?page=loai&act=list');
-  }
 
   $arrID = [];
 
@@ -59,7 +54,7 @@
           <td><?= $value['id']; ?></td>
           <td><?= $value['ten_dm']; ?></td>
           <td>
-            <a href="index.php?DTL=<?= $value['id']; ?>&page=loai&act=list" class="btn btn-danger"
+            <a href="index.php?DTL=<?= $value['id']; ?>&page=loai&act=xoa" class="btn btn-danger"
               onclick="confirm('Bạn có muốn xóa hay không?')">
               Xóa
             </a>
