@@ -21,8 +21,27 @@ function tai_khoan_delete($ma_kh){
   }
 }
 
-function tai_khoan_select_all(){
-  $sql = "SELECT * FROM users";
+function tai_khoan_select_all($username="",$id=0,$email="",$dia_tri="",$sdt="",$vai_tro=""){
+  $sql = "SELECT * FROM users WHERE 1";
+  if($id>0){
+    $sql.=" and id ='".$id."'";
+  }
+  if($username!=""){
+    $sql.=" and username like '%".$username."%'";
+  }
+  if($email!=""){
+    $sql.=" and email like '%".$email."%'";
+  }
+  if($dia_tri!=""){
+    $sql.=" and dia_tri like '%".$dia_tri."%'";
+  }
+  if($sdt!=""){
+    $sql.=" and sdt like '%".$sdt."%'";
+  }
+  if($vai_tro!=""){
+    $sql.=" and vai_tro like '%".$vai_tro."%'";
+  }
+  $sql.=" order by id desc";
   return pdo_query($sql);
 }
 
