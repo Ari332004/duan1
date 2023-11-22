@@ -69,11 +69,11 @@
         <label class="col-sm-3 col-form-label">Vai trò</label>
         <div class="col-sm-9">
           <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="vai_tro" id="inlineRadio1" value="0" <?php if (isset($result['vai_tro']) && $result['vai_tro'] == 0) echo "checked"; ?>>
+            <input class="form-check-input" type="radio" name="vai_tro" id="inlineRadio1" value="1" <?php if (isset($result['vai_tro']) && $result['vai_tro'] == 1) echo "checked"; ?>>
             <label for="inlineRadio1">Nhân viên</label>
           </div>
           <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="vai_tro" id="inlineRadio2" value="1" <?php if (isset($result['vai_tro']) && $result['vai_tro'] == 1) echo "checked"; ?>>
+            <input class="form-check-input" type="radio" name="vai_tro" id="inlineRadio2" value="0" <?php if (isset($result['vai_tro']) && $result['vai_tro'] == 0) echo "checked"; ?>>
             <label for="inlineRadio2">Khách hàng</label>
           </div>
         </div>
@@ -99,9 +99,9 @@
         </div>
         <div class="form-group row">
           <div class="col-sm-12 text-center">
-            <button class="btn btn-primary" id="submit-btn" name="submit">
-              <?= $idTK ? 'Cập nhật' : 'Thêm mới' ?>
-            </button>
+          <button class="btn btn-primary" id="submit-btn" name="submit"><?= $idTK ? 'Cập nhật':'Thêm mới' ?></button>
+        <input type="reset" class="btn btn-primary" name="nhaplai"></input>
+        <a href="index.php?act=list&page=taikhoan" class="btn btn-primary" name="danhsach">Danh sách</a>
           </div>
         </div>
       </form>
