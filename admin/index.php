@@ -2,6 +2,7 @@
 include_once '../models/pdo.php';
 include_once '../models/loai.php';
 include_once '../models/sanpham.php';
+include_once '../models/taikhoan.php';
 
 include_once './header.php';
 
@@ -37,6 +38,10 @@ if (isset($_GET['page']) && isset($_GET['act'])) {
                   include_once './taikhoan/taikhoan.php';
                   break;
                 case 'xoa':
+                  if(isset($_GET['DTK'])){
+                    tai_khoan_delete($_GET['DTK']);
+                  
+                }
                   include_once './taikhoan/taikhoan.php';
                   break;
                 case 'edit':
