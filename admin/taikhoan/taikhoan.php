@@ -40,12 +40,12 @@
 <form action="" method="post">
   <legend class="text-center mb-4">Danh sách tài khoản</legend>
   <div class="container" style="max-width: 90%">
-    <div class="row mb10 mt-2">
+    <!-- <div class="row mb10 mt-2">
       <a href="#" class="col-auto"><input class="btn btn-primary mr10 checked" type="button" value="CHỌN TẤT CẢ"></a>
       <a href="#" class="col-auto"><input class="btn btn-primary mr10 unchecked" type="button"
           value="BỎ CHỌN TẤT CẢ"></a>
       <a href="#" class="col-auto"><input class="btn btn-primary mr10" type="submit" name="btnDelete"
-          value="XÓA CÁC MỤC ĐÃ CHỌN"></a>
+          value="XÓA CÁC MỤC ĐÃ CHỌN"></a> -->
       <a href="index.php?act=edit&page=taikhoan" class="col-auto"> <input class="btn btn-primary mr20" type="button"
           value="NHẬP THÊM"></a>
     </div>
