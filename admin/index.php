@@ -1,7 +1,10 @@
 <?php
+ob_start();
 include_once '../models/pdo.php';
 include_once '../models/loai.php';
 include_once '../models/sanpham.php';
+include_once '../models/binhluan.php';
+include_once '../models/taikhoan.php';
 
 include_once './header.php';
 
@@ -65,13 +68,6 @@ if (isset($_GET['page']) && isset($_GET['act'])) {
             case 'list':
               include_once './loai/loai.php';
               break;
-            case 'xoa':
-
-              if (isset($_GET['DTL'])) {
-                loai_delete($_GET['DTL']);
-              }
-              include_once './loai/loai.php';
-              break;
             case 'edit':
               include_once './loai/edit_loai.php';
               break;
@@ -80,6 +76,21 @@ if (isset($_GET['page']) && isset($_GET['act'])) {
               break;
           }
             break;
+        case 'binhluan':
+          switch ($act) {
+            case 'list':
+              include_once './binhluan/binhluan.php';
+              break;
+            case 'xoa':
+              if (isset($_GET['idBL'])) {
+                binhluan_delete($_GET['idBL']);
+              }
+              include_once './binhluan/binhluan.php';
+              break;
+            case 'search':  
+              include_once './binhluan/search_binhluan.php';
+              break;
+          }
         case 'user':
             include_once './views/user/user.php';
             break;
@@ -102,5 +113,5 @@ if (isset($_GET['page']) && isset($_GET['act'])) {
 
 include_once './footer.php';
 
-
+ob_end_flush();
 ?>

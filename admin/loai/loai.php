@@ -24,6 +24,10 @@
   if (isset($_POST['btnDelete'])) {
     deleteItems();
   }
+  if (isset($_GET['DTL'])) {
+    loai_delete($_GET['DTL']);
+    header('Location: index.php?page=loai&act=list');
+  }
 ?>
 <form action="" method="post">
   <legend class="text-center mb-4">Danh sách danh mục</legend>
@@ -54,8 +58,8 @@
           <td><?= $value['id']; ?></td>
           <td><?= $value['ten_dm']; ?></td>
           <td>
-            <a href="index.php?DTL=<?= $value['id']; ?>&page=loai&act=xoa" class="btn btn-danger"
-              onclick="confirm('Bạn có muốn xóa hay không?')">
+            <a href="index.php?DTL=<?= $value['id']; ?>&page=loai&act=list" class="btn btn-danger"
+              onclick="return confirm('Bạn có muốn xóa hay không?')">
               Xóa
             </a>
             <a href="index.php?idTL=<?= $value['id']; ?>&page=loai&act=edit" class="btn btn-warning"> Sửa </a>

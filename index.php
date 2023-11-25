@@ -1,4 +1,5 @@
 <?php
+ob_start();
 session_start();
 include_once './models/pdo.php';
 include_once './models/taikhoan.php';
@@ -27,7 +28,7 @@ if (isset($_GET['act'])) {
                         $dn = "Đăng nhập thành công";
                         $colordn = 'green';
                         // Chuyen huong trang chu hoac admin 
-                        header("location: index.php");
+                        header("Location: index.php");
                     } else {
                         $dn = "Thông tin đăng nhập sai";
                         $colordn = 'red';
@@ -87,5 +88,5 @@ if (isset($_GET['act'])) {
 
 include_once './views/components/footer.php';
 
-
+ob_end_flush();
 ?>
