@@ -68,7 +68,7 @@ if (isset($_POST['find'])) {
 
         <td>
           <a href="index.php?idBL=<?= $id ?>&page=binhluan&act=xoa" class="btn btn-danger"
-            onclick="confirm('Bạn có muốn xóa hay không?')">
+            onclick="return confirm('Bạn có muốn xóa hay không?')">
             Xóa
           </a>
 
