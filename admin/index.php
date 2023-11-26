@@ -3,6 +3,7 @@ include_once '../models/pdo.php';
 include_once '../models/loai.php';
 include_once '../models/sanpham.php';
 include_once '../models/taikhoan.php';
+include_once '../models/img.php';
 
 include_once './header.php';
 
@@ -32,6 +33,7 @@ if (isset($_GET['page']) && isset($_GET['act'])) {
               break;
           }
           break;
+          
         case 'taikhoan':
             switch ($act){
                 case 'list':
@@ -62,6 +64,22 @@ if (isset($_GET['page']) && isset($_GET['act'])) {
                   break;
                 case 'search':
                   include_once './sanphamct/search_sanphamct.php';
+                  break;
+              }
+            break;
+        case 'anh':
+            switch ($act){
+                case 'list':
+                  include_once './anh/anh.php';
+                  break;
+                case 'edit':
+                  include_once './anh/edit_anh.php';
+                  break;
+                case 'xoa':
+                  if (isset($_GET['DIMG'])) {
+                    anh_delete($_GET['DIMG']);
+                  }
+                  include_once './anh/anh.php';
                   break;
               }
             break;
