@@ -3,7 +3,7 @@ include_once '../models/pdo.php';
 include_once '../models/loai.php';
 include_once '../models/sanpham.php';
 include_once '../models/binhluan.php';
-
+include_once '../models/sanphamct.php';
 include_once './header.php';
 
 
@@ -27,7 +27,7 @@ if (isset($_GET['page']) && isset($_GET['act'])) {
           include_once './sanpham/edit_sanpham.php';
           break;
         case 'search':
-          
+
           include_once './sanpham/search_sanpham.php';
           break;
       }
@@ -63,17 +63,24 @@ if (isset($_GET['page']) && isset($_GET['act'])) {
           break;
 
         case 'search':
-          
+
           include_once './binhluan/search_binhluan.php';
           break;
       }
     case 'sanphamct':
       switch ($act) {
         case 'list':
+          $dataAll = select_all_spct();
           include_once './sanphamct/sanphamct.php';
           break;
+        case 'xoa':
+          if (isset($_GET['idspct'])) {
+            spct_delete($_GET['idspct']);
+          }
+          $dataAll = select_all_spct(0);
+          include_once './sanphamct/sanphamct.php';
         case 'edit':
-          include_once './sanphamct/edit_sanphamct.php';
+          include_once './sanphamct/edit_spct.php';
           break;
         case 'search':
           include_once './sanphamct/search_sanphamct.php';
