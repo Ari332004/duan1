@@ -37,6 +37,19 @@
   }
   </style>
   <link rel="stylesheet" href="./admin.css" />
+  <script defer>
+  const navItems = document.querySelectorAll(".nav-item");
+  const navLinks = document.querySelectorAll(".nav-link");
+
+  navItems.forEach((item) => {
+    item.addEventListener("click", function() {
+      navLinks.forEach(function(link) {
+        link.classList.remove("active");
+      });
+      this.classList.add("active");
+    });
+  });
+  </script>
 </head>
 
 <body>

@@ -103,7 +103,7 @@
                 </div>
 
                 <div class="product_variant color">
-                  <h3>color</h3>
+                  <h3>Màu</h3>
                   <select class="niceselect_option" id="color" name="produc_color">
                     <option selected value="1">choose in option</option>
                     <option value="2">choose in option2</option>
@@ -111,10 +111,14 @@
                     <option value="4">choose in option4</option>
                   </select>
                 </div>
+                <div class="product_variant color">
+                  <h3>Chất liệu</h3>
+                  <p>sdadas</p>
+                </div>
                 <div class="product_variant quantity">
-                  <label>quantity</label>
+                  <label>Số lượng</label>
                   <input min="1" max="100" value="1" type="number" />
-                  <button class="button" type="submit">add to cart</button>
+                  <button class="button" type="submit">Thêm vào giỏ hàng</button>
                 </div>
               </form>
               <div class="priduct_social">

@@ -49,4 +49,17 @@ function loai_select_all_sp(){
   $sql = "SELECT * FROM danhmuc";
   return pdo_query($sql);
 }
+
+function getImg($id){
+  $sql = "SELECT * FROM anh WHERE ma_sp=? LIMIT 1";
+  return pdo_query_one($sql,$id);
+}
+function getAllImg($id){
+  $sql = "SELECT * FROM anh WHERE ma_sp=?";
+  return pdo_query_one($sql,$id);
+}
+function sp_home(){
+  $sql = "SELECT sanpham.*, anh.* FROM sanpham JOIN ( SELECT ma_sp, MIN(img_url) AS tenanh FROM anh GROUP BY ma_sp ) AS anh ON sanpham.id = anh.ma_sp; ORDER BY id DESC LIMIT 0, 10";
+  return pdo_query($sql);
+}
 ?>

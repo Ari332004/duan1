@@ -18,16 +18,4 @@ unchecked.addEventListener("click", function () {
   });
 });
 
-const navItems = document.querySelectorAll(".nav-item");
-const navLinks = document.querySelectorAll(".nav-link");
 
-console.log(navItems);
-console.log(navLinks);
-navItems.forEach((item) => {
-  item.addEventListener("click", function () {
-    navLinks.forEach((link) => {
-      link.classList.remove("active");
-      link.target.classList.add("active");
-    });
-  });
-});

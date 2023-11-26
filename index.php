@@ -3,10 +3,12 @@ ob_start();
 session_start();
 include_once './models/pdo.php';
 include_once './models/taikhoan.php';
+include_once './models/sanpham.php';
 
 
 include_once './views/components/header.php';
 
+$spnew = sp_home();
 
 if (isset($_GET['act'])) {
     $act = $_GET['act'];

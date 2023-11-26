@@ -2359,9 +2359,10 @@ textarea:-ms-input-placeholder {
   align-items: center;
   position: absolute;
   justify-content: center;
-  left: 20%;
+  left: 50%;
   top: 37px;
   z-index: 999;
+  transform: translate(-50%, 0);
   max-width: 1190px;
 }
 @media only screen and (min-width: 1600px) and (max-width: 1799px) {

@@ -318,8 +318,8 @@
             <div class="main_menu">
               <nav>
                 <ul>
-                  <li><a href="#">Specials</a></li>
-                  <li><a href="#">Sneaker</a></li>
+                  <li><a href="#">Kính râm</a></li>
+                  <li><a href="#">Gọng kính</a></li>
                 </ul>
               </nav>
             </div>
@@ -340,6 +340,8 @@
                   <ul>
                     <li class="active"><a href="index.php">Home </a></li>
                     <li><a href="index.php?act=product">shop </a></li>
+                    <li><a href="index.php?act=product">Kính râm </a></li>
+                    <li><a href="index.php?act=product">Gọng kính </a></li>
                   </ul>
                 </nav>
               </div>
