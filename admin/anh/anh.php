@@ -53,6 +53,7 @@
       <thead>
         <tr>
           <th></th>
+          <th scope="col">ID</th>
           <th scope="col">Mã_SP</th>
           <th scope="col">Tên</th>
           <th scope="col">Ảnh</th>
@@ -63,6 +64,7 @@
         <?php foreach ($dataAll as $key => $value) : ?>
         <tr>
           <td><input type="checkbox" name="check[]" value="<?= $value['id']; ?>" class="check"></td>
+          <td><?= $value['id']; ?></td>
           <td><?= $value['ma_sp']; ?></td>
           <td><?= $value['ten_sp']; ?></td>
           <td><img src="../upload/<?= $value['img_url']; ?>" alt="Hình ảnh sản phẩm" width="200"></td>
