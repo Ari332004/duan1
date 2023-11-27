@@ -55,14 +55,20 @@ if (isset($_POST['submit'])) {
           </div>
         </div>
         <div class="form-group row mb-3">
-          <label for="input-name" class="col-sm-3 col-form-label">Ảnh</label>
+          <label for="input-name" class="col-sm-3 col-form-label">Ảnh cũ</label>
           <div class="col-sm-9">
             <?php if (!empty($result['img_url'])) : ?>
-              <img src="../upload/<?= $result['img_url']; ?>" alt="Hình ảnh sản phẩm" width="200">
-            <?php else : ?>
-              <input type="file" class="form-control" id="input-name" placeholder="" name="img_url" />
+              <img src="../upload/<?= $result['img_url']; ?>" alt="Hình ảnh sản phẩm" width="200"> <br><br>~
             <?php endif; ?>
+              
+            
           </div>
+          <div class="form-group row mb-3">
+          <label for="input-name" class="col-sm-3 col-form-label">Ảnh mới</label>
+          <div class="col-sm-9">
+          <input type="file" class="form-control" id="input-name" placeholder="" name="img_url" />
+          </div>
+        </div>
         </div>
         <button class="btn btn-primary" id="submit-btn" name="submit"><?= $idIMG ? 'Cập nhật' : 'Thêm mới' ?></button>
         <input type="reset" class="btn btn-primary" name="nhaplai">
