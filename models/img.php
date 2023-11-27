@@ -36,7 +36,12 @@ function anh_insert($img_url,$ma_sp){
     return pdo_query_one($sql,$id);
   }
   function anh_update($id, $img_url,$ma_sp){
-    $sql = "UPDATE anh SET img_url=?,ma_sp=? WHERE id=?";
+    if($img_url != ""){
+      $sql = "UPDATE anh SET img_url=?,ma_sp=? WHERE id=?";
+    }else{
+      $sql = "UPDATE anh SET ma_sp=? WHERE id=?";
+    }
+   
     pdo_execute($sql, $img_url,$ma_sp, $id);
   }
 ?>

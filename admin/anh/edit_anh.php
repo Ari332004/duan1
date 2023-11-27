@@ -11,18 +11,39 @@ if ($idIMG != "") {
 if (isset($_POST['submit'])) {
   $ma_sp = $_POST['ma_sp'] ?? "";
   $id = $_POST['id'] ?? "";
-  $img_url = $_FILES['img_url']['name'];
-  $target_dir = "../upload/";
-  $target_file = $target_dir . basename($_FILES["img_url"]["name"]);
+  
+  if (!empty($_FILES['img_url']['name'])) {
+    $img_url = $_FILES['img_url']['name'];
+    $target_dir = "../upload/";
+    $target_file = $target_dir . basename($_FILES["img_url"]["name"]);
 
-  if (move_uploaded_file($_FILES["img_url"]["tmp_name"], $target_file)) {
-    if ($img_url != "" && $id != "") {
+    if (move_uploaded_file($_FILES["img_url"]["tmp_name"], $target_file)) {
+      if ($id != "") {
+        if ($idIMG != "") {
+          $kq = anh_update($id, $img_url, $ma_sp);
+          $msg = "Chỉnh sửa thành công";
+          $color = "green";
+        } else {
+          $kq = anh_insert($img_url, $ma_sp);
+          $msg = "Thêm mới thành công";
+          $color = "green";
+        }
+      } else {
+        $msg = "Vui lòng nhập đầy đủ thông tin";
+        $color = "red";
+      }
+    } else {
+      $msg = "Có lỗi xảy ra khi tải lên tệp";
+      $color = "red";
+    }
+  } else {
+    if ($id != "") {
       if ($idIMG != "") {
-        $kq = anh_update($id, $img_url, $ma_sp);
+        $kq = anh_update($id, $result['img_url'], $ma_sp);
         $msg = "Chỉnh sửa thành công";
         $color = "green";
       } else {
-        $kq = anh_insert($img_url, $ma_sp);
+        $kq = anh_insert($result['img_url'], $ma_sp);
         $msg = "Thêm mới thành công";
         $color = "green";
       }
@@ -30,9 +51,6 @@ if (isset($_POST['submit'])) {
       $msg = "Vui lòng nhập đầy đủ thông tin";
       $color = "red";
     }
-  } else {
-    $msg = "Có lỗi xảy ra khi tải lên tệp";
-    $color = "red";
   }
 }
 ?>
@@ -58,18 +76,12 @@ if (isset($_POST['submit'])) {
           <label for="input-name" class="col-sm-3 col-form-label">Ảnh cũ</label>
           <div class="col-sm-9">
             <?php if (!empty($result['img_url'])) : ?>
-              <img src="../upload/<?= $result['img_url']; ?>" alt="Hình ảnh sản phẩm" width="200"> <br><br>~
+              <img src="../upload/<?= $result['img_url']; ?>" alt="Hình ảnh sản phẩm" width="200"><br> <br>
             <?php endif; ?>
-              
-            
-          </div>
-          <div class="form-group row mb-3">
-          <label for="input-name" class="col-sm-3 col-form-label">Ảnh mới</label>
-          <div class="col-sm-9">
-          <input type="file" class="form-control" id="input-name" placeholder="" name="img_url" />
+            <input type="file" class="form-control" id="input-name" placeholder="" name="img_url" />
           </div>
         </div>
-        </div>
+        
         <button class="btn btn-primary" id="submit-btn" name="submit"><?= $idIMG ? 'Cập nhật' : 'Thêm mới' ?></button>
         <input type="reset" class="btn btn-primary" name="nhaplai">
         <a href="index.php?act=list&page=anh" class="btn btn-primary" name="danhsach">Danh sách</a>
