@@ -44,19 +44,12 @@
       <div class="search_bar">
         <form action="#">
           <select class="select_option" name="select" id="categori">
-            <option selected value="1">All</option>
-            <option value="2">Accessories</option>
-            <option value="3">Bridge</option>
-            <option value="4">Hub</option>
-            <option value="5">Repeater</option>
-            <option value="6">Switch</option>
-            <option value="7">Video Games</option>
-            <option value="8">PlayStation 3</option>
-            <option value="9">PlayStation 4</option>
-            <option value="10">Xbox 360</option>
-            <option value="11">Xbox One</option>
+            <option selected value="0">All</option>
+            <?php foreach ($dsdm as $dm) : ?>
+            <option value="<?= $dm['id']?>"><?= $dm['ten_dm']?></option>
+            <?php endforeach ?>
           </select>
-          <input placeholder="Search entire store here..." type="text" />
+          <input placeholder="Tìm kiếm" type="text" />
           <button type="submit"><i class="ion-ios-search-strong"></i></button>
         </form>
       </div>
@@ -69,7 +62,7 @@
           </ul>
         </div>
         <div class="cart_link">
-          <a href="#"><i class="fa fa-shopping-basket"></i>2 item(s)</a>
+          <a href="?act=cart"><i class="fa fa-shopping-basket"></i>2 item(s)</a>
           <!--mini cart-->
           <div class="mini_cart">
             <div class="cart_item top">
@@ -114,10 +107,10 @@
             </div>
 
             <div class="cart_button view_cart">
-              <a href="cart.html">View Cart</a>
+              <a href="?act=cart">View Cart</a>
             </div>
             <div class="cart_button checkout">
-              <a href="checkout.html">Checkout</a>
+              <a href="?act=checkout">Checkout</a>
             </div>
           </div>
           <!--mini cart end-->
@@ -212,19 +205,12 @@
               <div class="search_bar">
                 <form action="#">
                   <select class="select_option" name="select" id="categori">
-                    <option selected value="1">All</option>
-                    <option value="2">Accessories</option>
-                    <option value="3">Bridge</option>
-                    <option value="4">Hub</option>
-                    <option value="5">Repeater</option>
-                    <option value="6">Switch</option>
-                    <option value="7">Video Games</option>
-                    <option value="8">PlayStation 3</option>
-                    <option value="9">PlayStation 4</option>
-                    <option value="10">Xbox 360</option>
-                    <option value="11">Xbox One</option>
+                    <option selected value="0">All</option>
+                    <?php foreach ($dsdm as $dm) : ?>
+                    <option value="<?= $dm['id']?>"><?= $dm['ten_dm']?></option>
+                    <?php endforeach ?>
                   </select>
-                  <input placeholder="Search entire store here..." type="text" />
+                  <input placeholder="Tìm kiếm" type="text" />
                   <button type="submit">
                     <i class="ion-ios-search-strong"></i>
                   </button>
@@ -239,7 +225,7 @@
             <div class="col-lg-4">
               <div class="cart_area">
                 <div class="cart_link">
-                  <a href="#"><i class="fa fa-shopping-basket"></i>2 item(s)</a>
+                  <a href="?act=cart"><i class="fa fa-shopping-basket"></i>2 item(s)</a>
                   <!--mini cart-->
                   <div class="mini_cart">
                     <div class="cart_item top">
@@ -284,7 +270,7 @@
                     </div>
 
                     <div class="cart_button view_cart">
-                      <a href="cart.html">View Cart</a>
+                      <a href="?act=cart">View Cart</a>
                     </div>
                     <div class="cart_button checkout">
                       <a href="checkout.html">Checkout</a>

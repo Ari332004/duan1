@@ -34,14 +34,14 @@
           </thead>
           <tbody>
             <tr>
-              <td><img src="assets/img/product/product1.jpg" style="width: 100px"></td>
+              <td><img src="uploads/sanpham/sanpham1.jpg" style="width: 100px"></td>
               <td>tên</td>
               <td>100000 VND</td>
               <td>10</td>
               <td>1000000 VND</td>
             </tr>
             <tr>
-              <td><img src="assets/img/product/product2.jpg" style="width: 100px"></td>
+              <td><img src="uploads/sanpham/sanpham2.jpg" style="width: 100px"></td>
               <td>tên</td>
               <td>100000 VND</td>
               <td>10</td>

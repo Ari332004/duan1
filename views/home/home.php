@@ -1,7 +1,3 @@
-<?php
-  
-?>
-
 <!--slider area start-->
 <div class="slider_area slider_style home_three_slider owl-carousel">
   <div class="single_slider" data-bgimg="assets/img/slider/slider4.jpg">
@@ -124,7 +120,7 @@
                   <h3>
                     <a href="index.php?act=productdetail"><?= $sp['ten_sp'] ?></a>
                   </h3>
-                  <span class="current_price"><?= $sp['gia'] ?></span>
+                  <span class="current_price"><?= $sp['gia'] ?> VNĐ</span>
                 </div>
               </div>
             </div>
@@ -215,7 +211,7 @@
                 <h3>
                   <a href="index.php?act=productdetail"><?= $sp['ten_sp'] ?></a>
                 </h3>
-                <span class="current_price"><?= $sp['gia'] ?></span>
+                <span class="current_price"><?= $sp['gia'] ?> VNĐ</span>
               </div>
             </div>
           </div>

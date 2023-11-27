@@ -41,11 +41,11 @@
           <label class="col-sm-3 col-form-label">Vai trò</label>
           <div class="col-sm-9">
             <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadioOptions" value="0">
+              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadioOptions" value="1">
               <label for="inlineRadio1">Nhân viên</label>
             </div>
             <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadioOptions" value="1">
+              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadioOptions" value="0">
               <label for="inlineRadio2">Khách hàng</label>
             </div>
           </div>
@@ -88,7 +88,7 @@
           <td><?= $value['vai_tro'] == 0?'Khách hàng':'Nhân viên'; ?></td>
           <td>
             <a href="index.php?DTK=<?= $value['id']; ?>&page=taikhoan&act=xoa" class="btn btn-danger"
-              onclick="confirm('Bạn có muốn xóa hay không?')">
+              onclick="return confirm('Bạn có muốn xóa hay không?')">
               Xóa
             </a>
             <a href="index.php?idTK=<?= $value['id']; ?>&page=taikhoan&act=edit" class="btn btn-warning"> Sửa </a>

@@ -76,7 +76,7 @@
           <td><?= $value['ngay_nhap']; ?></td>
           <td>
             <a href="index.php?DSP=<?= $value['id']; ?>&page=sanpham&act=xoa" class="btn btn-danger"
-              onclick="confirm('Bạn có muốn xóa hay không?')">
+              onclick="return confirm('Bạn có muốn xóa hay không?')">
               Xóa
             </a>
             <a href="index.php?idSP=<?= $value['id']; ?>&page=sanpham&act=edit" class="btn btn-warning"> Sửa </a>

@@ -58,8 +58,15 @@ function getAllImg($id){
   $sql = "SELECT * FROM anh WHERE ma_sp=?";
   return pdo_query_one($sql,$id);
 }
-function sp_home(){
-  $sql = "SELECT sanpham.*, anh.* FROM sanpham JOIN ( SELECT ma_sp, MIN(img_url) AS tenanh FROM anh GROUP BY ma_sp ) AS anh ON sanpham.id = anh.ma_sp; ORDER BY id DESC LIMIT 0, 10";
+function sp_home($iddm=0){
+  $sql = "SELECT sanpham.*, anh.* FROM sanpham 
+          JOIN ( SELECT ma_sp, MIN(img_url) AS tenanh 
+                  FROM anh GROUP BY ma_sp ) AS anh ON sanpham.id = anh.ma_sp"; 
+    if($iddm>0){
+      $sql.=" WHERE ma_dm ='".$iddm."'";
+  }
+    $sql.=" ORDER BY id DESC 
+              LIMIT 0, 10";
   return pdo_query($sql);
 }
 ?>

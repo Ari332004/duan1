@@ -54,6 +54,7 @@ if (isset($_POST['find'])) {
         <th scope="col">Mã SP</th>
         <th scope="col">Ngày bình luận</th>
 
+        <th>Hành động</th>
       </tr>
     </thead>
     <tbody>
@@ -66,7 +67,13 @@ if (isset($_POST['find'])) {
         <td><?= $value['ma_sp']; ?></td>
         <td><?= $value['ngay_bl']; ?></td>
 
-        <td>
+        <td style="text-align: center;">
+          <?php if($value['trang_thai'] == 0): ?>
+          <a href="index.php?status=<?= $id ?>&page=binhluan&act=search" class="btn btn-success"
+            onclick="return confirm('Bạn có duyệt bình luận này không?')">
+            Duyệt
+          </a>
+          <?php endif ?>
           <a href="index.php?idBL=<?= $id ?>&page=binhluan&act=xoa" class="btn btn-danger"
             onclick="return confirm('Bạn có muốn xóa hay không?')">
             Xóa

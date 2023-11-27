@@ -3,14 +3,14 @@ $dataAll = loadall_binhluan();
 
 $arrID = [];
 
-  function deleteItems()
+  function deleteItemsBL()
   {
     foreach ($_POST['check'] as $id) {
       $arrID[] = $id;
     }
     loai_delete_multi($arrID);
 
-    header('Location: index.php?page=binluan');
+    header('Location: index.php?page=binhluan&act=list');
   }
 
   function loai_delete_multi($arrID)
@@ -21,7 +21,11 @@ $arrID = [];
   }
 
   if (isset($_POST['btnDelete'])) {
-    deleteItems();
+    deleteItemsBL();
+  }
+  if (isset($_GET['status'])) {
+    upStatus($_GET['status']);
+    header('Location: index.php?page=binhluan&act=list');
   }
 ?>
 <form action="" method="post">
@@ -45,6 +49,7 @@ $arrID = [];
           <th scope="col">Mã KH</th>
           <th scope="col">Mã SP</th>
           <th scope="col">Ngày bình luận</th>
+          <th>Hành động</th>
         </tr>
       </thead>
       <tbody>
@@ -60,9 +65,15 @@ $arrID = [];
           <td><?= $ma_user ?></td>
           <td><?= $ma_sp ?></td>
           <td><?= $ngay_bl ?></td>
-          <td>
+          <td style="text-align: center;">
+            <?php if($trang_thai == 0): ?>
+            <a href="index.php?status=<?= $id ?>&page=binhluan&act=list" class="btn btn-success"
+              onclick="return confirm('Bạn có duyệt bình luận này không?')">
+              Duyệt
+            </a>
+            <?php endif ?>
             <a href="index.php?idBL=<?= $id ?>&page=binhluan&act=xoa" class="btn btn-danger"
-              onclick="confirm('Bạn có muốn xóa hay không?')">
+              onclick="return confirm('Bạn có muốn xóa hay không?')">
               Xóa
             </a>
 

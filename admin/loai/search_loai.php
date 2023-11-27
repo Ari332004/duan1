@@ -45,7 +45,7 @@
           <td><?= $value['ten_dm']; ?></td>
           <td>
             <a href="index.php?DTL=<?= $value['id']; ?>&page=loai&act=xoa" class="btn btn-danger"
-              onclick="confirm('Bạn có muốn xóa hay không?')">
+              onclick="return confirm('Bạn có muốn xóa hay không?')">
               Xóa
             </a>
             <a href="index.php?idTL=<?= $value['id']; ?>&page=loai&act=edit" class="btn btn-warning"> Sửa </a>

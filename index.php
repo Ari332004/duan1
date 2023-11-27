@@ -4,11 +4,18 @@ session_start();
 include_once './models/pdo.php';
 include_once './models/taikhoan.php';
 include_once './models/sanpham.php';
+include_once './models/sanphamct.php';
+include_once './models/img.php';
+include_once './models/binhluan.php';
+include_once './models/loai.php';
 
+$dsdm = loai_select_all();
 
 include_once './views/components/header.php';
 
 $spnew = sp_home();
+$dsmau = select_mau();
+$dschatlieu = select_cl();
 
 if (isset($_GET['act'])) {
     $act = $_GET['act'];
@@ -72,6 +79,14 @@ if (isset($_GET['act'])) {
             include_once './views/product/product.php';
             break;
         case 'productdetail':
+            $datasp = '';
+            if(isset($_GET['masp'])){
+                $datasp = sp_detail($_GET['masp']);
+                $dsmau = detail_mau($datasp['ma_sp']);
+                $dschatlieu = detail_cl($datasp['ma_sp']);
+                $dsanh = detail_anh($datasp['ma_sp']);
+                $spnew = sp_home($datasp['ma_dm']);
+            }
             include_once './views/product/productdetail.php';
             break;
         case 'cart':

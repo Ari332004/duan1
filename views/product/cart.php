@@ -41,48 +41,48 @@
                       <a href="#"><i class="fa fa-trash-o"></i></a>
                     </td>
                     <td class="product_thumb">
-                      <a href="#"><img src="assets/img/s-product/product.jpg" alt="" /></a>
+                      <a href="#"><img src="uploads/sanpham/sanpham3.jpg" alt="" /></a>
                     </td>
                     <td class="product_name">
                       <a href="#">Handbag fringilla</a>
                     </td>
-                    <td class="product-price">£65.00</td>
+                    <td class="product-price">65.00 VNĐ</td>
                     <td class="product_quantity">
                       <input min="1" max="100" value="1" type="number" />
                     </td>
-                    <td class="product_total">£130.00</td>
+                    <td class="product_total">130.00 VNĐ</td>
                   </tr>
                   <tr>
                     <td class="product_remove">
                       <a href="#"><i class="fa fa-trash-o"></i></a>
                     </td>
                     <td class="product_thumb">
-                      <a href="#"><img src="assets/img/s-product/product2.jpg" alt="" /></a>
+                      <a href="#"><img src="uploads/sanpham/sanpham2.jpg" alt="" /></a>
                     </td>
                     <td class="product_name">
                       <a href="#">Handbags justo</a>
                     </td>
-                    <td class="product-price">£90.00</td>
+                    <td class="product-price">90.00 VNĐ</td>
                     <td class="product_quantity">
                       <input min="1" max="100" value="1" type="number" />
                     </td>
-                    <td class="product_total">£180.00</td>
+                    <td class="product_total">180.00 VNĐ</td>
                   </tr>
                   <tr>
                     <td class="product_remove">
                       <a href="#"><i class="fa fa-trash-o"></i></a>
                     </td>
                     <td class="product_thumb">
-                      <a href="#"><img src="assets/img/s-product/product3.jpg" alt="" /></a>
+                      <a href="#"><img src="uploads/sanpham/sanpham1.jpg" alt="" /></a>
                     </td>
                     <td class="product_name">
                       <a href="#">Handbag elit</a>
                     </td>
-                    <td class="product-price">£80.00</td>
+                    <td class="product-price">80.00 VNĐ</td>
                     <td class="product_quantity">
                       <input min="1" max="100" value="1" type="number" />
                     </td>
-                    <td class="product_total">£160.00</td>
+                    <td class="product_total">160.00 VNĐ</td>
                   </tr>
                 </tbody>
               </table>
@@ -103,20 +103,20 @@
               <div class="coupon_inner">
                 <div class="cart_subtotal">
                   <p>Subtotal</p>
-                  <p class="cart_amount">£215.00</p>
+                  <p class="cart_amount">215.00 VNĐ</p>
                 </div>
                 <div class="cart_subtotal">
                   <p>Shipping</p>
-                  <p class="cart_amount"><span>Flat Rate:</span> £255.00</p>
+                  <p class="cart_amount"><span>Flat Rate:</span> 255.00 VNĐ</p>
                 </div>
                 <a href="#">Calculate shipping</a>
 
                 <div class="cart_subtotal">
                   <p>Total</p>
-                  <p class="cart_amount">£215.00</p>
+                  <p class="cart_amount">215.00 VNĐ</p>
                 </div>
                 <div class="checkout_btn">
-                  <a href="#">Proceed to Checkout</a>
+                  <a href="?act=checkout">Mua Hàng</a>
                 </div>
               </div>
             </div>

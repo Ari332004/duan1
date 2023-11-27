@@ -37,19 +37,6 @@
   }
   </style>
   <link rel="stylesheet" href="./admin.css" />
-  <script defer>
-  const navItems = document.querySelectorAll(".nav-item");
-  const navLinks = document.querySelectorAll(".nav-link");
-
-  navItems.forEach((item) => {
-    item.addEventListener("click", function() {
-      navLinks.forEach(function(link) {
-        link.classList.remove("active");
-      });
-      this.classList.add("active");
-    });
-  });
-  </script>
 </head>
 
 <body>
@@ -62,25 +49,27 @@
       </div>
 
       <ul class="list-unstyled components">
-        <li class="active">
+        <li class="<?= $_GET['act'] == 'list' ? 'active':''?>">
           <a href="./index.php?<?= $page?>&act=list">
             <i class="bi bi-list-ul"></i>
             List
           </a>
         </li>
-        <li class="">
+        <?php if($page != 'page=binhluan'):?>
+        <li class="<?= $_GET['act'] == 'edit' ? 'active':''?>">
           <a href="index.php?<?= $page?>&act=edit">
             <i class="bi bi-pencil-square"></i>
             Edit
           </a>
         </li>
-        <li class="">
+        <?php endif?>
+        <li class="<?= $_GET['act'] == 'search' ? 'active':''?>">
           <a href="./index.php?<?= $page?>&act=search">
             <i class="bi bi-search"></i>
             Search
           </a>
         </li>
-        <li class="">
+        <li class="<?= $_GET['act'] == 'statistical' ? 'active':''?>">
           <a href="./index.php?<?= $page?>&act=statistical">
             <i class="bi bi-clipboard-data"></i>
             statistical
@@ -102,8 +91,8 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button"
-                  data-bs-toggle="dropdown" aria-expanded="false">
+                <a class="nav-link dropdown-toggle <?= ($page == 'page=sanpham' || $page == 'page=sanphamct' || $page == 'page=anh') ? 'active':''?>"
+                  href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Sản Phẩm
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -122,16 +111,20 @@
                 </ul>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="./index.php?page=taikhoan&act=list">Tài khoản</a>
+                <a class="nav-link <?= $page == 'page=taikhoan' ? 'active':''?>"
+                  href="./index.php?page=taikhoan&act=list">Tài khoản</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="./index.php?page=binhluan&act=list">Bình luận</a>
+                <a class="nav-link <?= $page == 'page=binhluan' ? 'active':''?>"
+                  href="./index.php?page=binhluan&act=list">Bình luận</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="./index.php?page=loai&act=list">Danh mục</a>
+                <a class="nav-link <?= $page == 'page=loai' ? 'active':''?>" href="./index.php?page=loai&act=list">Danh
+                  mục</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="./index.php?page=donhang&act=list">Đơn hàng</a>
+                <a class="nav-link <?= $page == 'page=donhang' ? 'active':''?>"
+                  href="./index.php?page=donhang&act=list">Đơn hàng</a>
               </li>
             </ul>
           </div>

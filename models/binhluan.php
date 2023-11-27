@@ -46,3 +46,7 @@ function binhluan_select_all($id = 0, $noi_dung = '', $ma_user = 0, $ma_sp = 0,)
     $sql .= " order by id desc";
     return pdo_query($sql);
 }
+function upStatus($id){
+    $sql = "UPDATE binhluan SET trang_thai = 1 WHERE id=?";
+    pdo_execute($sql, $id);
+}

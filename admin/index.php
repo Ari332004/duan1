@@ -3,8 +3,10 @@ ob_start();
 include_once '../models/pdo.php';
 include_once '../models/loai.php';
 include_once '../models/sanpham.php';
+include_once '../models/sanphamct.php';
 include_once '../models/binhluan.php';
 include_once '../models/taikhoan.php';
+include_once '../models/img.php';
 
 include_once './header.php';
 
@@ -56,8 +58,13 @@ if (isset($_GET['page']) && isset($_GET['act'])) {
                   include_once './sanphamct/sanphamct.php';
                   break;
                 case 'edit':
-                  include_once './sanphamct/edit_sanphamct.php';
+                  include_once './sanphamct/edit_spct.php';
                   break;
+                  case 'xoa':
+                    if (isset($_GET['idspct'])) {
+                      spct_delete($_GET['idspct']);
+                    }
+                    include_once './sanphamct/sanphamct.php';
                 case 'search':
                   include_once './sanphamct/search_sanphamct.php';
                   break;
@@ -87,10 +94,24 @@ if (isset($_GET['page']) && isset($_GET['act'])) {
               }
               include_once './binhluan/binhluan.php';
               break;
-            case 'search':  
-              include_once './binhluan/search_binhluan.php';
-              break;
           }
+          break;
+        case 'anh':
+          switch ($act){
+              case 'list':
+                include_once './anh/anh.php';
+                break;
+              case 'edit':
+                include_once './anh/edit_anh.php';
+                break;
+              case 'xoa':
+                if (isset($_GET['DIMG'])) {
+                  anh_delete($_GET['DIMG']);
+                }
+                include_once './anh/anh.php';
+                break;
+            }
+            break;
         case 'user':
             include_once './views/user/user.php';
             break;
