@@ -69,4 +69,17 @@ function sp_home($iddm=0){
               LIMIT 0, 10";
   return pdo_query($sql);
 }
+function sp_shop($iddm=0,$keyten=""){
+  $sql = "SELECT sanpham.*, anh.* FROM sanpham 
+          JOIN ( SELECT ma_sp, MIN(img_url) AS tenanh 
+                  FROM anh GROUP BY ma_sp ) AS anh ON sanpham.id = anh.ma_sp"; 
+    if($iddm>0){
+      $sql.=" WHERE ma_dm ='".$iddm."'";
+    }
+    if($keyten!=""){
+      $sql.=" and ten_sp like '%".$keyten."%'";
+    }
+    $sql.=" ORDER BY id DESC";
+  return pdo_query($sql);
+}
 ?>

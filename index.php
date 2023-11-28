@@ -76,6 +76,16 @@ if (isset($_GET['act'])) {
             include_once './views/user/user.php';
             break;
         case 'product':
+            $spshop=sp_shop();
+            if(isset($_GET['iddm'])){
+                $spshop=sp_shop($_GET['iddm'],'');
+            };
+            if(isset($_POST['search'])){
+                $spshop=sp_shop($_POST['select'],$_POST['tensp']);
+            };
+            if(isset($_POST['sort'])){
+                echo '<script>alert("ok")</script>';
+            };
             include_once './views/product/product.php';
             break;
         case 'productdetail':

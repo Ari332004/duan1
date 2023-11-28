@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8" />
   <meta http-equiv="x-ua-compatible" content="ie=edge" />
-  <title>Fashion eCommerce HTML Template</title>
+  <title>Kính mắt</title>
   <meta name="description" content="" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <!-- Favicon -->
@@ -42,15 +42,15 @@
         </ul>
       </div>
       <div class="search_bar">
-        <form action="#">
+        <form action="?act=product" method="post">
           <select class="select_option" name="select" id="categori">
             <option selected value="0">All</option>
             <?php foreach ($dsdm as $dm) : ?>
             <option value="<?= $dm['id']?>"><?= $dm['ten_dm']?></option>
             <?php endforeach ?>
           </select>
-          <input placeholder="Tìm kiếm" type="text" />
-          <button type="submit"><i class="ion-ios-search-strong"></i></button>
+          <input placeholder="Tìm kiếm" type="text" name="tensp" />
+          <button type="submit" name='search'><i class="ion-ios-search-strong"></i></button>
         </form>
       </div>
       <div class="cart_area">
@@ -124,6 +124,8 @@
           <li>
             <a href="index.php?act=product">Shop</a>
           </li>
+          <li><a href="index.php?act=product&iddm=2">Kính râm</a></li>
+          <li><a href="index.php?act=product&iddm=1">Gọng kính</a></li>
           <li class="menu-item-has-children">
             <a href="my-account.html">my account</a>
           </li>
@@ -291,7 +293,7 @@
                     <a href="index.php">Home</a>
                   </li>
                   <li class="mega_items">
-                    <a href="index.php?act=product">shop</a>
+                    <a href="index.php?act=product">Shop</a>
                   </li>
                 </ul>
               </nav>
@@ -304,8 +306,8 @@
             <div class="main_menu">
               <nav>
                 <ul>
-                  <li><a href="#">Kính râm</a></li>
-                  <li><a href="#">Gọng kính</a></li>
+                  <li><a href="index.php?act=product&iddm=2">Kính râm</a></li>
+                  <li><a href="index.php?act=product&iddm=1">Gọng kính</a></li>
                 </ul>
               </nav>
             </div>
@@ -325,9 +327,10 @@
                 <nav>
                   <ul>
                     <li class="active"><a href="index.php">Home </a></li>
-                    <li><a href="index.php?act=product">shop </a></li>
-                    <li><a href="index.php?act=product">Kính râm </a></li>
-                    <li><a href="index.php?act=product">Gọng kính </a></li>
+                    <li><a href="index.php?act=product">Shop </a></li>
+                    <li><a href="index.php?act=product&iddm=2">Kính râm</a></li>
+                    <li><a href="index.php?act=product&iddm=1">Gọng kính</a></li>
+                    <li><a href="index.php?act=product&iddm=3">Kính thời trang</a></li>
                   </ul>
                 </nav>
               </div>
