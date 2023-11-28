@@ -1,9 +1,11 @@
 <?php
+
 /**
  * Mở kết nối đến CSDL sử dụng PDO
  */
-function pdo_get_connection(){
-    $dburl = "mysql:host=localhost;port=3307;dbname=duan1;charset=utf8";
+function pdo_get_connection()
+{
+    $dburl = "mysql:host=localhost;port=3306;dbname=duan1;charset=utf8";
     $username = 'root';
     $password = '';
 
@@ -17,33 +19,31 @@ function pdo_get_connection(){
  * @param array $args mảng giá trị cung cấp cho các tham số của $sql
  * @throws PDOException lỗi thực thi câu lệnh
  */
-function pdo_execute($sql){
+function pdo_execute($sql)
+{
     $sql_args = array_slice(func_get_args(), 1);
-    try{
+    try {
         $conn = pdo_get_connection();
         $stmt = $conn->prepare($sql);
         $stmt->execute($sql_args);
-    }
-    catch(PDOException $e){
+    } catch (PDOException $e) {
         throw $e;
-    }
-    finally{
+    } finally {
         unset($conn);
     }
 }
 
-function pdo_execute_return_lastInsertID($sql){
+function pdo_execute_return_lastInsertID($sql)
+{
     $sql_args = array_slice(func_get_args(), 1);
-    try{
+    try {
         $conn = pdo_get_connection();
         $stmt = $conn->prepare($sql);
         $stmt->execute($sql_args);
         return $conn->lastInsertId();
-    }
-    catch(PDOException $e){
+    } catch (PDOException $e) {
         throw $e;
-    }
-    finally{
+    } finally {
         unset($conn);
     }
 }
@@ -54,19 +54,18 @@ function pdo_execute_return_lastInsertID($sql){
  * @return array mảng các bản ghi
  * @throws PDOException lỗi thực thi câu lệnh
  */
-function pdo_query($sql){
+function pdo_query($sql)
+{
     $sql_args = array_slice(func_get_args(), 1);
-    try{
+    try {
         $conn = pdo_get_connection();
         $stmt = $conn->prepare($sql);
         $stmt->execute($sql_args);
         $rows = $stmt->fetchAll();
         return $rows;
-    }
-    catch(PDOException $e){
+    } catch (PDOException $e) {
         throw $e;
-    }
-    finally{
+    } finally {
         unset($conn);
     }
 }
@@ -77,19 +76,18 @@ function pdo_query($sql){
  * @return array mảng chứa bản ghi
  * @throws PDOException lỗi thực thi câu lệnh
  */
-function pdo_query_one($sql){
+function pdo_query_one($sql)
+{
     $sql_args = array_slice(func_get_args(), 1);
-    try{
+    try {
         $conn = pdo_get_connection();
         $stmt = $conn->prepare($sql);
         $stmt->execute($sql_args);
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
         return $row;
-    }
-    catch(PDOException $e){
+    } catch (PDOException $e) {
         throw $e;
-    }
-    finally{
+    } finally {
         unset($conn);
     }
 }
@@ -100,19 +98,18 @@ function pdo_query_one($sql){
  * @return giá trị
  * @throws PDOException lỗi thực thi câu lệnh
  */
-function pdo_query_value($sql){
+function pdo_query_value($sql)
+{
     $sql_args = array_slice(func_get_args(), 1);
-    try{
+    try {
         $conn = pdo_get_connection();
         $stmt = $conn->prepare($sql);
         $stmt->execute($sql_args);
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
         return array_values($row)[0];
-    }
-    catch(PDOException $e){
+    } catch (PDOException $e) {
         throw $e;
-    }
-    finally{
+    } finally {
         unset($conn);
     }
 }

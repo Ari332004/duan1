@@ -66,6 +66,10 @@ if (isset($_GET['page']) && isset($_GET['act'])) {
 
           include_once './binhluan/search_binhluan.php';
           break;
+        case 'chitietbl':
+
+          include_once './binhluan/chitietbl.php';
+          break;
       }
     case 'sanphamct':
       switch ($act) {

@@ -28,7 +28,7 @@ function binhluan_select_by_id($ma_user){
     $sql="SELECT * FROM binhluan WHERE ma_user=?";
     return pdo_query_one($sql,$ma_user);
 }
-function binhluan_select_all($id = 0, $noi_dung = '', $ma_user = 0, $ma_sp = 0,)
+function binhluan_select_all($id = 0, $noi_dung = '', $ma_user = 0, $ma_sp = 0)
 {
     $sql = "SELECT * FROM binhluan WHERE 1";
     if ($id > 0) {
@@ -45,4 +45,14 @@ function binhluan_select_all($id = 0, $noi_dung = '', $ma_user = 0, $ma_sp = 0,)
     }
     $sql .= " order by id desc";
     return pdo_query($sql);
+}                                                                   
+function  select_all_blct($id = 0, $noi_dung = '', $username = '', $ten_sp = '',$ngay_bl=''){
+    $sql= "SELECT binhluan.id,noi_dung,users.username,sanpham.ten_sp,ngay_bl
+    FROM binhluan
+    INNER JOIN sanpham on binhluan.ma_sp=sanpham.id
+    INNER JOIN users on binhluan.ma_user=users.id
+    ";
+  
+    return pdo_query($sql, $id, $noi_dung, $username, $ten_sp, $ngay_bl);
+    
 }

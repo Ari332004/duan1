@@ -1,9 +1,9 @@
 <?php
-$dataAll = loadall_binhluan(0);
+$dataAll1 = select_all_blct(0);
 
 ?>
 <form action="" method="post">
-    <legend class="text-center mb-4">Danh sách bình luận</legend>
+    <legend class="text-center mb-4">Chi tiết bình luận</legend>
 
     <div class="container" style="max-width: 90%">
         <div class="row mb10 mt-2">
@@ -21,13 +21,13 @@ $dataAll = loadall_binhluan(0);
                     <th></th>
                     <th scope="col">ID</th>
                     <th scope="col">Nội dung</th>
-                    <th scope="col">Mã KH</th>
-                    <th scope="col">Mã SP</th>
+                    <th scope="col">Tên KH</th>
+                    <th scope="col">Tên SP</th>
                     <th scope="col">Ngày bình luận</th>
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($dataAll as $binhluan) {
+                <?php foreach ($dataAll1 as $binhluan) {
                     extract($binhluan);
 
                 ?>
@@ -36,17 +36,15 @@ $dataAll = loadall_binhluan(0);
                     <td><input type="checkbox"></td>
                     <td><?= $id ?></td>
                     <td><?= $noi_dung ?></td>
-                    <td><?= $ma_user ?></td>
-                    <td><?= $ma_sp ?></td>
-                    <td><?= $ngay_bl ?></td>
+                    <td><?= $username ?></td>
+                    <td><?= $ten_sp?></td>
+                    <td><?= $ngay_bl?></td>
                     <td>
                         <a href="index.php?idBL=<?= $id ?>&page=binhluan&act=xoa" class="btn btn-danger"
                             onclick=" return confirm('Bạn có muốn xóa hay không?')">
                             Xóa
                         </a>
-                        <a href="index.php?idBL=<?= $id ?>&page=binhluan&act=chitietbl" class="btn btn-danger">
-                            Chi tiết
-                        </a>
+
                     </td>
                 </tr>
                 <?php } ?>
