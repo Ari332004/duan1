@@ -126,6 +126,30 @@
                 <a class="nav-link <?= $page == 'page=donhang' ? 'active':''?>"
                   href="./index.php?page=donhang&act=list">Đơn hàng</a>
               </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle <?= ($page == 'page=sanpham' || $page == 'page=sanphamct' || $page == 'page=anh') ? 'active':''?>"
+                  href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Thống kê
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li>
+                    <a class="dropdown-item" href="./index.php?page=sanpham&act=list">Doanh thu theo tuần
+                    </a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="./index.php?page=sanphamct&act=list">Doanh thu theo tháng
+                    </a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="./index.php?page=anh&act=list">Sản phẩm
+                    </a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="./index.php?page=anh&act=list">Sản phẩm bán chạy
+                    </a>
+                  </li>
+                </ul>
+              </li>
             </ul>
           </div>
         </div>
