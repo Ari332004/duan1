@@ -3,32 +3,32 @@ function anh_insert($img_url,$ma_sp){
     $sql = "INSERT INTO anh(img_url,ma_sp) VALUES(?,?)";
     pdo_execute($sql, $img_url,$ma_sp);
   }
-  function anh_select_all($keyten="",$iddm=0,$idsp=0,$keymota=''){
-    $sql  = "SELECT sanpham.*, anh.img_url,anh.ma_sp,anh.id as maanh FROM sanpham JOIN anh ON sanpham.id = anh.ma_sp WHERE 1";
-    if($idsp>0){
-      $sql.=" and id ='".$idsp."'";
+  function anh_select_all($ten_sp="",$ma_sp=0,$id=0,$img_url=''){
+    $sql  = "SELECT anh.*, sanpham.ten_sp FROM anh JOIN sanpham ON anh.ma_sp = sanpham.id WHERE 1";
+    if($id>0){
+      $sql.=" and id ='".$id."'";
     }
-    if($keyten!=""){
-        $sql.=" and ten_sp like '%".$keyten."%'";
+    if($ten_sp!=""){
+        $sql.=" and ten_sp like '%".$ten_sp."%'";
     }
-    if($iddm>0){
-        $sql.=" and ma_sp ='".$iddm."'";
+    if($img_url!=""){
+        $sql.=" and img_url like '%".$img_url."%'";
     }
-    if($keymota!=""){
-      $sql.=" and mota like '%".$keymota."%'";
-  }
+    if($ma_sp>0){
+        $sql.=" and ma_sp ='".$ma_sp."'";
+    }
     $sql.=" order by id desc";
     return pdo_query($sql);
 }
-  function anh_delete($id){
-    $sql = "DELETE FROM anh WHERE id=?";
-    if(is_array($id)){
-        foreach ($id as $ma) {
+  function anh_delete($ma_sp){
+    $sql = "DELETE FROM anh WHERE ma_sp=?";
+    if(is_array($ma_sp)){
+        foreach ($ma_sp as $ma) {
             pdo_execute($sql, $ma);
         }
     }
     else{
-        pdo_execute($sql, $id);
+        pdo_execute($sql, $ma_sp);
     }
   }
   function anh_select_by_id($id){
@@ -36,7 +36,12 @@ function anh_insert($img_url,$ma_sp){
     return pdo_query_one($sql,$id);
   }
   function anh_update($id, $img_url,$ma_sp){
-    $sql = "UPDATE anh SET img_url=?,ma_sp=? WHERE id=?";
+    if($img_url != ""){
+      $sql = "UPDATE anh SET img_url=?,ma_sp=? WHERE id=?";
+    }else{
+      $sql = "UPDATE anh SET ma_sp=? WHERE id=?";
+    }
+   
     pdo_execute($sql, $img_url,$ma_sp, $id);
   }
 ?>

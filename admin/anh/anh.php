@@ -67,11 +67,11 @@
           <td><img src="../uploads/sanpham/<?= $value['img_url']; ?>" style="border: 1px solid gray;"
               alt="Hình ảnh sản phẩm" width="75"></td>
           <td>
-            <a href="index.php?DIMG=<?= $value['maanh']; ?>&page=anh&act=xoa" class="btn btn-danger"
+            <a href="index.php?DIMG=<?= $value['id']; ?>&page=anh&act=xoa" class="btn btn-danger"
               onclick="return confirm('Bạn có muốn xóa hay không?')">
               Xóa
             </a>
-            <a href="index.php?idIMG=<?= $value['maanh']; ?>&page=anh&act=edit" class="btn btn-warning"> Sửa </a>
+            <a href="index.php?idIMG=<?= $value['id']; ?>&page=anh&act=edit" class="btn btn-warning"> Sửa </a>
           </td>
         </tr>
         <?php endforeach ?>

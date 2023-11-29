@@ -56,7 +56,7 @@
         <tr>
           <td><input type="checkbox" name="check[]" value="<?= $value['id']; ?>" class="check"></td>
           <th><?= $value['id']; ?></th>
-          <td><?= $value['username']; ?></td>\
+          <td><?= $value['username']; ?></td>
           <td><?= $value['email']; ?></td>
           <td><?= $value['sdt']; ?></td>
           <td><?= $value['dia_tri']; ?></td>

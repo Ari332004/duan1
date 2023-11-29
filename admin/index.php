@@ -110,6 +110,9 @@ if (isset($_GET['page']) && isset($_GET['act'])) {
                 }
                 include_once './anh/anh.php';
                 break;
+                case 'search':
+                  include_once './anh/search_anh.php';
+                  break;
             }
             break;
         case 'user':
