@@ -61,9 +61,10 @@ function getAllImg($id){
 function sp_home($iddm=0){
   $sql = "SELECT sanpham.*, sanphamct.* FROM sanpham 
   JOIN ( SELECT ma_sp, MIN(id) as maspct
-          FROM sanphamchitiet GROUP BY ma_sp ) as sanphamct ON sanpham.id = sanphamct.ma_sp"; 
+          FROM sanphamchitiet GROUP BY ma_sp ) as sanphamct ON sanpham.id = sanphamct.ma_sp
+          where 1"; 
     if($iddm>0){
-      $sql.=" WHERE ma_dm ='".$iddm."'";
+      $sql.=" and ma_dm ='".$iddm."'";
   }
     $sql.=" ORDER BY id DESC 
               LIMIT 0, 10";
@@ -72,9 +73,10 @@ function sp_home($iddm=0){
 function sp_shop($iddm=0,$keyten=""){
   $sql = "SELECT sanpham.*, sanphamct.* FROM sanpham 
           JOIN ( SELECT ma_sp, MIN(id) as maspct
-                  FROM sanphamchitiet GROUP BY ma_sp ) as sanphamct ON sanpham.id = sanphamct.ma_sp"; 
+                  FROM sanphamchitiet GROUP BY ma_sp ) as sanphamct ON sanpham.id = sanphamct.ma_sp
+          where 1"; 
     if($iddm>0){
-      $sql.=" WHERE ma_dm ='".$iddm."'";
+      $sql.=" and ma_dm ='".$iddm."'";
     }
     if($keyten!=""){
       $sql.=" and ten_sp like '%".$keyten."%'";

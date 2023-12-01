@@ -107,6 +107,7 @@ if (isset($_GET['act'])) {
                 $dschatlieu = detail_cl($datasp['ma_sp']);
                 $dsanh = detail_anh($datasp['ma_sp']);
                 $spnew = sp_home($datasp['ma_dm']);
+                $databl = binhluan_select_detail($_GET['masp']);
             }
             include_once './views/product/productdetail.php';
             break;
