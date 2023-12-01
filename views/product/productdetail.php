@@ -6,8 +6,8 @@
            <div class="product-details-tab">
              <div id="img-1" class="zoomWrapper single-zoom">
                <a href="#">
-                 <img id="zoom1" src="uploads/sanpham/<?= $datasp['tenanh'] ?>"
-                   data-zoom-image="uploads/sanpham/<?= $datasp['tenanh'] ?>" alt="big-1" />
+                 <img id="zoom1" src="uploads/sanpham/<?= $datasp['anhsp'] ?>"
+                   data-zoom-image="uploads/sanpham/<?= $datasp['anhsp'] ?>" alt="big-1" />
                </a>
              </div>
 
@@ -48,7 +48,7 @@
                      <a href="#"><i class="fa fa-star"></i></a>
                    </li>
                    <li class="review"><a href="#"> 1 review </a></li>
-                   <li class="review"><a href="#"> Write a review </a></li>
+                   <li class="review"><a href="#product_d_info"> Write a review </a></li>
                  </ul>
                </div>
                <div class="product_price">
@@ -80,7 +80,7 @@
                </div>
                <div class="product_variant quantity">
                  <label>Số lượng</label>
-                 <input min="1" max="<?= $datasp['so_luong'] ?>" value="1" type="number" />
+                 <input type="number" min="1" oninput="sl()" class="product_quantity" />
                  <button class="button" type="submit">Thêm vào giỏ hàng</button>
                </div>
              </form>
@@ -112,7 +112,7 @@
    <!--product details end-->
 
    <!--product info start-->
-   <div class="product_d_info">
+   <div class="product_d_info" id="product_d_info">
      <div class="container">
        <div class="row">
          <div class="col-12">
@@ -121,9 +121,9 @@
                <ul class="nav" role="tablist">
                  <li>
                    <a class="active" data-toggle="tab" href="#info" role="tab" aria-controls="info"
-                     aria-selected="false">More info</a>
+                     aria-selected="false">Mô Tả</a>
                  </li>
-                 <li>
+                 <li id="review_form">
                    <a data-toggle="tab" href="#reviews" role="tab" aria-controls="reviews"
                      aria-selected="false">Reviews</a>
                  </li>
@@ -171,11 +171,28 @@
                    </div>
                  </div>
                  <div class="product_review_form">
-                   <form action="#">
+                   <form action="#" method="post">
                      <h2>Bình luận</h2>
                      <div class="row">
                        <div class="col-12">
-                         <label for="review_comment">Đánh giá của bạn về sản phẩm </label>
+                         <div style="display: flex; align-items: self-start; gap: 5px;">
+
+                           <label for="review_comment">Đánh giá của bạn về sản phẩm </label>
+                           <div class="rating">
+                             <input type="radio" id="star1" name="rating" value="1" hidden />
+                             <i id="star1" class="rating__star fa fa-star"></i>
+                             <input type="radio" id="star2" name="rating" value="1" hidden />
+                             <i id="star2" class="rating__star fa fa-star"></i>
+                             <input type="radio" id="star3" name="rating" value="1" hidden />
+                             <i id="star3" class="rating__star fa fa-star"></i>
+                             <input type="radio" id="star4" name="rating" value="1" hidden />
+                             <i id="star4" class="rating__star fa fa-star"></i>
+                             <input type="radio" id="star5" name="rating" value="1" hidden />
+                             <i id="star5" class="rating__star fa fa-star"></i>
+                           </div>
+                         </div>
+
+                         <input type="number" name="rating" id="rating-input" value="5" hidden />
                          <textarea name="comment" id="review_comment"></textarea>
                        </div>
                        <!-- <div class="col-lg-6 col-md-6">
@@ -187,7 +204,7 @@
                          <input id="email" type="text" />
                        </div> -->
                      </div>
-                     <button type="submit">Gửi</button>
+                     <button type="submit" name="guiBL">Gửi</button>
                    </form>
                  </div>
                </div>
@@ -219,7 +236,7 @@
                <div class="single_product">
                  <div class="product_thumb">
                    <a class="primary_img" href="index.php?act=productdetail&masp=<?= $sp['id'] ?>"><img
-                       src="uploads/sanpham/<?= $sp['tenanh']?>" alt="" /></a>
+                       src="uploads/sanpham/<?= $sp['anhsp']?>" alt="" /></a>
                    <div class="product_action">
                      <div class="hover_action">
                        <a href="#"><i class="fa fa-plus"></i></a>
@@ -252,3 +269,34 @@
      </div>
    </section>
    <!--product section area end-->
+   <script>
+function sl() {
+  console.log(document.querySelector(".product_quantity").value);
+  if (document.querySelector(".product_quantity").value <= 0) {
+    document.querySelector(".product_quantity").value = 1;
+  }
+}
+const ratingStars = [...document.getElementsByClassName("rating__star")];
+const ratingInput = document.getElementById("rating-input");
+
+function executeRating(stars) {
+  const starClassActive = "rating__star fa fa-star";
+  const starClassInactive = "rating__star fa fa-star star_gray";
+  const starsLength = stars.length;
+  let i;
+  stars.map((star) => {
+    star.onclick = () => {
+      i = stars.indexOf(star);
+
+      if (star.className === starClassInactive) {
+        ratingInput.value = i + 1;
+        for (i; i >= 0; --i) stars[i].className = starClassActive;
+      } else {
+        ratingInput.value = i;
+        for (i; i < starsLength; ++i) stars[i].className = starClassInactive;
+      }
+    };
+  });
+}
+executeRating(ratingStars);
+   </script>

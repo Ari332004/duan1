@@ -91,15 +91,16 @@
                 <div class="single_product">
                   <div class="product_thumb">
                     <a class="primary_img" href="index.php?act=productdetail&masp=<?= $sp['id'] ?>"><img
-                        src="uploads/sanpham/<?= $sp['tenanh']?>" alt=""></a>
+                        src="uploads/sanpham/<?= $sp['anhsp']?>" alt=""></a>
                     <div class="product_action">
                       <div class="hover_action">
                         <a href="#"><i class="fa fa-plus"></i></a>
                         <div class="action_button">
                           <ul>
                             <li>
-                              <a title="add to cart" href="cart.html"><i class="fa fa-shopping-basket"
-                                  aria-hidden="true"></i></a>
+                              <a title="add to cart"
+                                onclick="addToCart(<?= $sp['maspct'] ?>, '<?= $sp['ten_sp'] ?>', <?= $sp['gia'] ?>, '<?= $sp['anhsp'] ?>', 1, <?= isset($_SESSION['user'])?$_SESSION['user']['id']:0; ?>)"><i
+                                  class="fa fa-shopping-basket" aria-hidden="true"></i></a>
                             </li>
                           </ul>
                         </div>

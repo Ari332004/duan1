@@ -61,6 +61,8 @@
 *::after,
 *::before {
   box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
 html,
@@ -1360,7 +1362,7 @@ textarea:-ms-input-placeholder {
   box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.1);
   z-index: 999;
   right: 0;
-  padding: 30px 20px 30px;
+  padding: 0px 20px 30px;
   top: 120%;
   opacity: 0;
   visibility: hidden;
@@ -12958,3 +12960,15 @@ footer {
 }
 
 /*# sourceMappingURL=style.css.map */
+
+.rating {
+  width: 180px;
+}
+
+.rating__star {
+  cursor: pointer;
+  color: #ff6a28;
+}
+.star_gray {
+  color: gray;
+}

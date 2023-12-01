@@ -17,5 +17,3 @@ unchecked.addEventListener("click", function () {
     e.checked = false;
   });
 });
-
-

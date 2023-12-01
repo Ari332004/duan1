@@ -8,8 +8,19 @@ include_once './models/sanphamct.php';
 include_once './models/img.php';
 include_once './models/binhluan.php';
 include_once './models/loai.php';
+include_once './models/cart.php';
+include_once './models/donhang.php';
 
 $dsdm = loai_select_all();
+if(isset($_SESSION['user'])){
+    $datacart = cartAll($_SESSION['user']['id']);
+}else{
+    if(isset($_SESSION['cart'])){
+        $datacart = $_SESSION['cart'];
+    } else{
+        $datacart = [];
+    }
+}
 
 include_once './views/components/header.php';
 
@@ -103,6 +114,18 @@ if (isset($_GET['act'])) {
             include_once './views/product/cart.php';
             break;
         case 'checkout':
+            $dspttt=select_all_tt();
+              if(isset($_SESSION['user'])){
+                $name=$_SESSION['user']['username'];
+                $address=$_SESSION['user']['dia_tri'];
+                $email=$_SESSION['user']['email'];
+                $tel=$_SESSION['user']['sdt'];
+              } else{
+                $name="";
+                $address="";
+                $email="";
+                $tel="";
+              }
             include_once './views/product/checkout.php';
             break;
 

@@ -1,5 +1,14 @@
 <?php 
-  $page = 'page='.$_GET['page'] ?? 'page=sanpham';
+  if(isset($_GET['page'])){
+  $page = 'page='.$_GET['page'];
+  } else{
+    $page = 'page=sanpham';
+  }
+  if(isset($_GET['act'])){
+  $act = $_GET['act'];
+  } else{
+    $act = 'list';
+  }
 ?>
 
 <!DOCTYPE html>
@@ -49,32 +58,32 @@
       </div>
 
       <ul class="list-unstyled components">
-        <li class="<?= $_GET['act'] == 'list' ? 'active':''?>">
+        <li class="<?= $act == 'list' ? 'active':''?>">
           <a href="./index.php?<?= $page?>&act=list">
             <i class="bi bi-list-ul"></i>
             List
           </a>
         </li>
         <?php if($page != 'page=binhluan'):?>
-        <li class="<?= $_GET['act'] == 'edit' ? 'active':''?>">
+        <li class="<?= $act == 'edit' ? 'active':''?>">
           <a href="index.php?<?= $page?>&act=edit">
             <i class="bi bi-pencil-square"></i>
             Edit
           </a>
         </li>
         <?php endif?>
-        <li class="<?= $_GET['act'] == 'search' ? 'active':''?>">
+        <li class="<?= $act == 'search' ? 'active':''?>">
           <a href="./index.php?<?= $page?>&act=search">
             <i class="bi bi-search"></i>
             Search
           </a>
         </li>
-        <li class="<?= $_GET['act'] == 'statistical' ? 'active':''?>">
+        <!-- <li class="<?= $act == 'statistical' ? 'active':''?>">
           <a href="./index.php?<?= $page?>&act=statistical">
             <i class="bi bi-clipboard-data"></i>
             statistical
           </a>
-        </li>
+        </li> -->
         <li class="">
           <a href="../index.php">
             <i class="bi bi-box-arrow-left"></i>

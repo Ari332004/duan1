@@ -63,9 +63,7 @@ function select_cl()
 function sp_detail($id){
   $sql = "SELECT * FROM sanphamchitiet 
           JOIN sanpham ON sanphamchitiet.ma_sp = sanpham.id
-          JOIN ( SELECT ma_sp AS ma, MIN(img_url) AS tenanh 
-                  FROM anh GROUP BY ma_sp ) AS anh ON sanpham.id = anh.ma
-          WHERE sanphamchitiet.ma_sp=? AND sanphamchitiet.so_luong > 0
+          WHERE sanphamchitiet.ma_sp=?
           LIMIT 1";
   return pdo_query_one($sql, $id);
 }
@@ -82,8 +80,6 @@ function detail_mau($ma_sp){
     return pdo_query($sql,$ma_sp);
 }
 function detail_anh($ma_sp){
-    $sql= "SELECT DISTINCT anh.id, anh.img_url FROM sanphamchitiet 
-    JOIN anh ON sanphamchitiet.ma_sp = anh.ma_sp
-    WHERE anh.ma_sp=?";
+    $sql= "SELECT * FROM anh WHERE anh.ma_sp=?";
     return pdo_query($sql,$ma_sp);
 }

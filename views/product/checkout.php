@@ -5,19 +5,20 @@
         <legend>Thông tin đơn hành</legend>
         <div class="form-group mb-3">
           <label for="usr" class="form-label">Họ và tên:</label>
-          <input required="true" type="text" class="form-control" id="fullname" name="fullname">
+          <input required="true" type="text" class="form-control" id="fullname" name="fullname" value="<?= $name ?>">
         </div>
         <div class="form-group mb-3">
           <label for="email" class="form-label">Email:</label>
-          <input required="true" type="email" class="form-control" id="email" name="email">
+          <input required="true" type="email" class="form-control" id="email" name="email" value="<?= $email ?>">
         </div>
         <div class="form-group mb-3">
           <label for="phone_number" class="form-label">Số điện thoại:</label>
-          <input required="true" type="tel" class="form-control" id="phone_number" name="phone_number">
+          <input required="true" type="tel" class="form-control" id="phone_number" name="phone_number"
+            value="<?= $tel ?>">
         </div>
         <div class="form-group mb-3">
           <label for="address" class="form-label">Địa chỉ:</label>
-          <input required="true" type="text" class="form-control" id="address" name="address">
+          <input required="true" type="text" class="form-control" id="address" name="address" value="<?= $address ?>">
         </div>
       </div>
       <div class="col-md-7">
@@ -33,20 +34,17 @@
             </tr>
           </thead>
           <tbody>
+            <?php $sum_total = 0; ?>
+            <?php foreach ($datacart as $key => $cart) : ?>
             <tr>
-              <td><img src="uploads/sanpham/sanpham1.jpg" style="width: 100px"></td>
-              <td>tên</td>
-              <td>100000 VND</td>
-              <td>10</td>
-              <td>1000000 VND</td>
+              <td><img src="uploads/sanpham/<?= $cart['anh'] ?>" width="100px"></td>
+              <td><?= $cart['tensp'] ?></td>
+              <td><?= number_format($cart['gia'], 0, '', '.') ?> VNĐ</td>
+              <td><?= $cart['sl'] ?></td>
+              <td><?= number_format((int)$cart['gia'] * (int)$cart['sl'], 0, '', '.') ?> VNĐ</td>
             </tr>
-            <tr>
-              <td><img src="uploads/sanpham/sanpham2.jpg" style="width: 100px"></td>
-              <td>tên</td>
-              <td>100000 VND</td>
-              <td>10</td>
-              <td>1000000 VND</td>
-            </tr>
+            <?php $sum_total += ((int)$cart['gia'] * (int)$cart['sl']); ?>
+            <?php endforeach ?>
             <?php
 // $cart = [];
 // if(isset($_SESSION['cart'])) {
@@ -69,22 +67,20 @@
         </table>
         <div class="pttt mt-5 mb-5">
           <legend>Phương thức thanh toán</legend>
+          <?php foreach ($dspttt as $pt) : ?>
           <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="1">
-            <label for="inlineRadio1">Nhân viên</label>
+            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
+              value="<?= $pt['id'] ?>">
+            <label for="inlineRadio1"><?= $pt['mota'] ?></label>
           </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="1">
-            <label for="inlineRadio1">Nhân viên</label>
-          </div>
+          <?php endforeach ?>
         </div>
         <div class="row" style="justify-content: right;">
           <div style=" width: 50%;">
             <div class="total row">
               <p class="col-6">Tổng cộng</p>
               <p class="col-6">
-                0 VNĐ
-                <!-- <?=number_format($total, 0, '', '.')?> VND -->
+                <?=number_format($sum_total, 0, '', '.')?> VNĐ
               </p>
             </div>
             <button class="btn btn-success" style="width: 100%;">Hoàn thành</button>

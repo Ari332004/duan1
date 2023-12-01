@@ -25,6 +25,10 @@
   if (isset($_POST['btnDelete'])) {
     deleteItems();
   }
+  if (isset($_GET['DTK'])) {
+    tai_khoan_delete($_GET['DTK']);
+    header('Location: index.php?page=taikhoan&act=list');
+  }
 ?>
 <form action="" method="post">
   <legend class="text-center mb-4">Danh sách tài khoản</legend>
@@ -38,6 +42,7 @@
       <a href="index.php?act=edit&page=taikhoan" class="col-auto"> <input class="btn btn-primary mr20" type="button"
           value="NHẬP THÊM"></a>
     </div>
+
     <table class="table table-striped">
       <thead>
         <tr>
@@ -56,7 +61,7 @@
         <tr>
           <td><input type="checkbox" name="check[]" value="<?= $value['id']; ?>" class="check"></td>
           <th><?= $value['id']; ?></th>
-          <td><?= $value['username']; ?></td>\
+          <td><?= $value['username']; ?></td>
           <td><?= $value['email']; ?></td>
           <td><?= $value['sdt']; ?></td>
           <td><?= $value['dia_tri']; ?></td>

@@ -1,6 +1,6 @@
 <!--slider area start-->
 <div class="slider_area slider_style home_three_slider owl-carousel">
-  <div class="single_slider" data-bgimg="assets/img/slider/slider4.jpg">
+  <div class="single_slider" data-bgimg="assets/img/banner/banner4.jpg">
     <div class="container">
       <div class="row align-items-center">
         <div class="col-12">
@@ -15,7 +15,7 @@
       </div>
     </div>
   </div>
-  <div class="single_slider" data-bgimg="assets/img/slider/slider5.jpg">
+  <div class="single_slider" data-bgimg="assets/img/banner/banner2.jpg">
     <div class="container">
       <div class="row align-items-center">
         <div class="col-12">
@@ -30,7 +30,7 @@
       </div>
     </div>
   </div>
-  <div class="single_slider" data-bgimg="assets/img/slider/slider6.jpg">
+  <div class="single_slider" data-bgimg="assets/img/banner/banner3.jpg">
     <div class="container">
       <div class="row align-items-center">
         <div class="col-12">
@@ -55,21 +55,21 @@
       <div class="col-lg-4 col-md-6">
         <div class="banner_area">
           <div class="banner_thumb">
-            <a href="index.php?act=product"><img src="assets/img/bg/banner8.jpg" alt="#" /></a>
+            <a href="index.php?act=product"><img src="assets/img/banner/banner7.jpg" alt="#" /></a>
           </div>
         </div>
       </div>
       <div class="col-lg-4 col-md-6">
         <div class="banner_area">
           <div class="banner_thumb">
-            <a href="index.php?act=product"><img src="assets/img/bg/banner9.jpg" alt="#" /></a>
+            <a href="index.php?act=product"><img src="assets/img/banner/banner8.jpg" alt="#" /></a>
           </div>
         </div>
       </div>
       <div class="col-lg-4 col-md-6">
         <div class="banner_area bottom">
           <div class="banner_thumb">
-            <a href="index.php?act=product"><img src="assets/img/bg/banner10.jpg" alt="#" /></a>
+            <a href="index.php?act=product"><img src="assets/img/banner/banner13.jpg" alt="#" /></a>
           </div>
         </div>
       </div>
@@ -98,15 +98,16 @@
               <div class="single_product">
                 <div class="product_thumb">
                   <a class="primary_img" href="index.php?act=productdetail&masp=<?= $sp['id'] ?>"><img
-                      src="uploads/sanpham/<?= $sp['tenanh']?>" alt="" /></a>
+                      src="uploads/sanpham/<?= $sp['anhsp']?>" alt="" /></a>
                   <div class="product_action">
                     <div class="hover_action">
                       <a href="#"><i class="fa fa-plus"></i></a>
                       <div class="action_button">
                         <ul>
                           <li>
-                            <a title="add to cart" href="cart.html"><i class="fa fa-shopping-basket"
-                                aria-hidden="true"></i></a>
+                            <a title="add to cart"
+                              onclick="addToCart(<?= $sp['maspct'] ?>, '<?= $sp['ten_sp'] ?>', <?= $sp['gia'] ?>, '<?= $sp['anhsp'] ?>', 1, <?= isset($_SESSION['user'])?$_SESSION['user']['id']:0; ?>)"><i
+                                class="fa fa-shopping-basket" aria-hidden="true"></i></a>
                           </li>
                         </ul>
                       </div>
@@ -140,11 +141,11 @@
       <div class="col-lg-6 col-md-6">
         <div class="banner_area">
           <div class="banner_thumb">
-            <a href="index.php?act=product"><img src="assets/img/bg/banner11.jpg" alt="#" /></a>
+            <a href="index.php?act=product"><img src="assets/img/banner/banner15.jpg" alt="#" /></a>
             <div class="banner_content">
               <h1>
-                Handbag <br />
-                Men’s Collection
+                Owndays <br />
+                500 store
               </h1>
               <a href="index.php?act=product">Discover Now</a>
             </div>
@@ -154,11 +155,11 @@
       <div class="col-lg-6 col-md-6">
         <div class="banner_area">
           <div class="banner_thumb">
-            <a href="index.php?act=product"><img src="assets/img/bg/banner12.jpg" alt="#" /></a>
+            <a href="index.php?act=product"><img src="assets/img/banner/banner14.jpg" alt="#" /></a>
             <div class="banner_content">
               <h1>
-                Sneaker <br />
-                Men’s Collection
+                Memory <br />
+                Metal
               </h1>
               <a href="index.php?act=product">Discover Now</a>
             </div>
@@ -189,7 +190,7 @@
             <div class="single_product">
               <div class="product_thumb">
                 <a class="primary_img" href="index.php?act=productdetail&masp=<?= $sp['id'] ?>"><img
-                    src="uploads/sanpham/<?= $sp['tenanh']?>" alt="" /></a>
+                    src="uploads/sanpham/<?= $sp['anhsp']?>" alt="" /></a>
                 <div class="product_action">
                   <div class="hover_action">
                     <a href="#"><i class="fa fa-plus"></i></a>

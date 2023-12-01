@@ -227,55 +227,41 @@
             <div class="col-lg-4">
               <div class="cart_area">
                 <div class="cart_link">
-                  <a href="?act=cart"><i class="fa fa-shopping-basket"></i>2 item(s)</a>
+                  <a href="?act=cart"><i class="fa fa-shopping-basket"></i><?= count($datacart) ?> item(s)</a>
                   <!--mini cart-->
                   <div class="mini_cart">
-                    <div class="cart_item top">
+                    <?php $sum_total = 0; ?>
+                    <?php foreach ($datacart as $key => $cart) : ?>
+                    <div class="cart_item">
                       <div class="cart_img">
-                        <a href="#"><img src="assets/img/s-product/product.jpg" alt="" /></a>
+                        <a href="#"><img src="uploads/sanpham/<?= $cart['anh'] ?>" alt="" /></a>
                       </div>
                       <div class="cart_info">
-                        <a href="#">Apple iPhone SE 16GB</a>
-
-                        <span>1x $60.00</span>
+                        <a href="#"><?= $cart['tensp'] ?></a>
+                        <span> <?= $cart['sl'] ?>x <?= $cart['gia'] ?> VNĐ</span>
                       </div>
                       <div class="cart_remove">
                         <a href="#"><i class="ion-android-close"></i></a>
                       </div>
                     </div>
-                    <div class="cart_item bottom">
-                      <div class="cart_img">
-                        <a href="#"><img src="assets/img/s-product/product2.jpg" alt="" /></a>
-                      </div>
-                      <div class="cart_info">
-                        <a href="#">Marshall Portable Bluetooth</a>
-                        <span> 1x $160.00</span>
-                      </div>
-                      <div class="cart_remove">
-                        <a href="#"><i class="ion-android-close"></i></a>
-                      </div>
-                    </div>
+                    <?php $sum_total += ((int)$cart['gia'] * (int)$cart['sl']); ?>
+                    <?php endforeach ?>
                     <div class="cart__table">
                       <table>
                         <tbody>
                           <tr>
-                            <td class="text-left">Sub-Total :</td>
-                            <td class="text-right">$150.00</td>
-                          </tr>
-
-                          <tr>
-                            <td class="text-left">Total :</td>
-                            <td class="text-right">$184.00</td>
+                            <td class="text-left">Tổng :</td>
+                            <td class="text-right"><?= $sum_total; ?> VNĐ</td>
                           </tr>
                         </tbody>
                       </table>
                     </div>
 
                     <div class="cart_button view_cart">
-                      <a href="?act=cart">View Cart</a>
+                      <a href="?act=cart">Xem giỏ hàng</a>
                     </div>
                     <div class="cart_button checkout">
-                      <a href="checkout.html">Checkout</a>
+                      <a href="?act=checkout">Thanh toán</a>
                     </div>
                   </div>
                   <!--mini cart end-->
