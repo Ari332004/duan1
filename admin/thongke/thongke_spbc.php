@@ -47,7 +47,7 @@
           <th scope="col">Mã</th>
           <th scope="col">Tên</th>
           <th scope="col">Màu</th>
-          <th scope="col">Tổng số lượng</th>
+          <th scope="col">Số lượng trong kho</th>
           <th scope="col">Số lượng đã bán</th>
           <th scope="col">Số lượng còn lại</th>
           <th scope="col">Tỉ lệ bán</th>
