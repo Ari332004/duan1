@@ -1,12 +1,12 @@
 <?php
-function select_all_spct($idspct = 0, $ten_mau = "", $ten_cl = "", $so_luong = 0, $luot_xem = 0)
+function select_all_spct($ma_spct = 0, $ten_mau = "", $ten_cl = "", $so_luong = 0, $luot_xem = 0)
 {
-    $sql = "SELECT sanphamchitiet.id, mau.ten_mau, chatlieu.ten_cl,so_luong,luot_xem
+    $sql = "SELECT sanphamchitiet.id,sanphamchitiet.ma_sp, mau.ten_mau, chatlieu.ten_cl,so_luong,luot_xem
             FROM sanphamchitiet
             JOIN chatlieu ON sanphamchitiet.ma_cl = chatlieu.id
             JOIN mau ON sanphamchitiet.ma_mau = mau.id;";
-    if ($idspct > 0) {
-        $sql .= " and id ='" . $idspct . "'";
+    if ($ma_spct > 0) {
+        $sql .= " and ma_sp ='" . $ma_spct . "'";
     }
     if ($ten_mau != "") {
         $sql .= " and ten_mau like '%" . $ten_mau . "%'";

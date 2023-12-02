@@ -141,11 +141,11 @@
                     </a>
                   </li>
                   <li>
-                    <a class="dropdown-item" href="./index.php?page=anh&act=list">Sản phẩm
+                    <a class="dropdown-item" href="./index.php?page=thongke&act=list">Sản phẩm
                     </a>
                   </li>
                   <li>
-                    <a class="dropdown-item" href="./index.php?page=anh&act=list">Sản phẩm bán chạy
+                    <a class="dropdown-item" href="./index.php?page=thongke_spbc&act=list">Sản phẩm bán chạy
                     </a>
                   </li>
                 </ul>

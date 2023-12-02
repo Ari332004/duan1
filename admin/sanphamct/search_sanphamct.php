@@ -2,13 +2,13 @@
 
 $dataAll = select_all_spct();
 if (isset($_POST['find'])) {
-    $id = $_POST['ma_sp'] ?? 0;
+    $ma_sp = $_POST['ma_sp'] ?? 0;
     $ten_mau = $_POST['ten_mau'] ?? "";
     $ten_cl = $_POST['ten_cl'] ?? "";
     $so_luong = $_POST['so_luong'] ?? 0;
     $luot_xem = $_POST['luot_xem'] ?? 0;
 
-    $dataAll = select_all_spct($id, $ten_mau, $ten_cl, $luot_xem);
+    $dataAll = select_all_spct($ma_sp, $ten_mau, $ten_cl,$so_luong ,$luot_xem);
 }
 
 
@@ -24,7 +24,7 @@ $datacl = select_cl(0);
         <div class="form-group row mb-3">
           <label for="id" class="col-sm-3 col-form-label">Mã sản phẩm </label>
           <div class="col-sm-9">
-            <input type="text" class="form-control" name="ma_sp" id="ma_sp" placeholder="Mã sản phẩm " />
+            <input type="text" class="form-control" name="ma_spct" id="ma_spct" placeholder="Mã sản phẩm " />
           </div>
         </div>
         <div class="form-group row mb-3">
@@ -32,8 +32,7 @@ $datacl = select_cl(0);
           <div class="col-sm-9">
             <select class="form-control" id="input-SPCT" name="ten_mau">
               <?php foreach ($datamau as $value) : ?>
-
-              <option value="<?= $value['id'] ?>"><?= $value['ten_mau'] ?></option>
+              <option value="<?= $value['ten_mau'] ?>"><?= $value['ten_mau'] ?></option>
               <?php endforeach; ?>
             </select>
           </div>
@@ -43,8 +42,7 @@ $datacl = select_cl(0);
           <div class="col-sm-9">
             <select class="form-control" id="input-SPCT" name="ten_cl">
               <?php foreach ($datacl as $value) : ?>
-
-              <option value="<?= $value['id'] ?>"><?= $value['ten_cl'] ?></option>
+              <option value="<?= $value['ten_cl'] ?>"><?= $value['ten_cl'] ?></option>
               <?php endforeach; ?>
             </select>
           </div>
@@ -54,19 +52,14 @@ $datacl = select_cl(0);
           <label class="col-sm-3 col-form-label">Số lượng</label>
           <div class="col-sm-9"><input type="text" class="form-control" id="so_luong" name="so_luong"
               placeholder="Số lượng"></div>
-
-
         </div>
         <div class="form-group row mb-3">
           <label class="col-sm-3 col-form-label">Lượt xem</label>
           <div class="col-sm-9"><input type="text" class="form-control" id="luot_xem" name="luot_xem"
               placeholder="Số lượng"></div>
-
-
         </div>
         <button type="submit" class="btn btn-primary" id="find-btn" name="find" value="Tìm kiếm">Tìm
           kiếm</button>
-      </form>
       </form>
     </div>
   </div>
