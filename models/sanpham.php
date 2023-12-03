@@ -84,4 +84,26 @@ function sp_shop($iddm=0,$keyten=""){
     $sql.=" ORDER BY id DESC";
   return pdo_query($sql);
 }
+function filterPrice($max, $min){
+  $sql = "SELECT sanpham.*, sanphamct.* FROM sanpham 
+          JOIN ( SELECT ma_sp, MIN(id) as maspct
+                  FROM sanphamchitiet GROUP BY ma_sp ) as sanphamct ON sanpham.id = sanphamct.ma_sp
+          where gia > ? and gia < ?"; 
+  
+  return pdo_query($sql,$min, $max);
+}
+function filterMauCl($mau=0, $cl=0){
+  $sql = "SELECT sanpham.*, sanphamct.* FROM sanpham 
+          JOIN ( SELECT ma_sp, ma_mau, ma_cl, MIN(id) as maspct
+                  FROM sanphamchitiet GROUP BY ma_sp ) as sanphamct ON sanpham.id = sanphamct.ma_sp
+          where 1"; 
+  if($mau>0){
+    $sql.=" and sanphamct.ma_mau ='".$mau."'";
+  }
+  if($cl>0){
+    $sql.=" and sanphamct.ma_cl ='".$cl."'";
+  }
+  $sql.=" ORDER BY sanpham.id DESC";
+  return pdo_query($sql);
+}
 ?>

@@ -1,19 +1,67 @@
 <?php
 
 $errbl = '';
-  if(isset($_POST['guiBL'])){
-    if ($_POST['comment']!='') {
-      if (isset($_SESSION['user'])) {
-        insert_binhluan($_POST['comment'],$_SESSION['user']['id'],$_GET['masp'],$_POST['rating']);
-        header("Location: index.php?act=productdetail&masp=".$_GET['masp']);
+if (isset($_POST['guiBL'])) {
+  if ($_POST['comment'] != '') {
+    if (isset($_SESSION['user'])) {
+      insert_binhluan($_POST['comment'], $_SESSION['user']['id'], $_GET['masp'], $_POST['rating']);
+      // header("Location: index.php?act=productdetail&masp=".$_GET['masp']);
+    } else {
+      $errbl = 'Vui lòng đăng nhập để gửi bình luận';
+    }
+  } else {
+    $errbl = 'Vui lòng nhập nội dung bình luận';
+  }
+}
+if (isset($_POST['addCart'])) {
+  // Kiểm tra xem có tồn tại mảng giỏ hàng hay không.
+  if (!isset($_SESSION['cart'])) {
+    // Nếu không có thì đi khởi tạo
+    $_SESSION['cart'] = [];
+  }
+
+    $maspct = $_POST['id'];
+    $tensp = $_POST['name'];
+    $giasp = $_POST['price'];
+    $anhsp = $_POST['img'];
+    $slsp = $_POST['sl'];
+    $mauser = $_POST['user'];
+
+    // Kiểm tra sản phẩm đã có trong giỏ hàng chưa
+
+    // array_column() trích xuất một cột từ mảng giỏ hàng và trả về một mảng chứ giá trị của cột id
+    if (isset($_SESSION['user'])) {
+
+      if ($mauser != 0) {
+        $dataCart = check_spct_exists($maspct, $mauser);
+      }
+      if (!empty($dataCart)) {
+        updateSL($maspct, $mauser);
       } else {
-        $errbl = 'Vui lòng đăng nhập để gửi bình luận';
+        cart_insert($maspct, $tensp, $giasp, $anhsp, $slsp, $mauser);
       }
     } else {
-      $errbl = 'Vui lòng nhập nội dung bình luận';
+      $index = false;
+      if (!empty($_SESSION['cart'])) {
+        $index = array_search($maspct, array_column($_SESSION['cart'], 'id'));
+      }
+      if ($index !== false) {
+        $_SESSION['cart'][$index]['quantity'] += 1;
+      } else {
+        // Nếu sản phẩm chưa tồn tại thì thêm mới vào giỏ hàng
+        $product = [
+          'ma_spct' => $maspct,
+          'tensp' => $tensp,
+          'gia' => $giasp,
+          'sl' => $slsp,
+          'anh' => $anhsp,
+          'ma_user' => 0
+        ];
+        $_SESSION['cart'][] = $product;
+        // var_dump($_SESSION['cart']);die;
+      }
     }
-    
-  }
+}
 ?>
 <!--product details start-->
 <div class="product_details mt-5">
@@ -45,9 +93,14 @@ $errbl = '';
       </div>
       <div class="col-lg-7 col-md-7">
         <div class="product_d_right">
-          <form action="#">
+          <form method="post">
             <h1><?= $datasp['ten_sp'] ?></h1>
-            <div class="product_ratting">
+            <input type="text" hidden value="<?= $datasp['maspct'] ?>" name="id">
+            <input type="text" hidden value="<?= $datasp['ten_sp'] ?>" name="name">
+            <input type="text" hidden value="<?= $datasp['anhsp'] ?>" name="img">
+            <input type="text" hidden value="<?= isset($_SESSION['user']) ? $_SESSION['user']['id'] : 0; ?>"
+              name="user">
+            <!-- <div class="product_ratting">
               <ul>
                 <li>
                   <a href="#"><i class="fa fa-star"></i></a>
@@ -67,9 +120,10 @@ $errbl = '';
                 <li class="review"><a href="#"> 1 review </a></li>
                 <li class="review"><a href="#product_d_info"> Write a review </a></li>
               </ul>
-            </div>
+            </div> -->
             <div class="product_price">
               <span class="current_price"><?= $datasp['gia'] ?> VNĐ</span>
+              <input type="text" hidden value="<?= $datasp['gia'] ?>" name="price">
             </div>
             <div class="product_desc">
               <p>
@@ -80,25 +134,29 @@ $errbl = '';
             <div class="product_variant color">
               <h3>Màu</h3>
               <select class="niceselect_option" id="color" name="produc_color">
-                <option selected value="0">Chọn màu</option>
+                <!-- <option value="0">Chọn màu</option> -->
                 <?php foreach ($dsmau as $key => $value) : ?>
-                <option value="<?= $value['id'] ?>"><?= $value['ten_mau'] ?></option>
+                <option value="<?= $value['id'] ?> <?= $value['id'] == $datasp['ma_mau'] ? 'selected' : '' ?>">
+                  <?= $value['ten_mau'] ?>
+                </option>
                 <?php endforeach ?>
               </select>
             </div>
             <div class="product_variant color">
               <h3>Chất liệu</h3>
               <select class="niceselect_option" id="color" name="produc_cl">
-                <option selected value="0">Chọn chất liệu</option>
+                <!-- <option selected value="0">Chọn chất liệu</option> -->
                 <?php foreach ($dschatlieu as $key => $value) : ?>
-                <option value="<?= $value['id'] ?>"><?= $value['ten_cl'] ?></option>
+                <option value="<?= $value['id'] ?> <?= $value['id'] == $datasp['ma_cl'] ? 'selected' : '' ?>">
+                  <?= $value['ten_cl'] ?></option>
                 <?php endforeach ?>
               </select>
             </div>
             <div class="product_variant quantity">
               <label>Số lượng</label>
-              <input type="number" min="1" oninput="sl()" class="product_quantity" />
-              <button class="button" type="submit">Thêm vào giỏ hàng</button>
+              <input type="number" min="1" max="<?= $datasp['so_luong'] ?>" value="1" class="product_quantity"
+                name="sl" />
+              <button class="button" name="addCart">Thêm vào giỏ hàng</button>
             </div>
           </form>
           <div class="priduct_social">
@@ -166,26 +224,26 @@ $errbl = '';
                 <div class="product_ratting mb-10">
                   <ul>
                     <li>
-                      <a href="#"><i class="fa fa-star <?= $bl['rate']<1?'star_gray':'' ?>"></i></a>
+                      <a href="#"><i class="fa fa-star <?= $bl['rate'] < 1 ? 'star_gray' : '' ?>"></i></a>
                     </li>
                     <li>
-                      <a href="#"><i class="fa fa-star <?= $bl['rate']<2?'star_gray':'' ?>"></i></a>
+                      <a href="#"><i class="fa fa-star <?= $bl['rate'] < 2 ? 'star_gray' : '' ?>"></i></a>
                     </li>
                     <li>
-                      <a href="#"><i class="fa fa-star <?= $bl['rate']<3?'star_gray':'' ?>"></i></a>
+                      <a href="#"><i class="fa fa-star <?= $bl['rate'] < 3 ? 'star_gray' : '' ?>"></i></a>
                     </li>
                     <li>
-                      <a href="#"><i class="fa fa-star <?= $bl['rate']<4?'star_gray':'' ?>"></i></a>
+                      <a href="#"><i class="fa fa-star <?= $bl['rate'] < 4 ? 'star_gray' : '' ?>"></i></a>
                     </li>
                     <li>
-                      <a href="#"><i class="fa fa-star <?= $bl['rate']<5?'star_gray':'' ?>"></i></a>
+                      <a href="#"><i class="fa fa-star <?= $bl['rate'] < 5 ? 'star_gray' : '' ?>"></i></a>
                     </li>
                   </ul>
-                  <p><?= $bl['ngay_bl']?></p>
+                  <p><?= $bl['ngay_bl'] ?></p>
                 </div>
                 <div class="product_demo">
-                  <strong><?= $bl['username']?></strong>
-                  <p><?= $bl['noi_dung']?></p>
+                  <strong><?= $bl['username'] ?></strong>
+                  <p><?= $bl['noi_dung'] ?></p>
                 </div>
               </div>
               <?php endforeach ?>
@@ -224,7 +282,7 @@ $errbl = '';
                        </div> -->
                   </div>
                   <button name="guiBL">Gửi</button>
-                  <p style="color: red;"><?= $errbl?></p>
+                  <p style="color: red;"><?= $errbl ?></p>
                 </form>
               </div>
             </div>
@@ -256,7 +314,7 @@ $errbl = '';
             <div class="single_product">
               <div class="product_thumb">
                 <a class="primary_img" href="index.php?act=productdetail&masp=<?= $sp['id'] ?>"><img
-                    src="uploads/sanpham/<?= $sp['anhsp']?>" alt="" /></a>
+                    src="uploads/sanpham/<?= $sp['anhsp'] ?>" alt="" /></a>
                 <div class="product_action">
                   <div class="hover_action">
                     <a href="#"><i class="fa fa-plus"></i></a>
@@ -290,12 +348,21 @@ $errbl = '';
 </section>
 <!--product section area end-->
 <script>
-function sl() {
-  console.log(document.querySelector(".product_quantity").value);
-  if (document.querySelector(".product_quantity").value <= 0) {
-    document.querySelector(".product_quantity").value = 1;
+// function sl() {
+//   console.log(document.querySelector(".product_quantity").value);
+//   if (document.querySelector(".product_quantity").value <= 0) {
+//     document.querySelector(".product_quantity").value = 1;
+//   }
+// }
+const input = document.querySelector(".product_quantity");
+input.addEventListener("change", function() {
+  if (this.value < 1) {
+    this.value = 1;
   }
-}
+  if (this.value > this.max) {
+    this.value = this.max;
+  }
+});
 const ratingStars = [...document.getElementsByClassName("rating__star")];
 const ratingInput = document.getElementById("rating-input");
 

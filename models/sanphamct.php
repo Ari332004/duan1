@@ -61,7 +61,7 @@ function select_cl()
     return pdo_query($sql);
 }
 function sp_detail($id){
-  $sql = "SELECT * FROM sanphamchitiet 
+  $sql = "SELECT *,sanphamchitiet.id as maspct FROM sanphamchitiet 
           JOIN sanpham ON sanphamchitiet.ma_sp = sanpham.id
           WHERE sanphamchitiet.ma_sp=?
           LIMIT 1";

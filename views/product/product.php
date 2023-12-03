@@ -7,19 +7,27 @@
             <!--sidebar widget start-->
             <div class="sidebar_widget">
               <div class="widget_list widget_filter">
-                <h2>Lọc theo giá</h2>
-                <form action="#">
-                  <div id="slider-range"></div>
-                  <button type="submit">Lọc</button>
-                  <input type="text" name="text" id="amount" />
-
+                <h2>Khoảng giá</h2>
+                <form action="index.php?act=product" method="post">
+                  <!-- <div id="slider-range"></div> -->
+                  <div class="d-flex justify-content-around mb-3" style="gap: 20px;">
+                    <input type="text" style="border: 1px solid gray; width: 40%; text-align: left;" placeholder="Từ"
+                      name="min" class="priceMin">
+                    <span style="font-size: 30px;">-</span>
+                    <input type="text" style="border: 1px solid gray; width: 40%; text-align: left;" placeholder="Đến"
+                      name="max" class="priceMax">
+                  </div>
+                  <button name="khoanggia">Áp dụng</button>
+                  <p style="color: red;"><?= $errfilter ?></p>
+                  <!-- <input type="text" name="text" id="amount" /> -->
                 </form>
               </div>
               <div class="widget_list widget_categories">
                 <h2>Danh mục</h2>
                 <ul>
                   <?php foreach ($dsdm as $key => $value) : ?>
-                  <li><a href="#"><?= $value['ten_dm'] ?> <span><?= $value['id'] ?></span></a> </li>
+                  <li><a href="index.php?act=product&iddm=<?= $value['id'] ?>"><?= $value['ten_dm'] ?>
+                      <span><?= $value['id'] ?></span></a> </li>
                   <?php endforeach ?>
 
                 </ul>
@@ -28,7 +36,8 @@
                 <h2>Màu</h2>
                 <ul>
                   <?php foreach ($dsmau as $key => $value) : ?>
-                  <li><a href="#"><?= $value['ten_mau'] ?> <span><?= $value['id'] ?></span></a> </li>
+                  <li><a href="index.php?act=product&mau=<?= $value['id'] ?>"><?= $value['ten_mau'] ?>
+                      <span><?= $value['id'] ?></span></a> </li>
                   <?php endforeach ?>
 
                 </ul>
@@ -37,7 +46,8 @@
                 <h2>Chất liệu</h2>
                 <ul>
                   <?php foreach ($dschatlieu as $key => $value) : ?>
-                  <li><a href="#"><?= $value['ten_cl'] ?> <span><?= $value['id'] ?></span></a> </li>
+                  <li><a href="index.php?act=product&cl=<?= $value['id'] ?>"><?= $value['ten_cl'] ?>
+                      <span><?= $value['id'] ?></span></a> </li>
                   <?php endforeach ?>
 
                 </ul>
@@ -65,13 +75,10 @@
                 <!-- <button data-role="grid_list" type="button" class="btn-list" data-toggle="tooltip"
                   title="List"></button> -->
               </div>
-              <div class=" niceselect_option">
+              <!-- <div class=" niceselect_option">
 
-                <form class="select_option sort_form" action="index.php?act=product" method="post">
-                  <select name="orderby" id="short" name="sort"
-                    onchange="document.querySelector('.sort_form').submit()">
-
-                    <option selected value="0">Xắp xếp</option>
+                <form class="select_option sort_form" method="post">
+                  <select name="orderby" id="sortOption" name="sort" onchange="sortProducts()">
                     <option value="1">Mới nhất</option>
                     <option value="2">Xắp xếp theo giá từ cao đến thấp</option>
                     <option value="3">Xắp xếp theo giá từ thấp đến cao</option>
@@ -80,14 +87,14 @@
                   </select>
                 </form>
 
-              </div>
+              </div> -->
             </div>
             <!--shop toolbar end-->
 
-            <div class="row shop_wrapper">
+            <div class="row shop_wrapper" id="products">
 
               <?php foreach ($spshop as $sp) : ?>
-              <div class="col-lg-4 col-md-4 col-12 ">
+              <div class="col-lg-4 col-md-4 col-12 spdon">
                 <div class="single_product">
                   <div class="product_thumb">
                     <a class="primary_img" href="index.php?act=productdetail&masp=<?= $sp['id'] ?>"><img
@@ -112,7 +119,8 @@
                   </div>
 
                   <div class="product_content grid_content">
-                    <h3><a href="index.php?act=productdetail&masp=<?= $sp['id'] ?>"><?= $sp['ten_sp'] ?></a></h3>
+                    <h3><a class="current_name"
+                        href="index.php?act=productdetail&masp=<?= $sp['id'] ?>"><?= $sp['ten_sp'] ?></a></h3>
                     <span class="current_price"><?= $sp['gia'] ?> VNĐ</span>
                   </div>
 
@@ -143,7 +151,7 @@
               <?php endforeach ?>
             </div>
 
-            <div class="shop_toolbar t_bottom">
+            <!-- <div class="shop_toolbar t_bottom">
               <div class="pagination">
                 <ul>
                   <li class="current">1</li>
@@ -153,7 +161,7 @@
                   <li><a href="#">>></a></li>
                 </ul>
               </div>
-            </div>
+            </div> -->
             <!--shop toolbar end-->
             <!--shop wrapper end-->
           </div>
@@ -162,4 +170,20 @@
 
     </div>
   </div>
+  <script>
+const priceMinInput = document.querySelector('.priceMin');
+const priceMaxInput = document.querySelector('.priceMax');
+
+priceMinInput.addEventListener('input', () => {
+  if (!priceMinInput.value.match(/^\d+$/)) {
+    priceMinInput.value = '';
+  }
+});
+
+priceMaxInput.addEventListener('input', () => {
+  if (!priceMaxInput.value.match(/^\d+$/)) {
+    priceMaxInput.value = '';
+  }
+});
+  </script>
   <!--shop  area end-->

@@ -88,14 +88,27 @@ if (isset($_GET['act'])) {
             break;
         case 'product':
             $spshop=sp_shop();
+            $errfilter = '';
             if(isset($_GET['iddm'])){
                 $spshop=sp_shop($_GET['iddm'],'');
+            };
+            if(isset($_GET['mau'])){
+                $spshop=filterMauCl($_GET['mau'],0);
+            };
+            if(isset($_GET['cl'])){
+                $spshop=filterMauCl(0,$_GET['cl']);
             };
             if(isset($_POST['search'])){
                 $spshop=sp_shop($_POST['select'],$_POST['tensp']);
             };
-            if(isset($_POST['sort'])){
-                echo '<script>alert("ok")</script>';
+            if(isset($_POST['khoanggia'])){
+                if($_POST['max'] < $_POST['min']){
+                    $errfilter = 'Vui lòng nhập khoảng giá chính sác';
+                } else {
+                    $spshop=filterPrice($_POST['max'],$_POST['min']);
+                    $errfilter = '';
+                }
+                
             };
             include_once './views/product/product.php';
             break;

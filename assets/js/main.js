@@ -921,13 +921,3 @@
     perturbance: 0.04,
   });
 })(jQuery);
-const aTags = document.querySelectorAll(".product_action a");
-
-// Duyệt qua tất cả các thẻ a
-aTags.forEach((aTag) => {
-  // Thêm sự kiện onclick
-  aTag.addEventListener("click", (event) => {
-    // Ngăn chặn hành động mặc định
-    event.preventDefault();
-  });
-});
