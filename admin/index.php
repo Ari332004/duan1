@@ -6,7 +6,9 @@ include_once '../models/sanpham.php';
 include_once '../models/sanphamct.php';
 include_once '../models/binhluan.php';
 include_once '../models/taikhoan.php';
+include_once '../models/thongke.php';
 include_once '../models/img.php';
+include_once '../models/donhang.php';
 
 include_once './header.php';
 
@@ -112,18 +114,32 @@ if (isset($_GET['page']) && isset($_GET['act'])) {
                 break;
             }
             break;
-        case 'user':
-            include_once './views/user/user.php';
-            break;
-        case 'product':
-            include_once './views/product/product.php';
-            break;
-        case 'productdetail':
-            include_once './views/product/productdetail.php';
-            break;
-        case 'cart':
-            include_once './views/product/cart.php';
-            break;
+        // case 'thongke':
+        //   switch ($act){
+        //       case 'thongke1':
+        //   $listthongke = loadall_thongke();
+        //   include_once './thongke/thongke1.php';
+        //   break;
+         
+        //     }
+        //     break;
+        case 'donhang':
+          switch ($act) {
+        case 'list':
+          include_once './donhang/donhang.php';
+          break;
+        case 'chitietdh':
+          include_once './donhang/chitietdh.php';
+          break;
+        case 'edit':
+          
+          include_once './donhang/edit_trangthai.php';
+          break;
+        }
+      break;
+        // case 'cart':
+        //     include_once './views/product/cart.php';
+        //     break;
 
     }
 } else {

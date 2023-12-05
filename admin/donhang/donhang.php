@@ -12,6 +12,7 @@
                 <th scope="col">Địa chỉ</th>
                 <th scope="col">Ngày đặt hàng</th>
                 <th scope="col">Phương thức thanh toán</th>
+                <th scope="col">Trạng thái đơn hàng</th>
                 <th> </th>
             </tr>
         </thead>
@@ -25,12 +26,18 @@
                     <td><?= $value['dia_tri']; ?> </td>
                     <td><?= $value['ngay_dat_hang']; ?></td>
                     <td><?= $value['mota']; ?></td>
+                    <td><?= $value['mota']; ?></td>
                     <td> </td>
                     <td>
-                        <a href="index.php?dh=<?= $value['id']; ?>&page=donhang&act=chitietdh" class="btn btn-danger" >
+                        <a href="index.php?dh=<?= $value['id']; ?>&page=donhang&act=chitietdh" class="btn btn-danger">
                             Chi tiết đơn hàng
                         </a>
-                       
+
+                    
+                        <a href="index.php?idctdh=<?= $value['id']; ?>&page=donhang&act=edit" class="btn btn-danger">
+                            Sửa trạng thái
+                        </a>
+                    
                     </td>
                 </tr>
             <?php endforeach ?>

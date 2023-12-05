@@ -1,10 +1,11 @@
 <?php
 function selectall_donhang()
 {
-  $sql = "SELECT donhang.id, username, donhang.phone, donhang.dia_tri, donhang.ngay_dat_hang, thanhtoan.mota, donhang.tong 
-    FROM donhang 
-    JOIN users ON donhang.ma_user = users.id 
-    JOIN thanhtoan ON donhang.ma_tt = thanhtoan.id";
+  $sql = "SELECT donhang.id, users.username, donhang.phone, donhang.dia_tri, donhang.ngay_dat_hang, thanhtoan.mota, trangthaidh.mota AS trang_thai 
+  FROM donhang JOIN users ON donhang.ma_user = users.id 
+  JOIN thanhtoan ON donhang.ma_tt = thanhtoan.id 
+  JOIN trangthaidh ON donhang.ma_tt = trangthaidh.id;";
+   
   return pdo_query($sql);
 }
 function selectall_ctdh($id)

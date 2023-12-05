@@ -46,7 +46,7 @@ if (isset($_POST['submit'])) {
 
                 <div>
                     <button class="btn btn-primary" id="submit-btn" name="submit">Cập nhật</button>
-                    <a href="index.php?dh=<?= $result['ma_dh'] ?>&page=donhang&act=chitietdh" class="btn btn-primary" name="danhsach">Quay lại</a>
+          
                     <a href="index.php?page=donhang&act=list" class="btn btn-primary" name="danhsach">Danh sách đơn hàng</a>
                 </div>
                 <div class="error-msg" style="color: <?= $color ?>;"><?= $msg ?></div>

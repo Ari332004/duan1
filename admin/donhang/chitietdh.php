@@ -12,7 +12,7 @@
                 <th scope="col">Số lượng</th>
                 <th scope="col">Ảnh sản phẩm</th>
                 <th scope="col">Trạng thái đơn hàng</th>
-
+                
                 <th> </th>
             </tr>
         </thead>
@@ -27,12 +27,7 @@
                     <td><img src="../uploads/sanpham/<?=$value['anh']?>" style="  "width="85px"></td>
                     <td><?= $value['mota']; ?></td>
                     <td> </td>
-                    <td>
-                        <a href="index.php?idctdh=<?= $value['id']; ?>&page=donhang&act=suatt" class="btn btn-danger">
-                            Sửa trạng thái
-                        </a>
-
-                    </td>
+                   
                 </tr>
             <?php endforeach ?>
         </tbody>
