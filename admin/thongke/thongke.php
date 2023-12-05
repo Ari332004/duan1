@@ -49,7 +49,7 @@ $dataJson = json_encode($data);
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f5f5f5;
+            
             
         }
 
@@ -58,7 +58,7 @@ $dataJson = json_encode($data);
             height: 500px;
             float: left;
             background-color: #fff;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+           
             border-radius: 4px;
             padding: 20px;
             box-sizing: border-box;
@@ -75,7 +75,7 @@ $dataJson = json_encode($data);
             margin-top: 20px;
             padding: 20px;
             background-color: #fff;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+           
             border-radius: 4px;
             box-sizing: border-box;
             
@@ -151,24 +151,27 @@ $dataJson = json_encode($data);
     </script>
 </head>
 <body>
+    <div>
     <div id="chart_div"></div>
 
     
-    <form method="POST" action="">
-    <div>
-        <h2>Tổng doanh thu: <?php echo $total_revenue; ?>  VNĐ</h2>
+<form method="POST" action="">
+<div>
+    <h2>Tổng doanh thu: <?php echo $total_revenue; ?>  VNĐ</h2>
+</div>
+
+    <label for="start_date">Ngày bắt đầu:</label>
+    <input type="date" id="start_date" name="start_date" placeholder="Ngày bắt đầu">
+
+    <label for="end_date">Ngày kết thúc:</label>
+    <input type="date" id="end_date" name="end_date" placeholder="Ngày kết thúc"><br><br>
+
+    <input type="submit" value="Thống kê"><br> <br><br><br><br>
+    <a href="index.php?act=dttt&page=thongke" class="col-auto"><input class="btn btn-primary mr10 checked" type="button" value="Biểu đồ tháng"></a><br><br>
+    <a href="index.php?act=list&page=thongke_sp" class="col-auto"><input class="btn btn-primary mr10 checked" type="button" value="Quay lại"></a>
+</form>
+
     </div>
-
-        <label for="start_date">Ngày bắt đầu:</label>
-        <input type="date" id="start_date" name="start_date" placeholder="Ngày bắt đầu">
-
-        <label for="end_date">Ngày kết thúc:</label>
-        <input type="date" id="end_date" name="end_date" placeholder="Ngày kết thúc"><br><br>
-
-        <input type="submit" value="Thống kê"><br> <br><br><br><br>
-        <a href="index.php?act=dttt&page=thongke" class="col-auto"><input class="btn btn-primary mr10 checked" type="button" value="Biểu đồ tháng"></a><br><br>
-        <a href="index.php?act=list&page=thongke_sp" class="col-auto"><input class="btn btn-primary mr10 checked" type="button" value="Quay lại"></a>
-    </form>
     
 </body>
 </html> 
