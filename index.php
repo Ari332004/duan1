@@ -125,7 +125,7 @@ if (isset($_GET['act'])) {
             include_once './views/product/productdetail.php';
             break;
         case 'cart':
-            include_once './views/product/cart.php';
+            include_once './views/cart/cart.php';
             break;
         case 'checkout':
             $dspttt=select_all_tt();

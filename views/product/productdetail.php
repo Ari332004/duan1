@@ -43,10 +43,10 @@ if (isset($_POST['addCart'])) {
     } else {
       $index = false;
       if (!empty($_SESSION['cart'])) {
-        $index = array_search($maspct, array_column($_SESSION['cart'], 'id'));
+        $index = array_search($maspct, array_column($_SESSION['cart'], 'ma_spct'));
       }
       if ($index !== false) {
-        $_SESSION['cart'][$index]['quantity'] += 1;
+        $_SESSION['cart'][$index]['sl'] += 1;
       } else {
         // Nếu sản phẩm chưa tồn tại thì thêm mới vào giỏ hàng
         $product = [

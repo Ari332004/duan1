@@ -7,10 +7,10 @@
           <label for="usr" class="form-label">Họ và tên:</label>
           <input required="true" type="text" class="form-control" id="fullname" name="fullname" value="<?= $name ?>">
         </div>
-        <div class="form-group mb-3">
+        <!-- <div class="form-group mb-3">
           <label for="email" class="form-label">Email:</label>
           <input required="true" type="email" class="form-control" id="email" name="email" value="<?= $email ?>">
-        </div>
+        </div> -->
         <div class="form-group mb-3">
           <label for="phone_number" class="form-label">Số điện thoại:</label>
           <input required="true" type="tel" class="form-control" id="phone_number" name="phone_number"

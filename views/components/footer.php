@@ -104,10 +104,6 @@
  <!--footer area end-->
 
  <script>
-function test() {
-  alert('addToCart')
-}
-
 function addToCart(maspct, tensp, giasp, anhsp, slsp, mauser) {
   // alert("addToCart")
 
@@ -116,7 +112,7 @@ function addToCart(maspct, tensp, giasp, anhsp, slsp, mauser) {
   $.ajax({
     type: "POST",
     // Đường dẫ tới tệp PHP xử lý dữ liệu
-    url: "./views/product/addToCart.php",
+    url: "./views/cart/addToCart.php",
     data: {
       id: maspct,
       name: tensp,

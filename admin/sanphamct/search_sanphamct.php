@@ -8,7 +8,7 @@ if (isset($_POST['find'])) {
     $so_luong = $_POST['so_luong'] ?? 0;
     $luot_xem = $_POST['luot_xem'] ?? 0;
 
-    $dataAll = select_all_spct($id, $ten_mau, $ten_cl, $luot_xem);
+    $dataAll = select_all_spct($id, $ten_mau, $ten_cl, $so_luong,$luot_xem);
 }
 
 

@@ -4,8 +4,14 @@
     return pdo_query($sql,$maspct,$user);
   }
 
-  function updateSL($maspct,$user){
-    $sql = "UPDATE giohang SET sl = sl + 1 WHERE ma_spct=? AND ma_user=?";
+  function updateSL($maspct,$user,$sl=0){
+    $sql = "UPDATE giohang ";
+    if($sl>0){
+      $sql.=" SET sl ='".$sl."'";
+    } else {
+      $sql.=" SET sl = sl + 1";
+    }
+    $sql.=" WHERE ma_spct=? AND ma_user=?";
     pdo_execute($sql, $maspct, $user);
   }
 
@@ -21,5 +27,17 @@
       $sql.=" and ma_user ='".$id."'";
     }
     return pdo_query($sql);
+  }
+
+  function cart_delete($id){
+    $sql = "DELETE FROM giohang WHERE id=?";
+    if(is_array($id)){
+        foreach ($id as $ma) {
+            pdo_execute($sql, $ma);
+        }
+    }
+    else{
+        pdo_execute($sql, $id);
+    }
   }
 ?>
