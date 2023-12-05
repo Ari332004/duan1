@@ -24,13 +24,13 @@ if (isset($_POST['submit'])) {
             <h2 class="py-2 text-center h4 "><?= $h2 ?></h2>
             <form method="post" action="">
                 <div class="form-group row mb-3">
-                    <label for="id" class="col-sm-3 col-form-label">Mã sản phẩm</label>
+                    <label for="id" class="col-sm-3 col-form-label">Mã đơn hàng</label>
                     <div class="col-sm-9">
                         <input type="text" class="form-control" id="id" disabled name="madh" value="<?= $result['ctdh'] ?? "" ?>" />
                     </div>
                 </div>
                 <div class="form-group row mb-3">
-                    <label for="input-loai" class="col-sm-3 col-form-label">Loại</label>
+                    <label for="input-loai" class="col-sm-3 col-form-label">Trạng thái đơn hàng</label>
                     <div class="col-sm-3">
                         <select class="form-control" id="input-loai" name="ma_ttdh">
                             <?php foreach ($dataloai as $value) : ?>
