@@ -1,74 +1,174 @@
 <?php
-  $dataAll = thongke_sp();
+// Kiểm tra xem đã nhận được dữ liệu từ form hay chưa
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Lấy giá trị ngày bắt đầu và ngày kết thúc từ form
+    $start_date = $_POST['start_date'];
+    $end_date = $_POST['end_date'];
 
-  
-  
-  $dataloai = loai_select_all_sp();
-  // Thêm biến arrID để lưu trữ các ID của các mục đã chọn.
-  $arrID = [];
-  
-  // Thêm hàm deleteItems() để thực hiện việc xóa các mục đã chọn.
+    // Thực hiện thống kê doanh thu dựa trên khoảng ngày
+    $results = thongke_sp($start_date, $end_date);
 
-  function deleteItems()
-  {
-    // Lấy tất cả các ID của các mục đã chọn.
-    foreach ($_POST['check'] as $id) {
-      $arrID[] = $id;
+    // Tính tổng doanh thu
+    $total_revenue = 0;
+    foreach ($results as $row) {
+        $total_revenue += (int) $row['doanh_thu'];
     }
-  
-    // Xóa các mục đã chọn khỏi cơ sở dữ liệu.
-    hang_hoa_delete_multi($arrID);
-  
-    header('Location: index.php?act=sanpham');
-    
-  }
-  
-  // Sửa đổi hàm loai_delete() để chấp nhận một mảng các ID làm tham số.
-  function hang_hoa_delete_multi($arrID)
-  {
-    // Xóa từng mục khỏi cơ sở dữ liệu.
-    foreach ($arrID as $id) {
-      san_pham_delete($id);
+} else {
+    // Nếu chưa nhận được dữ liệu từ form, thực hiện thống kê mặc định
+    $results = thongke_sp();
+    $total_revenue = 0;
+    // Tính tổng doanh thu
+    foreach ($results as $row) {
+        $total_revenue += (int) $row['doanh_thu'];
     }
-  }
-  
-  // Thêm một sự kiện click cho nút `XÓA CÁC MỤC ĐÃ CHỌN` để gọi hàm `deleteItems()`.
-  if (isset($_POST['btnDelete'])) {
-    deleteItems();
-  }
+}
+
+$data = [['Ngày', 'Doanh thu', ['role' => 'style']]];
+$colors = ['gray', '#76A7FA', 'stroke-color: #703593; stroke-width: 4; fill-color: #C5A5CF',
+ 'stroke-color: #871B47; stroke-opacity: 0.6; stroke-width: 8; fill-color: #BC5679; fill-opacity: 0.2', '#FF00FF']; // Mảng mã màu mới
+
+if (count($results) > 0) {
+    foreach ($results as $index => $row) {
+        $data[] = [$row['ngay'], (int) $row['doanh_thu'], $colors[$index % count($colors)]];
+    }
+} else {
+    // Nếu không có dữ liệu, thêm một hàng trống để biểu đồ hiển thị trống
+    $data[] = ['', 0, ''];
+}
+
+$dataJson = json_encode($data);
 ?>
-<form action="" method="post">
-  <legend class="text-center mb-4">Thống kê sản phẩm</legend>
-  <div class="container" style="max-width: 90%">
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Doanh thu</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            
+        }
+
+        #chart_div {
+            width: 70%;
+            height: 500px;
+            float: left;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 4px;
+            padding: 20px;
+            box-sizing: border-box;
+            
+        }
+
+        h2 {
+            margin-top: 0;
+            font-size: 24px; /* Kích thước chữ được tăng lên */
+            font-weight: bold;
+        }
+
+        form {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 4px;
+            box-sizing: border-box;
+            
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        input[type="date"] {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+           
+        }
+
+        input[type="submit"] {
+            padding: 8px 16px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        
+    </style>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load('current', {packages: ['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable(<?php echo $dataJson; ?>);
+
+            var options = {
+                title: 'Doanh thu theo ngày',
+                height: 400,
+                bar: {groupWidth: '60%'},
+                legend: {position: 'none'},
+                vAxis: {title: 'Doanh thu (VNĐ)'},
+                hAxis: {title: 'Ngày'}
+            };
+
+            var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+            chart.draw(data, options);
+        }
+
+        document.querySelector('form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Ngăn chặn form gửi dữ liệu lên server
+
+            // Lấy giá trị ngày bắt đầu và ngày kết thúc từ form
+            var startDate = document.getElementById('start_date').value;
+            var endDate = document.getElementById('end_date').value;
+
+            // Gửi yêu cầu AJAX để cập nhật biểu đồ dựa trên khoảng ngày mới
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', '', true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    // Biểu đồ được cập nhật thành công
+                    drawChart();
+                }
+            };
+            xhr.send('start_date=' + startDate + '&end_date=' + endDate);
+        });
+    </script>
+</head>
+<body>
+    <div id="chart_div"></div>
+
     
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th scope="col">Mã</th>
-          <th scope="col">Tên</th>
-          <th scope="col">Màu</th>
-          <th scope="col">Chất liệu</th>
-          <th scope="col">Tổng số lượng</th>
-          <th scope="col">Tổng lượt xem</th>
-        </tr>
-      </thead>
-      <tbody>
-        <?php foreach ($dataAll as $key => $value) : ?>
-        <tr>
-          <!-- <td><input type="checkbox" name="check[]" value="<?= $value['id']; ?>" class="check"></td> -->
-          <td><?= $value['ma_sp']; ?></td>
-          <td><?= $value['ten_sp']; ?></td>
-          <td><?= $value['ten_mau']; ?></td>
-          <td><?= $value['ten_cl']; ?></td>
-          <td><?= $value['tong_so_luong']; ?></td>
-          <td><?= $value['tong_luot_xem']; ?></td>
-          
-          
-        </tr>
-        <?php endforeach ?>
-      </tbody>
-    </table>
-  </div>
-</form>
-</div>
-</div>
+    <form method="POST" action="">
+    <div>
+        <h2>Tổng doanh thu: <?php echo $total_revenue; ?>  VNĐ</h2>
+    </div>
+
+        <label for="start_date">Ngày bắt đầu:</label>
+        <input type="date" id="start_date" name="start_date" placeholder="Ngày bắt đầu">
+
+        <label for="end_date">Ngày kết thúc:</label>
+        <input type="date" id="end_date" name="end_date" placeholder="Ngày kết thúc"><br><br>
+
+        <input type="submit" value="Thống kê"><br> <br><br><br><br>
+        <a href="index.php?act=dttt&page=thongke" class="col-auto"><input class="btn btn-primary mr10 checked" type="button" value="Biểu đồ tháng"></a><br><br>
+        <a href="index.php?act=list&page=thongke_sp" class="col-auto"><input class="btn btn-primary mr10 checked" type="button" value="Quay lại"></a>
+    </form>
+    
+</body>
+</html> 

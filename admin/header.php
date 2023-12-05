@@ -132,20 +132,20 @@
                   Thống kê
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li>
+                  <!-- <li>
                     <a class="dropdown-item" href="./index.php?page=sanpham&act=list">Doanh thu theo tuần
                     </a>
-                  </li>
+                  </li> -->
                   <li>
-                    <a class="dropdown-item" href="./index.php?page=sanphamct&act=list">Doanh thu theo tháng
+                    <a class="dropdown-item" href="./index.php?page=thongke&act=dttt">Doanh thu theo tháng
                     </a>
                   </li>
-                  <li>
+                  <!-- <li>
                     <a class="dropdown-item" href="./index.php?page=thongke&act=list">Sản phẩm
                     </a>
-                  </li>
+                  </li> -->
                   <li>
-                    <a class="dropdown-item" href="./index.php?page=thongke_spbc&act=list">Sản phẩm bán chạy
+                    <a class="dropdown-item" href="./index.php?page=thongke_sp&act=list">Sản phẩm 
                     </a>
                   </li>
                 </ul>

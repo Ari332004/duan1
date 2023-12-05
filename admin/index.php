@@ -124,15 +124,19 @@ if (isset($_GET['page']) && isset($_GET['act'])) {
                   case 'search':
                     include_once './thongke/search_sp.php';
                     break;
-                }
-              break;
-            case 'thongke_spbc':
-              switch ($act){
-                  case 'list':
-                    include_once './thongke/thongke_spbc.php';
+                  case 'dttt':
+                    include_once './thongke/doanhthu_tt.php';
                     break;
                 }
               break;
+            case 'thongke_sp':
+              switch ($act){
+                  case 'list':
+                    include_once './thongke/thongke_sp.php';
+                    break;
+                }
+              break;
+            
         case 'user':
             include_once './views/user/user.php';
             break;
