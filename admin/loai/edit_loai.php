@@ -21,6 +21,7 @@
         $msg = "Thêm mới thành công";
         $color = "green";
       }
+      header('Location: index.php?page=loai&act=list');
     } else {
       $msg = "Vui lòng nhập đầy đủ thông tin";
       $color = "red";

@@ -142,21 +142,18 @@
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <li>
-                    <a class="dropdown-item" href="./index.php?page=sanpham&act=list">Doanh thu theo tuần
+                    <a class="dropdown-item" href="./index.php?page=thongke_sp&act=list">Sản phẩm
                     </a>
                   </li>
                   <li>
-                    <a class="dropdown-item" href="./index.php?page=sanphamct&act=list">Doanh thu theo tháng
+                    <a class="dropdown-item" href="./index.php?page=thongke&act=dttt">Doanh thu theo tháng
                     </a>
                   </li>
                   <li>
-                    <a class="dropdown-item" href="./index.php?page=anh&act=list">Sản phẩm
+                    <a class="dropdown-item" href="./index.php?page=thongke&act=thbl">Tổng hợp bình luận
                     </a>
                   </li>
-                  <li>
-                    <a class="dropdown-item" href="./index.php?page=anh&act=list">Sản phẩm bán chạy
-                    </a>
-                  </li>
+
                 </ul>
               </li>
             </ul>

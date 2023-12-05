@@ -1,7 +1,7 @@
 <?php
   function san_pham_insert($tensp, $loai, $gia, $mota)
   {
-    $ngay_them = date('Y-m-d');
+    $ngay_them = date('d-m-Y');
     $sql = "INSERT INTO sanpham(ten_sp, ma_dm, gia, ngay_nhap, mota) VALUES (?,?,?,?,?)";
     pdo_execute($sql, $tensp, $loai, $gia, $ngay_them, $mota);
   }

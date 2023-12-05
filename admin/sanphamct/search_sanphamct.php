@@ -14,6 +14,10 @@ if (isset($_POST['find'])) {
 
 $datamau = select_mau(0);
 $datacl = select_cl(0);
+if (isset($_GET['idspct'])) {
+  spct_delete($_GET['idspct']);
+  header('Location: index.php?page=sanphamct&act=search');
+}
 ?>
 
 <div class="container" id="main">
@@ -31,6 +35,7 @@ $datacl = select_cl(0);
           <label for="input-loai" class="col-sm-3 col-form-label">Màu</label>
           <div class="col-sm-9">
             <select class="form-control" id="input-SPCT" name="ten_mau">
+              <option value="0">Chọn màu</option>
               <?php foreach ($datamau as $value) : ?>
 
               <option value="<?= $value['id'] ?>"><?= $value['ten_mau'] ?></option>
@@ -42,6 +47,8 @@ $datacl = select_cl(0);
           <label for="input-loai" class="col-sm-3 col-form-label">Chất liệu</label>
           <div class="col-sm-9">
             <select class="form-control" id="input-SPCT" name="ten_cl">
+
+              <option value="0">Chọn chất liệu</option>
               <?php foreach ($datacl as $value) : ?>
 
               <option value="<?= $value['id'] ?>"><?= $value['ten_cl'] ?></option>
@@ -91,14 +98,14 @@ $datacl = select_cl(0);
 
       <tr>
         <td></td>
-        <td><?= $id ?></td>
+        <td><?= $ma_sp ?></td>
 
         <td><?= $ten_mau ?></td>
         <td><?= $ten_cl ?></td>
         <td><?= $so_luong ?></td>
         <td><?= $luot_xem ?></td>
         <td>
-          <a href="index.php?idspct=<?= $id ?>&page=sanphamct&act=xoa" class="btn btn-danger"
+          <a href="index.php?idspct=<?= $id ?>&page=sanphamct&act=search" class="btn btn-danger"
             onclick="return confirm('Bạn có muốn xóa hay không?')">
             Xóa
           </a>

@@ -1,9 +1,9 @@
 <?php
 $msg = "";
-$h2 = "THÊM MỚI SẢN PHẨM";
+$h2 = "THÊM MỚI SẢN PHẨM BIẾN THỂ";
 $idspct = $_GET['idspct'] ?? "";
 if ($idspct != "") {
-    $h2 = "CHỈNH SỬA SẢN PHẨM CHI TIẾT";
+    $h2 = "CHỈNH SỬA SẢN PHẨM BIẾN THỂ";
     $result = spct_select_by_id($idspct);
 } else {
     $result = '';
@@ -11,20 +11,17 @@ if ($idspct != "") {
 $datamau = select_mau();
 $datacl = select_cl();
 if (isset($_POST['submit'])) {
-    $idspct = $_POST['idspct'] ?? "";
-    $ten_sp = $_POST['ten_sp'] ?? "";
-
+    $ma_sp = $_POST['ma_sp'] ?? "";
     $ten_mau = $_POST['ten_mau'] ?? "";
     $ten_cl = $_POST['ten_cl'] ?? "";
     $so_luong = $_POST['so_luong'] ?? "";
-    $luot_xem = $_POST['luot_xem'] ?? "";
-    if ($ten_mau != "" && $ten_cl != "" && $idspct  != "" && $so_luong != "") {
-        if ($id != "") {
-            spct_update($idspct, $ma_sp, $ten_mau, $ten_cl, $so_luong, $luot_xem);
+    if ($ma_sp != "" && $ten_cl != "" && $ten_mau != "" && $so_luong != "") {
+        if ($idspct != "") {
+            spct_update($idspct, $ma_sp, $ten_mau, $ten_cl, $so_luong);
             $msg = "Chỉnh sửa thành công";
             $color = "green";
         } else {
-            spct_insert($idspct, $ma_sp, $ten_mau, $ten_cl, $so_luong, $luot_xem);
+            spct_insert($ma_sp, $ten_mau, $ten_cl, $so_luong);
             $msg = "Thêm mới thành công";
             $color = "green";
         }
@@ -41,10 +38,17 @@ if (isset($_POST['submit'])) {
       <form method="post" action="">
         <legend class="text-center mb-4"><?= $h2 ?></legend>
         <div class="form-group row mb-3">
-          <label for="id" class="col-sm-3 col-form-label">Mã sản phẩm</label>
+          <label for="id" class="col-sm-3 col-form-label">Mã biến thể</label>
           <div class="col-sm-9">
             <input type="text" class="form-control" id="id" disabled name="idspct"
               value="<?= $result['id'] ?? "AUTO NUMBER" ?>" />
+          </div>
+        </div>
+        <div class="form-group row mb-3">
+          <label for="id" class="col-sm-3 col-form-label">Mã Sản phẩm</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" id="id" name="ma_sp" value="<?= $result['ma_sp'] ?? "" ?>"
+              placeholder="Mã sản phẩm" />
           </div>
         </div>
 
@@ -61,11 +65,7 @@ if (isset($_POST['submit'])) {
               <?php endforeach; ?>
             </select>
           </div>
-
-
-        </div>
-        <div class="form-group row mb-3">
-          <label for="input-mau" class="col-sm-3 col-form-label">Chất liệu</label>
+          <label for="input-mau" class="col-sm-3 col-form-label" style="text-align: right;">Chất liệu</label>
           <div class="col-sm-3">
             <select class="form-control" id="input-mau" name="ten_cl">
               <?php foreach ($datacl as $value) : ?>
@@ -78,7 +78,6 @@ if (isset($_POST['submit'])) {
             </select>
           </div>
 
-
         </div>
         <div class="form-group row mb-3">
           <label for="input-name" class="col-sm-3 col-form-label">Số lượng</label>
@@ -90,7 +89,7 @@ if (isset($_POST['submit'])) {
         <div class="form-group row mb-3">
           <label for="input-name" class="col-sm-3 col-form-label">Lượt xem</label>
           <div class="col-sm-9">
-            <input type="text" class="form-control" id="input-name" placeholder="Lượt xem" name="luot_xem"
+            <input type="text" class="form-control" id="input-name" placeholder="Lượt xem" name="luot_xem" disabled
               value="<?= $result['luot_xem'] ?? "" ?>" />
           </div>
         </div>

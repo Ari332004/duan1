@@ -1,7 +1,7 @@
 <?php
 function insert_binhluan($noidung, $ma_user,$ma_sp,$rate)
 {
-    $ngay_bl = date('Y-m-d');
+    $ngay_bl = date('d-m-Y');
     $sql = "insert into binhluan(noi_dung,ma_user,ma_sp,ngay_bl,rate) values('$noidung','$ma_user','$ma_sp','$ngay_bl','$rate')";
     pdo_execute($sql);
 }

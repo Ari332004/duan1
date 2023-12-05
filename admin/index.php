@@ -7,6 +7,7 @@ include_once '../models/sanphamct.php';
 include_once '../models/binhluan.php';
 include_once '../models/taikhoan.php';
 include_once '../models/img.php';
+include_once '../models/thongke.php';
 
 include_once './header.php';
 
@@ -112,6 +113,29 @@ if (isset($_GET['page']) && isset($_GET['act'])) {
                 break;
             }
             break;
+        case 'thongke_sp':
+          switch ($act){
+            case 'list':
+              include_once './thongke/thongke_sp.php';
+                    break;
+                }
+              break;
+              case 'thongke':
+                switch ($act){
+                    case 'list':
+                      include_once './thongke/thongke.php';
+                      break;
+                    case 'search':
+                      include_once './thongke/search_sp.php';
+                      break;
+                    case 'dttt':
+                      include_once './thongke/doanhthu_tt.php';
+                      break;
+                    case 'thbl':
+                      include_once './thongke/tonghopBL.php';
+                      break;
+                  }
+                break;
         case 'user':
             include_once './views/user/user.php';
             break;

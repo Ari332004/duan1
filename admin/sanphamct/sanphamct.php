@@ -41,6 +41,7 @@ $arrID = [];
       <thead>
         <tr>
           <th></th>
+          <th scope="col">Mã Biến thể</th>
           <th scope="col">Mã SP</th>
           <th scope="col">Màu </th>
           <th scope="col">Chất lượng</th>
@@ -57,6 +58,7 @@ $arrID = [];
         <tr>
           <td><input type="checkbox"></td>
           <td><?= $id ?></td>
+          <td><?= $ma_sp ?></td>
 
           <td><?= $ten_mau ?></td>
           <td><?= $ten_cl ?></td>
