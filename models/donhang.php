@@ -6,7 +6,7 @@
 
 function selectall_donhang()
 {
-  $sql = "SELECT donhang.id, username, donhang.phone, donhang.dia_tri, donhang.ngay_dat_hang, thanhtoan.mota, donhang.tong,trangthaidh.mota
+  $sql = "SELECT donhang.id, username, donhang.phone, donhang.dia_tri, donhang.ngay_dat_hang, thanhtoan.mota, donhang.tong,trangthaidh.mota,donhang.ma_ttdh
     FROM donhang 
     JOIN users ON donhang.ma_user = users.id 
     JOIN trangthaidh ON donhang.ma_ttdh=trangthaidh.id
@@ -30,10 +30,10 @@ function ctdh_update($id, $ma_ttdh)
 }
 function select_trangthai_by_id($idctdh)
 {
-  $sql = " SELECT  chitietdonhang.ma_dh,chitietdonhang.id as ctdh , trangthaidh.id,trangthaidh.mota 
+  $sql = " SELECT  donhang.id,donhang.id as ctdh , trangthaidh.id,trangthaidh.mota 
     FROM trangthaidh
-    JOIN chitietdonhang ON trangthaidh.id=chitietdonhang.ma_dh
-    WHERE chitietdonhang.id=?
+    JOIN donhang ON trangthaidh.id=donhang.ma_ttdh
+    WHERE donhang.id=?
     ";
 
   return pdo_query_one($sql, $idctdh);

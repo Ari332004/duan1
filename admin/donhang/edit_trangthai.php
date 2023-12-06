@@ -11,9 +11,13 @@ if (isset($_POST['submit'])) {
     $ma_ttdh = $_POST['ma_ttdh'] ?? "";
     $id = $_POST['madh'] ?? "";
 
-    if ($ma_ttdh != "") {
+    if ($ma_ttdh >= $result['id']) {
 
         ctdh_update($result['ctdh'], $ma_ttdh);
+        header('location: index.php?page=donhang&act=list');
+    } else {
+      $msg = "Vui long nhập đúng dữ liệu";
+      $color = "red";
     }
 }
 ?>
@@ -34,7 +38,9 @@ if (isset($_POST['submit'])) {
           <div class="col-sm-3">
             <select class="form-control" id="input-loai" name="ma_ttdh">
               <?php foreach ($dataloai as $value) : ?>
+              <?php if($value['id'] < 4):?>
               <option value="<?= $value['id'] ?>" <?php if ($value['id'] == $result['id']) : ?>selected<?php endif; ?>>
+                <?php endif; ?>
                 <?= $value['mota'] ?>
               </option>
               <?php endforeach; ?>
