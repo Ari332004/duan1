@@ -27,6 +27,10 @@ $arrID = [];
     upStatus($_GET['status']);
     header('Location: index.php?page=binhluan&act=list');
   }
+  if (isset($_GET['idBL'])) {
+    binhluan_delete($_GET['idBL']);
+    header('Location: index.php?page=binhluan&act=list');
+  }
 ?>
 <form action="" method="post">
   <legend class="text-center mb-4">Danh sách bình luận</legend>
@@ -72,7 +76,7 @@ $arrID = [];
               Duyệt
             </a>
             <?php endif ?>
-            <a href="index.php?idBL=<?= $id ?>&page=binhluan&act=xoa" class="btn btn-danger"
+            <a href="index.php?idBL=<?= $id ?>&page=binhluan&act=list" class="btn btn-danger"
               onclick="return confirm('Bạn có muốn xóa hay không?')">
               Xóa
             </a>

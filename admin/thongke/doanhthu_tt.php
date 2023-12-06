@@ -38,129 +38,124 @@ if (count($results) > 0) {
 $dataJson = json_encode($data);
 ?>
 
-<!DOCTYPE html>
-<html>
 
-<head>
-  <meta charset="UTF-8">
-  <title>Thống kê doanh thu</title>
-  <style>
-  body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f5f5f5;
-  }
+<style>
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f5f5f5;
+}
 
-  .container {
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    height: 100vh;
-  }
+.container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  height: 100vh;
+}
 
-  .chart-container {
-    width: 70%;
-    height: 500px;
-    background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    border-radius: 4px;
-    padding: 20px;
-    box-sizing: border-box;
-  }
+.chart-container {
+  width: 70%;
+  height: 500px;
+  background-color: #fff;
+  /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
+  border-radius: 4px;
+  padding: 20px;
+  box-sizing: border-box;
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
+}
 
-  form {
-    width: 30%;
-    background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    border-radius: 4px;
-    padding: 20px;
-    box-sizing: border-box;
-  }
+form {
+  width: 30%;
+  background-color: #fff;
+  /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
+  border-radius: 4px;
+  padding: 20px;
+  box-sizing: border-box;
+}
 
-  h2 {
-    margin-top: 0;
-    font-size: 24px;
-    font-weight: bold;
-  }
+h2 {
+  margin-top: 0;
+  font-size: 24px;
+  font-weight: bold;
+}
 
-  label {
-    display: block;
-    margin-bottom: 10px;
-    font-weight: bold;
-  }
+label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
 
-  input[type="number"] {
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
+input[type="number"] {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
 
-  input[type="submit"] {
-    padding: 8px 16px;
-    background-color: #4CAF50;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
+input[type="submit"] {
+  padding: 8px 16px;
+  background-color: #4CAF50;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
 
-  input[type="submit"]:hover {
-    background-color: #45a049;
-  }
-  </style>
-  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-  <script type="text/javascript">
-  google.charts.load('current', {
-    packages: ['corechart']
-  });
-  google.charts.setOnLoadCallback(drawChart);
+input[type="submit"]:hover {
+  background-color: #45a049;
+}
+</style>
 
-  function drawChart() {
-    var data = google.visualization.arrayToDataTable(<?php echo $dataJson; ?>);
+<script type="text/javascript">
+google.charts.load('current', {
+  packages: ['corechart']
+});
+google.charts.setOnLoadCallback(drawChart);
 
-    var options = {
-      title: 'Doanh thu theo tháng',
-      height: 400,
-      legend: {
-        position: 'none'
+function drawChart() {
+  var data = google.visualization.arrayToDataTable(<?php echo $dataJson; ?>);
+
+  var options = {
+    title: 'Doanh thu theo tháng',
+    height: 400,
+    legend: {
+      position: 'none'
+    },
+    vAxis: {
+      title: 'Doanh thu',
+    },
+    hAxis: {
+      title: 'Tháng',
+      format: '0', // Định dạng hiển thị số nguyên
+      viewWindow: {
+        max: 12
       },
-      vAxis: {
-        title: 'Doanh thu',
-      },
-      hAxis: {
-        title: 'Tháng',
-        format: '0', // Định dạng hiển thị số nguyên
-        viewWindow: {
-          max: 12
-        },
-        ticks: data.getColumnRange(0) // Sử dụng các giá trị tháng từ dữ liệu
+      ticks: data.getColumnRange(0) // Sử dụng các giá trị tháng từ dữ liệu
 
-      }
+    }
 
-    };
+  };
 
-    var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
-    chart.draw(data, options);
-  }
-  </script>
-</head>
+  var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+  chart.draw(data, options);
+}
+</script>
 
-<body>
-  <div class="container">
-    <div class="chart-container" id="chart_div"></div>
+<div class="container d-flex flex-row" style="
+  background-color: rgb(255, 255, 255);">
+  <div class="chart-container" id="chart_div"></div>
 
-    <form method="POST" action="">
-      <h2>Tổng doanh thu: <?php echo $total_revenue; ?> VNĐ</h2>
-      <label for="year">Năm:</label>
-      <input type="number" id="year" name="year" placeholder="2023    " min="2000" max="2099"
-        value="<?php echo $year; ?>">
+  <form method="POST" action="">
+    <h2>Tổng doanh thu: <?php echo $total_revenue; ?> VNĐ</h2>
+    <label for="year">Năm:</label>
+    <input type="number" id="year" name="year" placeholder="2023    " min="2000" max="2099"
+      value="<?php echo $year; ?>">
 
-      <input type="submit" value="Thống kê"><br><br>
-      <a href="index.php?act=list&page=thongke_sp" class="col-auto"><input class="btn btn-primary mr10 checked"
+    <div class="row mt-3"><input type="submit" class="col-auto" value="Thống kê">
+      <a href="index.php?act=bdngay&page=thongke" class="col-auto"><input class="btn btn-primary mr10 checked"
+          type="button" value="Biểu đồ ngày"></a>
+      <a href="index.php?act=list&page=thongke" class="col-auto"><input class="btn btn-primary mr10 checked"
           type="button" value="Quay lại"></a>
-    </form>
-  </div>
-</body>
-
-</html>
+    </div>
+  </form>
+</div>

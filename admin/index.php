@@ -89,12 +89,10 @@ if (isset($_GET['page']) && isset($_GET['act'])) {
             case 'list':
               include_once './binhluan/binhluan.php';
               break;
-            case 'xoa':
-              if (isset($_GET['idBL'])) {
-                binhluan_delete($_GET['idBL']);
-              }
-              include_once './binhluan/binhluan.php';
-              break;
+          
+              case 'search':
+                include_once './binhluan/search_binhluan.php';
+                break;
           }
           break;
         case 'anh':
@@ -113,26 +111,23 @@ if (isset($_GET['page']) && isset($_GET['act'])) {
                 break;
             }
             break;
-        case 'thongke_sp':
-          switch ($act){
-            case 'list':
-              include_once './thongke/thongke_sp.php';
-                    break;
-                }
-              break;
+       
               case 'thongke':
                 switch ($act){
                     case 'list':
-                      include_once './thongke/thongke.php';
+                      include_once './thongke/thongke_sp.php';
                       break;
-                    case 'search':
-                      include_once './thongke/search_sp.php';
+                    case 'bdngay':
+                      include_once './thongke/thongke.php';
                       break;
                     case 'dttt':
                       include_once './thongke/doanhthu_tt.php';
                       break;
                     case 'thbl':
                       include_once './thongke/tonghopBL.php';
+                      break;
+                    case 'chitietbinhluan':
+                      include_once './thongke/chiTietBL.php';
                       break;
                   }
                 break;

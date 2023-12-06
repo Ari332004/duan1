@@ -27,6 +27,7 @@
     href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css"
     integrity="sha512-Oy+sz5W86PK0ZIkawrG0iv7XwWhYecM3exvUtMKNJMekGFJtVAhibhRPTpmyTj8+lJCkmWfnpxKgT2OopquBHA=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
   <style>
   table .bi-check-circle-fill {
@@ -136,21 +137,17 @@
                   href="./index.php?page=donhang&act=list">Đơn hàng</a>
               </li>
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle <?= ($page == 'page=sanpham' || $page == 'page=sanphamct' || $page == 'page=anh') ? 'active':''?>"
-                  href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <a class="nav-link dropdown-toggle <?= $page == 'page=thongke' ? 'active':''?>" href="#"
+                  id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Thống kê
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <li>
-                    <a class="dropdown-item" href="./index.php?page=thongke_sp&act=list">Sản phẩm
+                    <a class="dropdown-item" href="./index.php?page=thongke&act=list">Sản phẩm
                     </a>
                   </li>
                   <li>
-                    <a class="dropdown-item" href="./index.php?page=thongke&act=dttt">Doanh thu theo tháng
-                    </a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="./index.php?page=thongke&act=thbl">Tổng hợp bình luận
+                    <a class="dropdown-item" href="./index.php?page=thongke&act=thbl">Bình luận
                     </a>
                   </li>
 

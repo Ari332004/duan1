@@ -8,6 +8,14 @@ if (isset($_POST['find'])) {
 
     $dataAll = binhluan_select_all($id,$noi_dung, $ma_user, $ma_sp);
 }
+if (isset($_GET['status'])) {
+  upStatus($_GET['status']);
+  header('Location: index.php?page=binhluan&act=search');
+}
+if (isset($_GET['idBL'])) {
+  binhluan_delete($_GET['idBL']);
+  header('Location: index.php?page=binhluan&act=search');
+}
 ?>
 <div class="container" id="main">
   <div class="row justify-content-center align-items-center mt-4">
@@ -15,7 +23,7 @@ if (isset($_POST['find'])) {
       <form action="" method="post">
         <legend class=" text-center">Tìm kiếm bình luận</legend>
         <div class="form-group row mb-3">
-          <label for="id" class="col-sm-3 col-form-label">Mã tài khoản</label>
+          <label for="id" class="col-sm-3 col-form-label">Mã BL</label>
           <div class="col-sm-9">
             <input type="text" class="form-control" name="ma_user" id="ma_user" placeholder="Mã tài khoản" />
           </div>
@@ -74,7 +82,7 @@ if (isset($_POST['find'])) {
             Duyệt
           </a>
           <?php endif ?>
-          <a href="index.php?idBL=<?= $id ?>&page=binhluan&act=xoa" class="btn btn-danger"
+          <a href="index.php?idBL=<?= $id ?>&page=binhluan&act=search" class="btn btn-danger"
             onclick="return confirm('Bạn có muốn xóa hay không?')">
             Xóa
           </a>

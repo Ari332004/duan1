@@ -35,8 +35,8 @@ function binhluan_select_all($id = 0, $noi_dung = '', $ma_user = 0, $ma_sp = 0)
     if ($id > 0) {
         $sql .= " and id ='" . $id . "'";
     }
-    if ($ma_user != "") {
-        $sql .= " and ma_user like '%" . $ma_user . "%'";
+    if ($ma_user > 0) {
+        $sql .= " and ma_user ='" . $ma_user . "'";
     }
     if ($ma_sp > 0) {
         $sql .= " and ma_sp ='" . $ma_sp . "'";

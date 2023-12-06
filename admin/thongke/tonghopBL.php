@@ -14,7 +14,7 @@ $dataAll = binh_luan_select_by_hang_hoa();
     <table class="table table-striped">
       <thead>
         <tr>
-          <th>HÀNG HÓA</th>
+          <th>SẢN PHẨM</th>
           <th>SỐ BL</th>
           <th>MỚI NHẤT</th>
           <th>CŨ NHẤT</th>
@@ -33,7 +33,8 @@ $dataAll = binh_luan_select_by_hang_hoa();
           <td><?= $moi ?></td>
           <td><?= $cu ?></td>
           <td>
-            <a href="index.php" class="btn btn-secondary">
+            <a href="index.php?tensp=<?= $ten; ?>&idSP=<?= $id; ?>&act=chitietbinhluan&page=thongke"
+              class="btn btn-secondary">
               Xem chi tiết
             </a>
           </td>

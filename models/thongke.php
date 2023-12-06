@@ -53,4 +53,13 @@ function binh_luan_select_by_hang_hoa(){
             GROUP BY sanpham.ten_sp;";
     return pdo_query($sql);
 }
+function binh_luan_select_by_khach_hang($ma_sp){
+  $sql = "SELECT b.*, u.username FROM binhluan b JOIN users u ON u.id=b.ma_user WHERE b.ma_sp=?";
+  return pdo_query($sql, $ma_sp);
+}
+function rate_sanpham($id){
+  $sql = "SELECT r.id, r.mota AS rate_description, COUNT(b.id + 1) AS count FROM rate r LEFT JOIN binhluan b ON r.id = b.rate AND b.ma_sp = ? GROUP BY r.mota
+   order by r.id asc";
+  return pdo_query($sql, $id);
+}
 ?>
