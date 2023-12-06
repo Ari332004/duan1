@@ -65,7 +65,7 @@
             List
           </a>
         </li>
-        <?php if($page != 'page=binhluan'):?>
+        <?php if($page != 'page=binhluan' && $page != 'page=thongke'):?>
         <li class="<?= $act == 'edit' ? 'active':''?>">
           <a href="index.php?<?= $page?>&act=edit">
             <i class="bi bi-pencil-square"></i>
@@ -73,12 +73,14 @@
           </a>
         </li>
         <?php endif?>
+        <?php if($page != 'page=thongke' && $page != 'page=anh'):?>
         <li class="<?= $act == 'search' ? 'active':''?>">
           <a href="./index.php?<?= $page?>&act=search">
             <i class="bi bi-search"></i>
             Search
           </a>
         </li>
+        <?php endif?>
         <!-- <li class="<?= $act == 'statistical' ? 'active':''?>">
           <a href="./index.php?<?= $page?>&act=statistical">
             <i class="bi bi-clipboard-data"></i>
