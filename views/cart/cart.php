@@ -47,15 +47,15 @@
                 </tbody>
               </table>
             </div>
-            <!-- <div class="cart_submit">
-              <button type="submit">update cart</button>
-            </div> -->
+            <div class="cart_submit checkout_btn">
+              <a href="?act=cart">Cập nhật giỏ hàng</a>
+            </div>
           </div>
         </div>
       </div>
 
       <!--coupon code area start-->
-      <div class="coupon_area">
+      <div class=" coupon_area">
         <div class="row">
           <div class="col-lg-6 col-md-6">
             <div class="coupon_code right">

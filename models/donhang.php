@@ -22,7 +22,15 @@ function selectall_ctdh($id)
 
   return pdo_query($sql, $id);
 }
-
+function insert_dh_return_id($mauser,$phone,$diatri,$tt, $total,$fullname){
+  $sql="INSERT INTO donhang(ma_user, phone, dia_tri, ma_tt, tong, hovaten) VALUES (?,?,?,?,?,?);
+  SELECT LAST_INSERT_ID();";
+  return pdo_execute_return_lastInsertID($sql,$mauser,$phone,$diatri,$tt, $total,$fullname);
+}
+function insert_dhct($spct,$dh,$gia,$sl,$anh,$ten){
+  $sql = "INSERT INTO chitietdonhang(ma_spct, ma_dh, gia, so_luong, anh, ten) VALUES (?,?,?,?,?,?)";
+  pdo_execute($sql,$spct,$dh,$gia,$sl,$anh,$ten);
+}
 function ctdh_update($id, $ma_ttdh)
 {
   $sql = "UPDATE donhang SET ma_ttdh=? WHERE id=?";

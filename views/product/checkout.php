@@ -1,3 +1,38 @@
+<?php
+$msg = '';
+$color = 'green';
+if(isset($_POST['muahang'])){
+  $fullname = $_POST['fullname']??'';
+  $tel = $_POST['phonenumber']??'';
+  $address = $_POST['address']??'';
+  $pttt = $_POST['inlineRadioOptions'] ?? 0;
+  $mauser = isset($_SESSION['user'])?$_SESSION['user']['id']:0;
+  $carts = $_POST['checkout']?? [];
+  if($fullname != '' && $address !='' && $tel!=''){
+    if($pttt!=0){
+    $iddh =  insert_dh_return_id($mauser,$tel,$address,$pttt, $sum_total,$fullname);
+    foreach ($datacart as $key => $cart){
+      insert_dhct($cart['ma_spct'],$iddh,$cart['gia'],$cart['sl'],$cart['anh'],$cart['tensp']);
+      if(isset($_SESSION['user'])){
+        cart_delete($cart['id']);
+      } else {
+        unset($_SESSION['cart']);
+        // $_SESSION['cart'] = array_values($_SESSION['cart']);
+      }
+    }
+    $msg = 'Bạn đã mua hàng thành công';
+    $color = 'green';
+  }else{
+      $msg = 'Vui lòng chọn phương thức thanh toán';
+    $color = 'red';
+    }
+  } else {
+    $msg = 'Vui long nhập đầy đủ thông tin cá nhân';
+    $color = 'red';
+  }
+}
+?>
+
 <form method="post" class="mt-5">
   <div class="container" style="max-width: 90%;color: black;">
     <div class="row">
@@ -13,7 +48,7 @@
         </div> -->
         <div class="form-group mb-3">
           <label for="phone_number" class="form-label">Số điện thoại:</label>
-          <input required="true" type="tel" class="form-control" id="phone_number" name="phone_number"
+          <input required="true" type="tel" class="form-control" id="phone_number" name="phonenumber"
             value="<?= $tel ?>">
         </div>
         <div class="form-group mb-3">
@@ -37,6 +72,8 @@
             <?php $sum_total = 0; ?>
             <?php foreach ($datacart as $key => $cart) : ?>
             <tr>
+              <td style="display: none;"><input type="text" hidden
+                  value="<?= isset($_SESSION['user']) ? $cart['id'] : $key; ?>" name="checkout[]"></td>
               <td><img src="uploads/sanpham/<?= $cart['anh'] ?>" width="100px"></td>
               <td><?= $cart['tensp'] ?></td>
               <td><?= number_format($cart['gia'], 0, '', '.') ?> VNĐ</td>
@@ -83,7 +120,8 @@
                 <?=number_format($sum_total, 0, '', '.')?> VNĐ
               </p>
             </div>
-            <button class="btn btn-success" style="width: 100%;">Hoàn thành</button>
+            <button class="btn btn-success" name="muahang" style="width: 100%;">Hoàn thành</button>
+            <div class="error-msg" style="color: <?= $color ?>;"><?= $msg ?></div>
           </div>
         </div>
 

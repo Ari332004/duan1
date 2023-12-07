@@ -321,8 +321,9 @@ if (isset($_POST['addCart'])) {
                     <div class="action_button">
                       <ul>
                         <li>
-                          <a title="add to cart" href="cart.html"><i class="fa fa-shopping-basket"
-                              aria-hidden="true"></i></a>
+                          <a title="add to cart"
+                            onclick="addToCart(<?= $sp['maspct'] ?>, '<?= $sp['ten_sp'] ?>', <?= $sp['gia'] ?>, '<?= $sp['anhsp'] ?>', 1, <?= isset($_SESSION['user'])?$_SESSION['user']['id']:0; ?>)"><i
+                              class="fa fa-shopping-basket" aria-hidden="true"></i></a>
                         </li>
                       </ul>
                     </div>
