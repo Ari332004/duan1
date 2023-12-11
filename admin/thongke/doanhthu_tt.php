@@ -146,7 +146,7 @@ function drawChart() {
   <div class="chart-container" id="chart_div"></div>
 
   <form method="POST" action="">
-    <h2>Tổng doanh thu: <?php echo $total_revenue; ?> VNĐ</h2>
+    <h2 style="font-size: 20px;">Tổng doanh thu: <?= number_format($total_revenue, 0, '', ','); ?> VNĐ</h2>
     <label for="year">Năm:</label>
     <input type="number" id="year" name="year" placeholder="2023    " min="2000" max="2099"
       value="<?php echo $year; ?>">

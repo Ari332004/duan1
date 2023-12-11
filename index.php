@@ -84,7 +84,16 @@ if (isset($_GET['act'])) {
             include_once './views/login/quenmk.php';
             break;
         case 'user':
+            $datauser = tai_khoan_select_by_id($_SESSION['user']['id']);
             include_once './views/user/user.php';
+            break;
+        case 'myorder':
+            $datauser = tai_khoan_select_by_id($_SESSION['user']['id']);
+            include_once './views/user/myOrder.php';
+            break;
+        case 'myorderdetail':
+            $datauser = tai_khoan_select_by_id($_SESSION['user']['id']);
+            include_once './views/user/myOrderDetail.php';
             break;
         case 'product':
             $spshop=sp_shop();
@@ -130,14 +139,12 @@ if (isset($_GET['act'])) {
         case 'checkout':
             $dspttt=select_all_tt();
               if(isset($_SESSION['user'])){
-                $name=$_SESSION['user']['username'];
-                $address=$_SESSION['user']['dia_tri'];
-                $email=$_SESSION['user']['email'];
-                $tel=$_SESSION['user']['sdt'];
+                $name=test_input($_SESSION['user']['username']);
+                $address=test_input($_SESSION['user']['dia_tri']);
+                $tel=test_input($_SESSION['user']['sdt']);
               } else{
                 $name="";
                 $address="";
-                $email="";
                 $tel="";
               }
             include_once './views/product/checkout.php';

@@ -40,4 +40,12 @@
         pdo_execute($sql, $id);
     }
   }
+  function getMauCl($id){
+    $sql = "SELECT sanphamchitiet.*, mau.ten_mau, chatlieu.ten_cl
+            FROM sanphamchitiet
+            JOIN chatlieu ON sanphamchitiet.ma_cl = chatlieu.id
+            JOIN mau ON sanphamchitiet.ma_mau = mau.id
+            where sanphamchitiet.id = ?";
+    return pdo_query_one($sql, $id);
+  }
 ?>

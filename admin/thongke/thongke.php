@@ -156,7 +156,7 @@ document.querySelector('form').addEventListener('submit', function(event) {
 
   <form method="POST" action="">
     <div>
-      <h2>Tổng doanh thu: <?= number_format($total_revenue, 0, '', ','); ?> VNĐ</h2>
+      <h2 style="font-size: 20px;">Tổng doanh thu: <?= number_format($total_revenue, 0, '', ','); ?> VNĐ</h2>
     </div>
 
     <label for="start_date">Ngày bắt đầu:</label>

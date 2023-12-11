@@ -134,17 +134,17 @@ if (isset($_GET['page']) && isset($_GET['act'])) {
                 break;
                 case 'donhang':
                   switch ($act) {
-                case 'list':
-                  include_once './donhang/donhang.php';
-                  break;
-                case 'chitietdh':
-                  include_once './donhang/chitietdh.php';
-                  break;
-                case 'edit':
-        
-                  include_once './donhang/edit_trangthai.php';
-                  break;
-                }
+                    case 'list':
+                      include_once './donhang/donhang.php';
+                      break;
+                    case 'chitietdh':
+                      include_once './donhang/chitietdh.php';
+                      break;
+                    case 'edit':
+            
+                      include_once './donhang/edit_trangthai.php';
+                      break;
+                    }
               break;
 
     }

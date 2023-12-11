@@ -71,11 +71,17 @@ if(isset($_POST['muahang'])){
           <tbody>
             <?php $sum_total = 0; ?>
             <?php foreach ($datacart as $key => $cart) : ?>
+            <?php $mauCL = getMauCl($cart['ma_spct']) ?>
             <tr>
               <td style="display: none;"><input type="text" hidden
                   value="<?= isset($_SESSION['user']) ? $cart['id'] : $key; ?>" name="checkout[]"></td>
               <td><img src="uploads/sanpham/<?= $cart['anh'] ?>" width="100px"></td>
-              <td><?= $cart['tensp'] ?></td>
+              <td>
+                <div class="d-flex flex-column"><?= $cart['tensp'] ?>
+                  <span><?= 'Màu: '. $mauCL['ten_mau']?></span>
+                  <span><?= 'Chất liệu: '.$mauCL['ten_cl']?></span>
+                </div>
+              </td>
               <td><?= number_format($cart['gia'], 0, '', '.') ?> VNĐ</td>
               <td><?= $cart['sl'] ?></td>
               <td><?= number_format((int)$cart['gia'] * (int)$cart['sl'], 0, '', '.') ?> VNĐ</td>

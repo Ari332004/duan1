@@ -8,6 +8,10 @@ function tai_khoan_update($ma_kh, $mat_khau, $ho_ten, $email, $hinh, $vai_tro, $
   $sql = "UPDATE users SET password=?,username=?,email=?,img=?,vai_tro=?,sdt=?,dia_tri=? WHERE id=?";
   pdo_execute($sql, $mat_khau, $ho_ten, $email, $hinh, $vai_tro==1, $tel, $address, $ma_kh);
 }
+function update_user($ma_kh, $ho_ten, $email, $hinh, $tel,$address){
+  $sql = "UPDATE users SET username=?,email=?,img=?,sdt=?,dia_tri=? WHERE id=?";
+  pdo_execute($sql, $ho_ten, $email, $hinh, $tel, $address, $ma_kh);
+}
 
 function tai_khoan_delete($ma_kh){
   $sql = "DELETE FROM users  WHERE id=?";

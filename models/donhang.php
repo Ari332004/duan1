@@ -4,18 +4,25 @@
     return pdo_query($sql);
   }
 
-function selectall_donhang()
+function selectall_donhang($user=0,$tt=0)
 {
-  $sql = "SELECT donhang.id, username, donhang.phone, donhang.dia_tri, donhang.ngay_dat_hang, thanhtoan.mota, donhang.tong,trangthaidh.mota,donhang.ma_ttdh
+  $sql = "SELECT donhang.id, username, donhang.phone, donhang.dia_tri, donhang.ngay_dat_hang, thanhtoan.mota, donhang.tong,trangthaidh.mota,donhang.ma_ttdh,donhang.hovaten
     FROM donhang 
-    JOIN users ON donhang.ma_user = users.id 
+    LEFT  JOIN users ON donhang.ma_user = users.id 
     JOIN trangthaidh ON donhang.ma_ttdh=trangthaidh.id
-    JOIN thanhtoan ON donhang.ma_tt = thanhtoan.id";
+    JOIN thanhtoan ON donhang.ma_tt = thanhtoan.id
+    WHERE 1";
+  if ($user > 0) {
+    $sql .= " and ma_user ='" . $user . "'";
+  }
+  if ($tt > 0) {
+    $sql .= " and donhang.ma_ttdh ='" . $tt . "'";
+  }
   return pdo_query($sql);
 }
 function selectall_ctdh($id)
 {
-  $sql = "SELECT chitietdonhang.id ,chitietdonhang.ten,chitietdonhang.gia,chitietdonhang.so_luong,chitietdonhang.anh
+  $sql = "SELECT chitietdonhang.id ,chitietdonhang.ten,chitietdonhang.gia,chitietdonhang.so_luong,chitietdonhang.anh,chitietdonhang.ma_spct
     FROM chitietdonhang
     WHERE chitietdonhang.ma_dh=?
     ";
@@ -52,4 +59,5 @@ function selectall_trangthaidh()
   $sql = "SELECT * FROM trangthaidh";
   return pdo_query($sql);
 }
+
 ?>

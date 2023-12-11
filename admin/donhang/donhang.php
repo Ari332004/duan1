@@ -5,8 +5,7 @@
   <table class="table table-striped">
     <thead>
       <tr>
-        <th></th>
-        <th scope="col">Mã</th>
+        <th scope="col">Mã DH</th>
         <th scope="col">Tên khách hàng</th>
         <th scope="col">Số điện thoại</th>
         <th scope="col">Địa chỉ</th>
@@ -18,9 +17,8 @@
     <tbody>
       <?php foreach ($dataAll as $key => $value) : ?>
       <tr>
-        <td></td>
         <td><?= $value['id']; ?></td>
-        <td><?= $value['username']; ?></td>
+        <td><?= $value['hovaten']; ?></td>
         <td><?= $value['phone']; ?></td>
         <td><?= $value['dia_tri']; ?> </td>
         <td><?= $value['ngay_dat_hang']; ?></td>
