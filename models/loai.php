@@ -29,11 +29,12 @@ function loai_select_all($id=0,$keyten=''){
   if($keyten!=""){
       $sql.=" and ten_dm like '%".$keyten."%'";
   }
+  $sql.=" and status = 0";
   return pdo_query($sql);
 }
 
 function loai_select_by_id($id){
-  $sql = "SELECT * FROM danhmuc WHERE id=?";
+  $sql = "SELECT * FROM danhmuc WHERE id=? and status = 0";
   return pdo_query_one($sql,$id);
 }
 ?>

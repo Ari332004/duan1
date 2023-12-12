@@ -124,12 +124,16 @@ if (isset($_GET['act'])) {
         case 'productdetail':
             $datasp = '';
             if(isset($_GET['masp'])){
-                $datasp = sp_detail($_GET['masp']);
+                if(isset($_POST['produc_color']) && isset($_POST['produc_cl'])){
+                    $datasp = sp_detail_mau_cl($_POST['masp'],$_POST['produc_color'],$_POST['produc_cl']);
+                } else{
+                    $datasp = sp_detail($_GET['masp']);
+                }
                 $dsmau = detail_mau($datasp['ma_sp']);
                 $dschatlieu = detail_cl($datasp['ma_sp']);
                 $dsanh = detail_anh($datasp['ma_sp']);
                 $spnew = sp_home($datasp['ma_dm']);
-                $databl = binhluan_select_detail($_GET['masp']);
+                $databl = binhluan_select_detail($datasp['ma_sp']);
             }
             include_once './views/product/productdetail.php';
             break;

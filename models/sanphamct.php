@@ -64,9 +64,14 @@ function select_cl()
 function sp_detail($id){
   $sql = "SELECT *,sanphamchitiet.id as maspct FROM sanphamchitiet 
           JOIN sanpham ON sanphamchitiet.ma_sp = sanpham.id
-          WHERE sanphamchitiet.ma_sp=?
-          LIMIT 1";
+          WHERE sanphamchitiet.id=? LIMIT 1";
   return pdo_query_one($sql, $id);
+}
+function sp_detail_mau_cl($id,$ma_mau,$mau_cl){
+  $sql = "SELECT *,sanphamchitiet.id as maspct FROM sanphamchitiet 
+          JOIN sanpham ON sanphamchitiet.ma_sp = sanpham.id
+          WHERE sanphamchitiet.ma_sp=? and ma_mau = ? and ma_cl = ? LIMIT 1";
+  return pdo_query_one($sql, $id,$ma_mau,$mau_cl);
 }
 function detail_cl($ma_sp){
     $sql= "SELECT DISTINCT  chatlieu.id, chatlieu.ten_cl FROM sanphamchitiet 

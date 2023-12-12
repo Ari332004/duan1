@@ -21,6 +21,7 @@
   <!-- Plugins CSS -->
   <link rel="stylesheet" href="assets/css/plugins.css" />
 
+
   <!-- Main Style CSS -->
   <link rel="stylesheet" href="assets/css/style.css" />
 </head>
@@ -40,10 +41,9 @@
       <div class="welcome_text">
         <ul>
           <li>
-            <span>Free Delivery:</span> Take advantage of our time to save
-            event
+            <span>Giao hàng miễn phí:</span> Tận dụng cơ hội để tiết kiệm thời gian của chúng tôi
           </li>
-          <li><span>Free Returns *</span> Satisfaction guaranteed</li>
+          <li><span>Trả hàng miễn phí *</span> Đảm bảo hài lòng</li>
         </ul>
       </div>
       <div class="search_bar">
@@ -170,10 +170,9 @@
             <div class="welcome_text">
               <ul>
                 <li>
-                  <span>Free Delivery:</span> Take advantage of our time to
-                  save event
+                  <span>Giao hàng miễn phí:</span> Tận dụng cơ hội để tiết kiệm thời gian của chúng tôi
                 </li>
-                <li><span>Free Returns *</span> Satisfaction guaranteed</li>
+                <li><span>Trả hàng miễn phí *</span> Đảm bảo hài lòng</li>
               </ul>
             </div>
           </div>

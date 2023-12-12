@@ -37,16 +37,18 @@
     if($keymota!=""){
       $sql.=" and mota like '%".$keymota."%'";
   }
+  
+  $sql.=" and status = 0 ";
     $sql.=" order by id desc";
     return pdo_query($sql);
 }
 
 function san_pham_select_by_id($idsp){
-    $sql = "SELECT * FROM sanpham WHERE id=?";
+    $sql = "SELECT * FROM sanpham WHERE id=? and status = 0";
     return pdo_query_one($sql, $idsp);
 }
 function loai_select_all_sp(){
-  $sql = "SELECT * FROM danhmuc";
+  $sql = "SELECT * FROM danhmuc where status = 0";
   return pdo_query($sql);
 }
 
@@ -66,6 +68,7 @@ function sp_home($iddm=0){
     if($iddm>0){
       $sql.=" and ma_dm ='".$iddm."'";
   }
+  $sql.=" and status = 0 ";
     $sql.=" ORDER BY id DESC 
               LIMIT 0, 10";
   return pdo_query($sql);
@@ -81,6 +84,7 @@ function sp_shop($iddm=0,$keyten=""){
     if($keyten!=""){
       $sql.=" and ten_sp like '%".$keyten."%'";
     }
+    $sql.=" and status = 0 ";
     $sql.=" ORDER BY id DESC";
   return pdo_query($sql);
 }
@@ -88,7 +92,7 @@ function filterPrice($max, $min){
   $sql = "SELECT sanpham.*, sanphamct.* FROM sanpham 
           JOIN ( SELECT ma_sp, MIN(id) as maspct
                   FROM sanphamchitiet GROUP BY ma_sp ) as sanphamct ON sanpham.id = sanphamct.ma_sp
-          where gia > ? and gia < ?"; 
+          where gia > ? and gia < ? and status = 0"; 
   
   return pdo_query($sql,$min, $max);
 }
@@ -103,6 +107,7 @@ function filterMauCl($mau=0, $cl=0){
   if($cl>0){
     $sql.=" and sanphamct.ma_cl ='".$cl."'";
   }
+  $sql.=" and status = 0 ";
   $sql.=" ORDER BY sanpham.id DESC";
   return pdo_query($sql);
 }

@@ -97,7 +97,7 @@
             <div class="col-lg-3">
               <div class="single_product">
                 <div class="product_thumb">
-                  <a class="primary_img" href="index.php?act=productdetail&masp=<?= $sp['id'] ?>"><img
+                  <a class="primary_img" href="index.php?act=productdetail&masp=<?= $sp['maspct'] ?>"><img
                       src="uploads/sanpham/<?= $sp['anhsp']?>" alt="" /></a>
                   <div class="product_action">
                     <div class="hover_action">
@@ -114,12 +114,12 @@
                     </div>
                   </div>
                   <div class="quick_button">
-                    <a href="index.php?act=productdetail" title="quick_view">Xem sản phẩm</a>
+                    <a href="index.php?act=productdetail&masp=<?= $sp['maspct'] ?>" title="quick_view">Xem sản phẩm</a>
                   </div>
                 </div>
                 <div class="product_content">
                   <h3>
-                    <a href="index.php?act=productdetail"><?= $sp['ten_sp'] ?></a>
+                    <a href="index.php?act=productdetail&masp=<?= $sp['maspct'] ?>"><?= $sp['ten_sp'] ?></a>
                   </h3>
                   <span class="current_price"><?= $sp['gia'] ?> VNĐ</span>
                 </div>
@@ -189,7 +189,7 @@
           <div class="col-lg-3">
             <div class="single_product">
               <div class="product_thumb">
-                <a class="primary_img" href="index.php?act=productdetail&masp=<?= $sp['id'] ?>"><img
+                <a class="primary_img" href="index.php?act=productdetail&masp=<?= $sp['maspct'] ?>"><img
                     src="uploads/sanpham/<?= $sp['anhsp']?>" alt="" /></a>
                 <div class="product_action">
                   <div class="hover_action">
@@ -206,12 +206,12 @@
                   </div>
                 </div>
                 <div class="quick_button">
-                  <a href="index.php?act=productdetail" title="quick_view">Xem sản phẩm</a>
+                  <a href="index.php?act=productdetail&masp=<?= $sp['maspct'] ?>" title="quick_view">Xem sản phẩm</a>
                 </div>
               </div>
               <div class="product_content">
                 <h3>
-                  <a href="index.php?act=productdetail"><?= $sp['ten_sp'] ?></a>
+                  <a href="index.php?act=productdetail&masp=<?= $sp['maspct'] ?>"><?= $sp['ten_sp'] ?></a>
                 </h3>
                 <span class="current_price"><?= $sp['gia'] ?> VNĐ</span>
               </div>

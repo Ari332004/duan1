@@ -97,7 +97,7 @@
               <div class="col-lg-4 col-md-4 col-12 spdon">
                 <div class="single_product">
                   <div class="product_thumb">
-                    <a class="primary_img" href="index.php?act=productdetail&masp=<?= $sp['id'] ?>"><img
+                    <a class="primary_img" href="index.php?act=productdetail&masp=<?= $sp['maspct'] ?>"><img
                         src="uploads/sanpham/<?= $sp['anhsp']?>" alt=""></a>
                     <div class="product_action">
                       <div class="hover_action">
@@ -114,19 +114,20 @@
                       </div>
                     </div>
                     <div class="quick_button">
-                      <a href="index.php?act=productdetail&masp=<?= $sp['id'] ?>" title="quick_view">Xem sản phẩm</a>
+                      <a href="index.php?act=productdetail&masp=<?= $sp['maspct'] ?>" title="quick_view">Xem sản
+                        phẩm</a>
                     </div>
                   </div>
 
                   <div class="product_content grid_content">
                     <h3><a class="current_name"
-                        href="index.php?act=productdetail&masp=<?= $sp['id'] ?>"><?= $sp['ten_sp'] ?></a></h3>
+                        href="index.php?act=productdetail&masp=<?= $sp['maspct'] ?>"><?= $sp['ten_sp'] ?></a></h3>
                     <span class="current_price"><?= $sp['gia'] ?> VNĐ</span>
                   </div>
 
 
                   <div class="product_content list_content">
-                    <h3><a href="index.php?act=productdetail&masp=<?= $sp['id'] ?>"><?= $sp['ten_sp'] ?></a></h3>
+                    <h3><a href="index.php?act=productdetail&masp=<?= $sp['maspct'] ?>"><?= $sp['ten_sp'] ?></a></h3>
                     <div class="product_ratting">
                       <ul>
                         <li><a href="#"><i class="fa fa-star"></i></a></li>

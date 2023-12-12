@@ -93,34 +93,14 @@ if (isset($_POST['addCart'])) {
       </div>
       <div class="col-lg-7 col-md-7">
         <div class="product_d_right">
-          <form method="post">
+          <form id="productForm" action="index.php?act=productdetail&masp=<?= $datasp['maspct'] ?>" method="post">
             <h1><?= $datasp['ten_sp'] ?></h1>
+            <input type="text" hidden value="<?= $datasp['ma_sp'] ?>" name="masp">
             <input type="text" hidden value="<?= $datasp['maspct'] ?>" name="id">
             <input type="text" hidden value="<?= $datasp['ten_sp'] ?>" name="name">
             <input type="text" hidden value="<?= $datasp['anhsp'] ?>" name="img">
             <input type="text" hidden value="<?= isset($_SESSION['user']) ? $_SESSION['user']['id'] : 0; ?>"
               name="user">
-            <!-- <div class="product_ratting">
-              <ul>
-                <li>
-                  <a href="#"><i class="fa fa-star"></i></a>
-                </li>
-                <li>
-                  <a href="#"><i class="fa fa-star"></i></a>
-                </li>
-                <li>
-                  <a href="#"><i class="fa fa-star"></i></a>
-                </li>
-                <li>
-                  <a href="#"><i class="fa fa-star"></i></a>
-                </li>
-                <li>
-                  <a href="#"><i class="fa fa-star"></i></a>
-                </li>
-                <li class="review"><a href="#"> 1 review </a></li>
-                <li class="review"><a href="#product_d_info"> Write a review </a></li>
-              </ul>
-            </div> -->
             <div class="product_price">
               <span class="current_price"><?= $datasp['gia'] ?> VNĐ</span>
               <input type="text" hidden value="<?= $datasp['gia'] ?>" name="price">
@@ -133,10 +113,10 @@ if (isset($_POST['addCart'])) {
 
             <div class="product_variant color">
               <h3>Màu</h3>
-              <select class="niceselect_option" id="color" name="produc_color">
+              <select class="niceselect_option" id="color" name="produc_color" onchange="submitForm()">
                 <!-- <option value="0">Chọn màu</option> -->
                 <?php foreach ($dsmau as $key => $value) : ?>
-                <option value="<?= $value['id'] ?> <?= $value['id'] == $datasp['ma_mau'] ? 'selected' : '' ?>">
+                <option value="<?= $value['id'] ?>" <?= $value['id'] == $datasp['ma_mau'] ? ' selected' : '' ?>>
                   <?= $value['ten_mau'] ?>
                 </option>
                 <?php endforeach ?>
@@ -144,10 +124,10 @@ if (isset($_POST['addCart'])) {
             </div>
             <div class="product_variant color">
               <h3>Chất liệu</h3>
-              <select class="niceselect_option" id="color" name="produc_cl">
+              <select class="niceselect_option" id="produc_cl" name="produc_cl" onchange="submitForm()">
                 <!-- <option selected value="0">Chọn chất liệu</option> -->
                 <?php foreach ($dschatlieu as $key => $value) : ?>
-                <option value="<?= $value['id'] ?> <?= $value['id'] == $datasp['ma_cl'] ? 'selected' : '' ?>">
+                <option value="<?= $value['id'] ?>" <?= $value['id'] == $datasp['ma_cl'] ? ' selected' : '' ?>>
                   <?= $value['ten_cl'] ?></option>
                 <?php endforeach ?>
               </select>
@@ -248,7 +228,7 @@ if (isset($_POST['addCart'])) {
               </div>
               <?php endforeach ?>
               <div class="product_review_form">
-                <form action="" method="post">
+                <form method="post">
                   <h2>Bình luận</h2>
                   <div class="row">
                     <div class="col-12">
@@ -313,7 +293,7 @@ if (isset($_POST['addCart'])) {
           <div class="col-lg-3">
             <div class="single_product">
               <div class="product_thumb">
-                <a class="primary_img" href="index.php?act=productdetail&masp=<?= $sp['id'] ?>"><img
+                <a class="primary_img" href="index.php?act=productdetail&masp=<?= $sp['maspct'] ?>"><img
                     src="uploads/sanpham/<?= $sp['anhsp'] ?>" alt="" /></a>
                 <div class="product_action">
                   <div class="hover_action">
@@ -330,12 +310,12 @@ if (isset($_POST['addCart'])) {
                   </div>
                 </div>
                 <div class="quick_button">
-                  <a href="index.php?act=productdetail" title="quick_view">Xem sản phẩm</a>
+                  <a href="index.php?act=productdetail&masp=<?= $sp['maspct'] ?>" title="quick_view">Xem sản phẩm</a>
                 </div>
               </div>
               <div class="product_content">
                 <h3>
-                  <a href="index.php?act=productdetail"><?= $sp['ten_sp'] ?></a>
+                  <a href="index.php?act=productdetail&masp=<?= $sp['maspct'] ?>"><?= $sp['ten_sp'] ?></a>
                 </h3>
                 <span class="current_price"><?= $sp['gia'] ?> VNĐ</span>
               </div>
@@ -387,4 +367,16 @@ function executeRating(stars) {
   });
 }
 executeRating(ratingStars);
+</script>
+
+<script>
+function submitForm() {
+  // Lấy thẻ form
+  var productForm = document.querySelector("#productForm");
+
+
+  // Gửi dữ liệu form khi có sự thay đổi
+  productForm.submit();
+  console.log("Function is called");
+}
 </script>
