@@ -48,4 +48,11 @@
             where sanphamchitiet.id = ?";
     return pdo_query_one($sql, $id);
   }
+  function countSL($id){
+    $sql = "SELECT SUM(sl) AS tong_sl
+    FROM giohang
+    WHERE ma_spct = ?";
+    return pdo_query_one($sql, $id);
+  }
+  
 ?>

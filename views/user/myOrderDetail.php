@@ -136,7 +136,7 @@
                         <span><?= 'Chất liệu: '.$mauCL['ten_cl']?></span>
                       </div>
                     </td>
-                    <td><?= number_format($value['gia'], 0, '', ','); ?> VNĐ</td>
+                    <td><?= number_format($value['gia'], 0, '', ','); ?>₫</td>
                     <td>x<?= $value['so_luong']; ?> </td>
 
 

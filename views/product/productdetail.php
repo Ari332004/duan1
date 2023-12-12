@@ -36,7 +36,7 @@ if (isset($_POST['addCart'])) {
         $dataCart = check_spct_exists($maspct, $mauser);
       }
       if (!empty($dataCart)) {
-        updateSL($maspct, $mauser);
+        updateSL($maspct, $mauser,$slsp);
       } else {
         cart_insert($maspct, $tensp, $giasp, $anhsp, $slsp, $mauser);
       }
@@ -46,7 +46,7 @@ if (isset($_POST['addCart'])) {
         $index = array_search($maspct, array_column($_SESSION['cart'], 'ma_spct'));
       }
       if ($index !== false) {
-        $_SESSION['cart'][$index]['sl'] += 1;
+        $_SESSION['cart'][$index]['sl'] += $slsp;
       } else {
         // Nếu sản phẩm chưa tồn tại thì thêm mới vào giỏ hàng
         $product = [
@@ -102,7 +102,7 @@ if (isset($_POST['addCart'])) {
             <input type="text" hidden value="<?= isset($_SESSION['user']) ? $_SESSION['user']['id'] : 0; ?>"
               name="user">
             <div class="product_price">
-              <span class="current_price"><?= $datasp['gia'] ?> VNĐ</span>
+              <span class="current_price"><?= number_format($datasp['gia'], 0, '', ',') ?>₫</span>
               <input type="text" hidden value="<?= $datasp['gia'] ?>" name="price">
             </div>
             <div class="product_desc">
@@ -134,8 +134,10 @@ if (isset($_POST['addCart'])) {
             </div>
             <div class="product_variant quantity">
               <label>Số lượng</label>
-              <input type="number" min="1" max="<?= $datasp['so_luong'] ?>" value="1" class="product_quantity"
-                name="sl" />
+              <?php  $slgh = countSL($datasp['maspct']); ?>
+              <input type="number" min="1"
+                max="<?= $datasp['so_luong']-$slgh['tong_sl']-array_sum(array_column($_SESSION['cart'], 'sl')); ?>"
+                value="1" class="product_quantity" name="sl" />
               <button class="button" name="addCart">Thêm vào giỏ hàng</button>
             </div>
           </form>
@@ -317,7 +319,7 @@ if (isset($_POST['addCart'])) {
                 <h3>
                   <a href="index.php?act=productdetail&masp=<?= $sp['maspct'] ?>"><?= $sp['ten_sp'] ?></a>
                 </h3>
-                <span class="current_price"><?= $sp['gia'] ?> VNĐ</span>
+                <span class="current_price"><?= $sp['gia'] ?>₫</span>
               </div>
             </div>
           </div>
@@ -335,13 +337,14 @@ if (isset($_POST['addCart'])) {
 //     document.querySelector(".product_quantity").value = 1;
 //   }
 // }
-const input = document.querySelector(".product_quantity");
-input.addEventListener("change", function() {
-  if (this.value < 1) {
-    this.value = 1;
+const inputSl = document.querySelector(".product_quantity");
+inputSl.addEventListener("change", function() {
+  let sl = this.value
+  if (sl < 1) {
+    sl = 1;
   }
-  if (this.value > this.max) {
-    this.value = this.max;
+  if (sl > inputSl.max) {
+    sl = inputSl.max;
   }
 });
 const ratingStars = [...document.getElementsByClassName("rating__star")];

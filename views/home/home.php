@@ -121,7 +121,7 @@
                   <h3>
                     <a href="index.php?act=productdetail&masp=<?= $sp['maspct'] ?>"><?= $sp['ten_sp'] ?></a>
                   </h3>
-                  <span class="current_price"><?= $sp['gia'] ?> VNĐ</span>
+                  <span class="current_price"><?= number_format($sp['gia'], 0, '', ',') ?>₫</span>
                 </div>
               </div>
             </div>
@@ -213,7 +213,7 @@
                 <h3>
                   <a href="index.php?act=productdetail&masp=<?= $sp['maspct'] ?>"><?= $sp['ten_sp'] ?></a>
                 </h3>
-                <span class="current_price"><?= $sp['gia'] ?> VNĐ</span>
+                <span class="current_price"><?= number_format($sp['gia'], 0, '', ',') ?>₫</span>
               </div>
             </div>
           </div>

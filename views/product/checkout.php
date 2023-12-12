@@ -14,9 +14,11 @@ if(isset($_POST['muahang'])){
     foreach ($datacart as $key => $cart){
       insert_dhct($cart['ma_spct'],$iddh,$cart['gia'],$cart['sl'],$cart['anh'],$cart['tensp']);
       if(isset($_SESSION['user'])){
+        minusSl($cart['ma_spct'],$cart['sl']);
         cart_delete($cart['id']);
       } else {
-        unset($_SESSION['cart']);
+        minusSl($cart['ma_spct'],$cart['sl']);
+        unset($_SESSION['cart'][$key]);
         // $_SESSION['cart'] = array_values($_SESSION['cart']);
       }
     }
@@ -82,9 +84,9 @@ if(isset($_POST['muahang'])){
                   <span><?= 'Chất liệu: '.$mauCL['ten_cl']?></span>
                 </div>
               </td>
-              <td><?= number_format($cart['gia'], 0, '', '.') ?> VNĐ</td>
+              <td><?= number_format($cart['gia'], 0, '', '.') ?>₫</td>
               <td><?= $cart['sl'] ?></td>
-              <td><?= number_format((int)$cart['gia'] * (int)$cart['sl'], 0, '', '.') ?> VNĐ</td>
+              <td><?= number_format((int)$cart['gia'] * (int)$cart['sl'], 0, '', '.') ?>₫</td>
             </tr>
             <?php $sum_total += ((int)$cart['gia'] * (int)$cart['sl']); ?>
             <?php endforeach ?>
@@ -123,7 +125,7 @@ if(isset($_POST['muahang'])){
             <div class="total row">
               <p class="col-6">Tổng cộng</p>
               <p class="col-6">
-                <?=number_format($sum_total, 0, '', '.')?> VNĐ
+                <?=number_format($sum_total, 0, '', '.')?>₫
               </p>
             </div>
             <button class="btn btn-success" name="muahang" style="width: 100%;">Hoàn thành</button>

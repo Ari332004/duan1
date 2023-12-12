@@ -89,3 +89,7 @@ function detail_anh($ma_sp){
     $sql= "SELECT * FROM anh WHERE anh.ma_sp=?";
     return pdo_query($sql,$ma_sp);
 }
+function minusSl($id,$sl){
+    $sql= "UPDATE sanphamchitiet SET so_luong = so_luong - ? WHERE id = ?";
+    pdo_execute($sql, $id, $sl);
+}

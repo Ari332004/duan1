@@ -242,7 +242,7 @@
                       </div>
                       <div class="cart_info">
                         <a href="#"><?= $cart['tensp'] ?></a>
-                        <span> <?= $cart['sl'] ?>x <?= $cart['gia'] ?> VNĐ</span>
+                        <span> <?= $cart['sl'] ?>x <?= number_format($cart['gia'], 0, '', ',') ?>₫</span>
                       </div>
                       <div class="cart_remove">
                         <a href="#"><i class="ion-android-close"></i></a>
@@ -255,7 +255,7 @@
                         <tbody>
                           <tr>
                             <td class="text-left">Tổng :</td>
-                            <td class="text-right"><?= $sum_total; ?> VNĐ</td>
+                            <td class="text-right"><?= number_format($sum_total, 0, '', ','); ?>₫</td>
                           </tr>
                         </tbody>
                       </table>

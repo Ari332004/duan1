@@ -2,6 +2,7 @@
 session_start();
 include_once '../../models/pdo.php';
 include_once '../../models/cart.php';
+include_once '../../models/sanphamct.php';
 
 if(isset($_SESSION['user'])){
   $datacart = cartAll($_SESSION['user']['id']);
@@ -31,12 +32,18 @@ if(!empty($datacart)){
       <span><?= 'Chất liệu: '.$mauCL['ten_cl']?></span>
     </div>
   </td>
-  <td class="product-price"><?= number_format($cart['gia'], 0, '', '.') ?> VNĐ</td>
+  <td class="product-price"><?= number_format($cart['gia'], 0, '', '.') ?>₫</td>
   <td class="product_quantity">
-    <input min="1" value="<?= $cart['sl'] ?>" type="number" id="quantity<?= $cart['ma_spct'].$cart['ma_user']?>"
+    <?php
+                        $slmax= spct_select_by_id($cart['ma_spct']);
+                        $slgh = countSL($cart['ma_spct']);
+                      ?>
+    <input min="1"
+      max="<?= $slmax['so_luong']-$slgh['tong_sl']-array_sum(array_column($_SESSION['cart'], 'sl')) + $cart['sl']?>"
+      value="<?= $cart['sl'] ?>" type="number" id="quantity<?= $cart['ma_spct'].$cart['ma_user']?>"
       oninput="updateQuantity(<?= $cart['ma_spct'] ?>,<?= $cart['ma_user'] ?>, <?= $id ?>)" />
   </td>
-  <td class="product_total"><?= number_format((int)$cart['gia'] * (int)$cart['sl'], 0, '', '.') ?> VNĐ
+  <td class="product_total"><?= number_format((int)$cart['gia'] * (int)$cart['sl'], 0, '', '.') ?>₫
   </td>
 </tr>
 <?php
