@@ -29,11 +29,14 @@ function binhluan_select_by_id($ma_user){
     $sql="SELECT * FROM binhluan WHERE ma_user=?";
     return pdo_query_one($sql,$ma_user);
 }
-function binhluan_select_all($id = 0, $noi_dung = '', $ma_user = 0, $ma_sp = 0)
+function binhluan_select_all($id = 0, $noi_dung = '', $ma_user = 0, $ma_sp = 0,$tt = false)
 {
     $sql = "SELECT * FROM binhluan WHERE 1";
     if ($id > 0) {
         $sql .= " and id ='" . $id . "'";
+    }
+    if ($tt || $tt == 0) {
+        $sql .= " and trang_thai ='" . $tt . "'";
     }
     if ($ma_user > 0) {
         $sql .= " and ma_user ='" . $ma_user . "'";

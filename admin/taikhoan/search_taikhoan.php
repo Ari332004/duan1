@@ -71,9 +71,9 @@
           <th scope="col">Mã</th>
           <th scope="col">Username</th>
           <th scope="col">Email</th>
-          <th scope="col">Phone</th>
-          <th scope="col">Address</th>
-          <th scope="col">Role</th>
+          <th scope="col">SĐT</th>
+          <th scope="col">Địa chỉ</th>
+          <th scope="col">Vai trò</th>
           <th scope="col">Hành động</th>
         </tr>
       </thead>

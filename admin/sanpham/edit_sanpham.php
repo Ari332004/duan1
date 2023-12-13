@@ -15,13 +15,21 @@
     $price = $_POST['gia'] ?? "";
     $iddm = $_POST['loai'] ?? "";
     $mota = $_POST['mota'] ?? "";
+    $anh = $result['anhsp'] ?? "";
+    if($_FILES['anh']['name'] != ""){
+      if($anh != ''){
+        unlink("../uploads/sanpham/".$result['anhsp']);
+      }
+      $anh = "sanpham".$result['id']."_" . $_FILES['anh']['name'];
+      move_uploaded_file($_FILES['anh']['tmp_name'], "../uploads/sanpham/$anh");
+    }
     if ($name != "" && $price != "") {
       if ($idSP != "") {
-        san_pham_update($idSP, $name, $iddm, $price, $mota);
+        san_pham_update($idSP, $name, $iddm, $price, $mota,$anh);
         $msg = "Chỉnh sửa thành công";
         $color = "green";
       } else {
-        san_pham_insert($name,$iddm, $price,$mota);
+        san_pham_insert($name,$iddm, $price,$mota,$anh);
         $msg = "Thêm mới thành công";
         $color = "green";
       }
@@ -34,7 +42,7 @@
 <div class="container" id="main">
   <div class="row justify-content-center align-items-center mt-4" id="container-form">
     <div class="col-lg-6 col-lg-offset-4">
-      <form method="post" action="">
+      <form method="post" action="" enctype="multipart/form-data">
         <legend class="text-center mb-4"><?= $h2 ?></legend>
         <div class="form-group row mb-3">
           <label for="id" class="col-sm-3 col-form-label">Mã sản phẩm</label>
@@ -66,9 +74,13 @@
 
           <label for="input-gia" class="col-sm-3 col-form-label" style="text-align: right">Giá</label>
           <div class="col-sm-3">
-            <input type="number" class="form-control" id="input-gia" placeholder="Giá" name="gia"
+            <input min="1" type="number" class="form-control" id="input-gia" placeholder="Giá" name="gia"
               value="<?= $result['gia'] ?? "" ?>" />
           </div>
+        </div>
+        <div class="form-group row mb-3">
+          <label class="col-sm-3 col-form-label" for="image">Ảnh</label>
+          <div class="col-sm-9"><input type="file" class="form-control-file" id="image" name="anh"></div>
         </div>
         <div class="form-group row mb-3">
           <label for="input-mota" class="col-sm-3 col-form-label">Mô tả</label>

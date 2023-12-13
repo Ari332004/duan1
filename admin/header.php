@@ -65,7 +65,7 @@
             List
           </a>
         </li>
-        <?php if($page != 'page=binhluan' && $page != 'page=thongke'):?>
+        <?php if($page != 'page=binhluan' && $page != 'page=thongke' && $page != 'page=donhang'):?>
         <li class="<?= $act == 'edit' ? 'active':''?>">
           <a href="index.php?<?= $page?>&act=edit">
             <i class="bi bi-pencil-square"></i>

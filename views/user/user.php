@@ -89,7 +89,7 @@ $color = 'green';
       $address = test_input($address);
       $ktra = true;
       if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $msg = "Vui lòng nhập đúng dữ liệu";
+        $msg = "Vui lòng nhập đúng email";
         $color = 'red';
         $ktra = false;
       } else {
@@ -98,7 +98,7 @@ $color = 'green';
       $pattern = '/^0|\+84[ \.]?([3-9]\d{2})[ \.]?\d{3}[ \.]?\d{3}$/';
 
       if (!preg_match($pattern, $tel)) {
-        $msg = "Vui lòng nhập đúng dữ liệu";
+        $msg = "Vui lòng nhập đúng số điện thoại";
         $color = 'red';
         $ktra = false;
       } else {

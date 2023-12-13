@@ -8,6 +8,11 @@
     $dataAll = san_pham_select_all($name,$loai,$id, $mota);
   }
   $dataloai = loai_select_all_sp();
+
+  if (isset($_GET['DSP'])) {
+    xoaMemSP($_GET['DSP']);
+    header('Location: index.php?page=sanpham&act=search');
+  }
 ?>
 <div class="container" id="main">
   <div class="row justify-content-center align-items-center mt-4" id="container-form">
@@ -75,7 +80,7 @@
           <td><?= $value['gia']; ?> VNĐ</td>
           <td><?= $value['ngay_nhap']; ?></td>
           <td>
-            <a href="index.php?DSP=<?= $value['id']; ?>&page=sanpham&act=xoa" class="btn btn-danger"
+            <a href="index.php?DSP=<?= $value['id']; ?>&page=sanpham&act=search" class="btn btn-danger"
               onclick="return confirm('Bạn có muốn xóa hay không?')">
               Xóa
             </a>

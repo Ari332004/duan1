@@ -18,7 +18,7 @@
     // Xóa các mục đã chọn khỏi cơ sở dữ liệu.
     hang_hoa_delete_multi($arrID);
 
-    header('Location: index.php?act=anh');
+    header('Location: index.php?page=anh&act=list');
 
   }
 
@@ -34,6 +34,10 @@
   // Thêm một sự kiện click cho nút `XÓA CÁC MỤC ĐÃ CHỌN` để gọi hàm `deleteItems()`.
   if (isset($_POST['btnDelete'])) {
     deleteItemsA();
+  }
+  if (isset($_GET['DIMG'])) {
+    anh_delete($_GET['DIMG']);
+    header('Location: index.php?page=anh&act=list');
   }
 ?>
 <form action="" method="post">
@@ -67,7 +71,7 @@
           <td><img src="../uploads/sanpham/<?= $value['img_url']; ?>" style="border: 1px solid gray;"
               alt="Hình ảnh sản phẩm" width="75"></td>
           <td>
-            <a href="index.php?DIMG=<?= $value['maanh']; ?>&page=anh&act=xoa" class="btn btn-danger"
+            <a href="index.php?DIMG=<?= $value['maanh']; ?>&page=anh&act=list" class="btn btn-danger"
               onclick="return confirm('Bạn có muốn xóa hay không?')">
               Xóa
             </a>

@@ -9,6 +9,7 @@ include_once '../models/taikhoan.php';
 include_once '../models/img.php';
 include_once '../models/thongke.php';
 include_once '../models/donhang.php';
+include_once '../models/cart.php';
 
 include_once './header.php';
 
@@ -62,11 +63,7 @@ if (isset($_GET['page']) && isset($_GET['act'])) {
                 case 'edit':
                   include_once './sanphamct/edit_spct.php';
                   break;
-                  case 'xoa':
-                    if (isset($_GET['idspct'])) {
-                      spct_delete($_GET['idspct']);
-                    }
-                    include_once './sanphamct/sanphamct.php';
+                  
                 case 'search':
                   include_once './sanphamct/search_sanphamct.php';
                   break;
@@ -104,12 +101,6 @@ if (isset($_GET['page']) && isset($_GET['act'])) {
               case 'edit':
                 include_once './anh/edit_anh.php';
                 break;
-              case 'xoa':
-                if (isset($_GET['DIMG'])) {
-                  anh_delete($_GET['DIMG']);
-                }
-                include_once './anh/anh.php';
-                break;
             }
             break;
        
@@ -137,11 +128,13 @@ if (isset($_GET['page']) && isset($_GET['act'])) {
                     case 'list':
                       include_once './donhang/donhang.php';
                       break;
+                    case 'search':
+                      include_once './donhang/search_dh.php';
+                      break;
                     case 'chitietdh':
                       include_once './donhang/chitietdh.php';
                       break;
                     case 'edit':
-            
                       include_once './donhang/edit_trangthai.php';
                       break;
                     }

@@ -17,7 +17,7 @@
   function loai_delete_multi($arrID)
   {
     foreach ($arrID as $id) {
-      loai_delete($id);
+      xoaMemLoai($id);
     }
   }
 
@@ -25,7 +25,7 @@
     deleteItems();
   }
   if (isset($_GET['DTL'])) {
-    loai_delete($_GET['DTL']);
+    xoaMemLoai($_GET['DTL']);
     header('Location: index.php?page=loai&act=list');
   }
 ?>
@@ -37,8 +37,8 @@
       <a href="#" class="col-auto"><input class="btn btn-primary mr10 checked" type="button" value="CHỌN TẤT CẢ"></a>
       <a href="#" class="col-auto"><input class="btn btn-primary mr10 unchecked" type="button"
           value="BỎ CHỌN TẤT CẢ"></a>
-      <a href="#" class="col-auto"><input class="btn btn-primary mr10" type="submit" name="btnDelete"
-          value="XÓA CÁC MỤC ĐÃ CHỌN"></a>
+      <a href="index.php?act=list&page=loai" class="col-auto"><input class="btn btn-primary mr10" type="submit"
+          name="btnDelete" value="XÓA CÁC MỤC ĐÃ CHỌN"></a>
       <a href="index.php?act=edit&page=loai" class="col-auto"> <input class="btn btn-primary mr20" type="button"
           value="NHẬP THÊM"></a>
     </div>

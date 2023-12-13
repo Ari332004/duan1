@@ -5,6 +5,10 @@
     $id = $_POST['id'] ?? 0;
     $dataAll = loai_select_all($id, $name);
   }
+  if (isset($_GET['DTL'])) {
+    xoaMemLoai($_GET['DTL']);
+    header('Location: index.php?page=loai&act=search');
+  }
 ?>
 <div class="container" id="main">
   <div class="row justify-content-center align-items-center mt-4">
@@ -44,7 +48,7 @@
           <td><?= $value['id']; ?></td>
           <td><?= $value['ten_dm']; ?></td>
           <td>
-            <a href="index.php?DTL=<?= $value['id']; ?>&page=loai&act=xoa" class="btn btn-danger"
+            <a href="index.php?DTL=<?= $value['id']; ?>&page=loai&act=search" class="btn btn-danger"
               onclick="return confirm('Bạn có muốn xóa hay không?')">
               Xóa
             </a>

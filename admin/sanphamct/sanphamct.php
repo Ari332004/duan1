@@ -10,7 +10,7 @@ $arrID = [];
     }
     loai_delete_multi($arrID);
 
-    header('Location: index.php?page=loai&act=list');
+    header('Location: index.php?page=sanphamct&act=list');
   }
 
   function loai_delete_multi($arrID)
@@ -23,6 +23,10 @@ $arrID = [];
   if (isset($_POST['btnDelete'])) {
     deleteItems();
   }
+  if (isset($_GET['idspct'])) {
+    spct_delete($_GET['idspct']);
+    header('Location: index.php?page=sanphamct&act=list');
+  }
 ?>
 <form action="" method="post">
   <legend class="text-center mb-4">Kho Sản Phẩm</legend>
@@ -32,8 +36,8 @@ $arrID = [];
       <a href="#" class="col-auto"><input class="btn btn-primary mr10 checked" type="button" value="CHỌN TẤT CẢ"></a>
       <a href="#" class="col-auto"><input class="btn btn-primary mr10 unchecked" type="button"
           value="BỎ CHỌN TẤT CẢ"></a>
-      <a href="#" class="col-auto"><input class="btn btn-primary mr10" type="submit" name="btnDelete"
-          value="XÓA CÁC MỤC ĐÃ CHỌN"></a>
+      <a href="index.php?act=list&page=sanphamct" class="col-auto"><input class="btn btn-primary mr10" type="submit"
+          name="btnDelete" value="XÓA CÁC MỤC ĐÃ CHỌN"></a>
       <a href="index.php?act=edit&page=sanphamct" class="col-auto"> <input class="btn btn-primary mr20" type="button"
           value="NHẬP THÊM"></a>
     </div>
@@ -56,7 +60,7 @@ $arrID = [];
                 ?>
 
         <tr>
-          <td><input type="checkbox"></td>
+          <td><input type="checkbox" name="check[]" value="<?= $id; ?>" class="check"></td>
           <td><?= $id ?></td>
           <td><?= $ma_sp ?></td>
 
@@ -65,7 +69,7 @@ $arrID = [];
           <td><?= $so_luong ?></td>
           <td><?= $luot_xem ?></td>
           <td>
-            <a href="index.php?idspct=<?=$id?>&page=sanphamct&act=xoa" class="btn btn-danger"
+            <a href="index.php?idspct=<?=$id?>&page=sanphamct&act=list" class="btn btn-danger"
               onclick="return confirm('Bạn có muốn xóa hay không?')">
               Xóa
             </a>

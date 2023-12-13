@@ -16,13 +16,18 @@
     </thead>
     <tbody>
       <?php foreach ($dataAll as $key => $value) : ?>
+      <?php $mauCL = getMauCl($value['ma_spct']) ?>
       <tr>
         <td><?= $value['id']; ?></td>
         <td><img src="../uploads/sanpham/<?=$value['anh']?>" style="border: 1px solid gray;" alt="Hình ảnh sản phẩm"
             width="75"></td>
-        <td><?= $value['ten']; ?></td>
-        <td><?= $value['gia']; ?></td>
-        <td><?= $value['so_luong']; ?> </td>
+        <td>
+          <div class="d-flex flex-column"><?= $value['ten']; ?><span><?= 'Màu: '. $mauCL['ten_mau']?></span>
+            <span><?= 'Chất liệu: '.$mauCL['ten_cl']?></span>
+          </div>
+        </td>
+        <td><?= number_format($value['gia'], 0, '', ','); ?>₫</td>
+        <td>x<?= $value['so_luong']; ?> </td>
 
 
       </tr>

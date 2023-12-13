@@ -37,8 +37,8 @@
       <a href="#" class="col-auto"><input class="btn btn-primary mr10 checked" type="button" value="CHỌN TẤT CẢ"></a>
       <a href="#" class="col-auto"><input class="btn btn-primary mr10 unchecked" type="button"
           value="BỎ CHỌN TẤT CẢ"></a>
-      <a href="#" class="col-auto"><input class="btn btn-primary mr10" type="submit" name="btnDelete"
-          value="XÓA CÁC MỤC ĐÃ CHỌN"></a>
+      <a href="index.php?act=list&page=taikhoan" class="col-auto"><input class="btn btn-primary mr10" type="submit"
+          name="btnDelete" value="XÓA CÁC MỤC ĐÃ CHỌN"></a>
       <a href="index.php?act=edit&page=taikhoan" class="col-auto"> <input class="btn btn-primary mr20" type="button"
           value="NHẬP THÊM"></a>
     </div>
@@ -50,9 +50,9 @@
           <th scope="col">Mã</th>
           <th scope="col">Username</th>
           <th scope="col">Email</th>
-          <th scope="col">Phone</th>
-          <th scope="col">Address</th>
-          <th scope="col">Role</th>
+          <th scope="col">SĐT</th>
+          <th scope="col">Địa chỉ</th>
+          <th scope="col">Vai trò</th>
           <th scope="col">Hành động</th>
         </tr>
       </thead>

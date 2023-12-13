@@ -28,13 +28,16 @@
   {
     // Xóa từng mục khỏi cơ sở dữ liệu.
     foreach ($arrID as $id) {
-      san_pham_delete($id);
+      xoaMemSP($id);
     }
   }
   
-  // Thêm một sự kiện click cho nút `XÓA CÁC MỤC ĐÃ CHỌN` để gọi hàm `deleteItems()`.
   if (isset($_POST['btnDelete'])) {
     deleteItems();
+  }
+  if (isset($_GET['DSP'])) {
+    xoaMemSP($_GET['DSP']);
+    header('Location: index.php?page=sanpham&act=list');
   }
 ?>
 <form action="" method="post">
@@ -44,8 +47,8 @@
       <a href="#" class="col-auto"><input class="btn btn-primary mr10 checked" type="button" value="CHỌN TẤT CẢ"></a>
       <a href="#" class="col-auto"><input class="btn btn-primary mr10 unchecked" type="button"
           value="BỎ CHỌN TẤT CẢ"></a>
-      <a href="#" class="col-auto"><input class="btn btn-primary mr10" type="submit" name="btnDelete"
-          value="XÓA CÁC MỤC ĐÃ CHỌN"></a>
+      <a href="index.php?act=list&page=sanpham" class="col-auto"><input class="btn btn-primary mr10" type="submit"
+          name="btnDelete" value="XÓA CÁC MỤC ĐÃ CHỌN"></a>
       <a href="index.php?act=edit&page=sanpham" class="col-auto"> <input class="btn btn-primary mr20" type="button"
           value="NHẬP THÊM"></a>
     </div>
@@ -76,7 +79,7 @@
           <td><?= $value['gia']; ?> VNĐ</td>
           <td><?= $value['ngay_nhap']; ?></td>
           <td>
-            <a href="index.php?DSP=<?= $value['id']; ?>&page=sanpham&act=xoa" class="btn btn-danger"
+            <a href="index.php?DSP=<?= $value['id']; ?>&page=sanpham&act=list" class="btn btn-danger"
               onclick="return confirm('Bạn có muốn xóa hay không?')">
               Xóa
             </a>

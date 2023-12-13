@@ -11,23 +11,29 @@
   if (isset($_POST['submit'])) {
     $ma_sp = $_POST['ma_sp'] ?? "";
     $id = $_POST['id'] ?? "";
-    $img_url=$_FILES['img_url']['name'];
-      $target_dir = "../uploads/sanpham/";
-      $target_file = $target_dir .basename($_FILES["img_url"]["name"]);
-      if(move_uploaded_file($_FILES["img_url"]["tmp_name"],$target_file)){
-
-      }else{
-
+    $img_url = $result['img_url'] ?? "";
+    if($_FILES['img_url']['name'] != ""){
+      if($img_url != ''){
+        unlink("../uploads/sanpham/".$result['img_url']);
       }
+      $img_url = "sanpham_".$_FILES['img_url']['name'];
+      move_uploaded_file($_FILES['img_url']['tmp_name'], "../uploads/sanpham/$img_url");
+    }
     if ($img_url != "" && $id != "") {
-      if ($idIMG != "") {
-        $kq = anh_update($id, $img_url,$ma_sp);
-        $msg = "Chỉnh sửa thành công";
-        $color = "green";
+      
+      if(!empty(san_pham_select_by_id($ma_sp))){
+        if ($idIMG != "") {
+          $kq = anh_update($id, $img_url,$ma_sp);
+          $msg = "Chỉnh sửa thành công";
+          $color = "green";
+        } else {
+          $kq = anh_insert($img_url,$ma_sp);
+          $msg = "Thêm mới thành công";
+          $color = "green";
+        }
       } else {
-        $kq = anh_insert($img_url,$ma_sp);
-        $msg = "Thêm mới thành công";
-        $color = "green";
+        $msg = "Không tồn tại mã sản phẩm";
+        $color = "red";
       }
     } else {
       $msg = "Vui lòng nhập đầy đủ thông tin";
@@ -60,7 +66,7 @@
             <?php if (!empty($result['img_url'])): ?>
             <img src="../uploads/sanpham/<?= $result['img_url']; ?>" alt="Hình ảnh sản phẩm" width="75" class="mb-2">
             <?php endif; ?>
-            <input type="file" class="form-control" id="input-name" placeholder="Tên danh mục" name="img_url" />
+            <input type="file" class="form-control" id="input-name" name="img_url" />
           </div>
         </div>
         <button class="btn btn-primary" id="submit-btn" name="submit"><?= $idIMG ? 'Cập nhật':'Thêm mới' ?></button>

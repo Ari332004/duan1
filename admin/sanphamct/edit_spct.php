@@ -16,14 +16,20 @@ if (isset($_POST['submit'])) {
     $ten_cl = $_POST['ten_cl'] ?? "";
     $so_luong = $_POST['so_luong'] ?? "";
     if ($ma_sp != "" && $ten_cl != "" && $ten_mau != "" && $so_luong != "") {
-        if ($idspct != "") {
+        
+        if(!empty(san_pham_select_by_id($ma_sp))){
+          if ($idspct != "") {
             spct_update($idspct, $ma_sp, $ten_mau, $ten_cl, $so_luong);
             $msg = "Chỉnh sửa thành công";
             $color = "green";
-        } else {
+          } else {
             spct_insert($ma_sp, $ten_mau, $ten_cl, $so_luong);
             $msg = "Thêm mới thành công";
             $color = "green";
+          }
+        } else {
+          $msg = "Không tồn tại mã sản phẩm";
+          $color = "red";
         }
     } else {
         $msg = "Vui lòng nhập đầy đủ thông tin";

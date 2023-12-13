@@ -37,7 +37,7 @@
                         <span><?= 'Chất liệu: '.$mauCL['ten_cl']?></span>
                       </div>
                     </td>
-                    <td class="product-price"><?= number_format($cart['gia'], 0, '', '.') ?>₫</td>
+                    <td class="product-price"><?= number_format($cart['gia'], 0, '', ',') ?>₫</td>
                     <td class="product_quantity">
                       <?php
                         $slmax= spct_select_by_id($cart['ma_spct']);

@@ -3,10 +3,11 @@ $dataAll = loadall_binhluan(0);
 if (isset($_POST['find'])) {
     $id=$_POST['id']?? 0;
     $noi_dung = $_POST['noi_dung'] ?? "";
+    $tt = $_POST['trangthai'] ?? false;
     $ma_user = $_POST['ma_user'] ?? 0;
     $ma_sp = $_POST['ma_sp'] ?? 0;
 
-    $dataAll = binhluan_select_all($id,$noi_dung, $ma_user, $ma_sp);
+    $dataAll = binhluan_select_all($id,$noi_dung, $ma_user, $ma_sp,$tt);
 }
 if (isset($_GET['status'])) {
   upStatus($_GET['status']);
@@ -35,8 +36,16 @@ if (isset($_GET['idBL'])) {
         </div>
         <div class="form-group row mb-3">
           <label for="username" class="col-sm-3 col-form-label">Mã sản phẩm</label>
-          <div class="col-sm-9"><input type="text" class="form-control" id="ma_sp" name="ma_sp"
+          <div class="col-sm-3"><input type="text" class="form-control" id="ma_sp" name="ma_sp"
               placeholder="Mã sản phẩm"></div>
+          <label for="trangthai" class="col-sm-3 col-form-label" style="text-align: right">Trạng thái</label>
+          <div class="col-sm-3">
+            <select name="trangthai" class="form-control" id="trangthai">
+              <option value="">Tất cả</option>
+              <option value="0">Chưa duyệt</option>
+              <option value="1">Đã duyệt</option>
+            </select>
+          </div>
         </div>
 
         <div class="form-group row mb-3">

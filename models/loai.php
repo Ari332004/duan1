@@ -37,4 +37,8 @@ function loai_select_by_id($id){
   $sql = "SELECT * FROM danhmuc WHERE id=? and status = 0";
   return pdo_query_one($sql,$id);
 }
+function xoaMemLoai($id){
+  $sql= "UPDATE danhmuc SET status = 1 WHERE id = ?";
+    pdo_execute($sql, $id);
+}
 ?>

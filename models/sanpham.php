@@ -1,15 +1,15 @@
 <?php
-  function san_pham_insert($tensp, $loai, $gia, $mota)
+  function san_pham_insert($tensp, $loai, $gia, $mota,$anh)
   {
-    $ngay_them = date('d-m-Y');
-    $sql = "INSERT INTO sanpham(ten_sp, ma_dm, gia, ngay_nhap, mota) VALUES (?,?,?,?,?)";
-    pdo_execute($sql, $tensp, $loai, $gia, $ngay_them, $mota);
+    $ngay_them = date('Y-m-d');
+    $sql = "INSERT INTO sanpham(ten_sp, ma_dm, gia, ngay_nhap, mota,anhsp) VALUES (?,?,?,?,?,?)";
+    pdo_execute($sql, $tensp, $loai, $gia, $ngay_them, $mota,$anh);
   }
   
-  function san_pham_update($idsp, $tensp, $loai, $gia, $mota)
+  function san_pham_update($idsp, $tensp, $loai, $gia, $mota,$anh)
   {
-      $sql = "UPDATE sanpham SET ten_sp=?,ma_dm=?,gia=?,mota=? WHERE id=?";
-      pdo_execute($sql, $tensp, $loai, $gia, $mota, $idsp);
+      $sql = "UPDATE sanpham SET ten_sp=?,ma_dm=?,gia=?,mota=?,anhsp=? WHERE id=?";
+      pdo_execute($sql, $tensp, $loai, $gia, $mota,$anh, $idsp);
   }
   
   function san_pham_delete($idsp)
@@ -110,5 +110,9 @@ function filterMauCl($mau=0, $cl=0){
   $sql.=" and status = 0 ";
   $sql.=" ORDER BY sanpham.id DESC";
   return pdo_query($sql);
+}
+function xoaMemSP($id){
+  $sql= "UPDATE sanpham SET status = 1 WHERE id = ?";
+    pdo_execute($sql, $id);
 }
 ?>
