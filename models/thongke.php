@@ -15,18 +15,18 @@ function thongke_sp($start_date = null, $end_date = null) {
     
     return pdo_query($sql);
 }
-function thongke_spct(){
-    $sql="SELECT c.ma_sp, p.ten_sp, m.ten_mau, SUM(c.so_luong) AS tong_so_luong,  SUM(d.so_luong) AS so_luong_da_ban, 
-    SUM(c.so_luong) - SUM(d.so_luong) AS so_luong_con_lai,
-    CONCAT(ROUND((SUM(d.so_luong) / SUM(c.so_luong)) * 100, 2), '%') AS ti_le_ban,
+function thongke_spct()
+{
+    $sql = "SELECT c.ma_sp, p.ten_sp, m.ten_mau, SUM(c.so_luong) AS tong_so_luong, SUM(d.so_luong) AS so_luong_da_ban,
+    CONCAT(ROUND((SUM(d.so_luong) / (SELECT SUM(d2.so_luong) FROM chitietdonhang d2)) * 100, 2), '%') AS ti_le_ban,
     SUM(d.so_luong * p.gia) AS tong_tien_ban
-FROM sanphamchitiet c
-JOIN sanpham p ON c.ma_sp = p.id
-JOIN mau m ON c.ma_mau = m.id
-JOIN chitietdonhang d ON c.id = d.ma_spct
-GROUP BY c.ma_sp, p.ten_sp, m.ten_mau
-ORDER BY so_luong_da_ban DESC;
-    ";
+    FROM sanphamchitiet c
+    JOIN sanpham p ON c.ma_sp = p.id
+    JOIN mau m ON c.ma_mau = m.id
+    JOIN chitietdonhang d ON c.id = d.ma_spct
+    GROUP BY c.ma_sp, p.ten_sp, m.ten_mau
+    ORDER BY so_luong_da_ban DESC";
+
     return pdo_query($sql);
 }
 function thongke_sp_theo_nam($year = null) {
