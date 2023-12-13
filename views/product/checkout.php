@@ -24,6 +24,7 @@ if(isset($_POST['muahang'])){
     }
     $msg = 'Bạn đã mua hàng thành công';
     $color = 'green';
+    header("Location: index.php");
   }else{
       $msg = 'Vui lòng chọn phương thức thanh toán';
     $color = 'red';
