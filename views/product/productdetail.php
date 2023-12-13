@@ -134,8 +134,12 @@ if (isset($_POST['addCart'])) {
             </div>
             <div class="product_variant quantity">
               <label>Số lượng</label>
-              <?php  $slgh = countSL($datasp['maspct']); 
-              $slsession = array_sum(array_column($_SESSION['cart'], 'sl'))??0;
+              <?php  $slgh = countSL($datasp['maspct']);
+              if(isset($_SESSION['cart'])){
+                $slsession = array_sum(array_column($_SESSION['cart'], 'sl'));
+              } else {
+                $slsession = 0;
+              }
               ?>
               <input type="number" min="1" max="<?= $datasp['so_luong']-$slgh['tong_sl']-$slsession; ?>" value="1"
                 class="product_quantity" name="sl" />
@@ -340,13 +344,17 @@ if (isset($_POST['addCart'])) {
 // }
 const inputSl = document.querySelector(".product_quantity");
 inputSl.addEventListener("change", function() {
-  let sl = this.value
-  if (sl < 1) {
+  let sl = parseInt(this.value, 10);
+
+  if (isNaN(sl) || sl < 1) {
     sl = 1;
   }
-  if (sl > inputSl.max) {
-    sl = inputSl.max;
+
+  if (!isNaN(inputSl.max) && sl > parseInt(inputSl.max, 10)) {
+    sl = parseInt(inputSl.max, 10);
   }
+
+  this.value = sl;
 });
 const ratingStars = [...document.getElementsByClassName("rating__star")];
 const ratingInput = document.getElementById("rating-input");

@@ -16,7 +16,7 @@ if (isset($_POST['submit'])) {
         ctdh_update($result['ctdh'], $ma_ttdh);
         header('location: index.php?page=donhang&act=list');
     } else {
-      $msg = "Vui long nhập đúng dữ liệu";
+      $msg = "Vui lòng nhập đúng dữ liệu";
       $color = "red";
     }
 }
@@ -38,7 +38,7 @@ if (isset($_POST['submit'])) {
           <div class="col-sm-3">
             <select class="form-control" id="input-loai" name="ma_ttdh">
               <?php foreach ($dataloai as $value) : ?>
-              <?php if($value['id'] < 4):?>
+              <?php if($value['id'] < 5):?>
               <option value="<?= $value['id'] ?>" <?php if ($value['id'] == $result['id']) : ?>selected<?php endif; ?>>
                 <?php endif; ?>
                 <?= $value['mota'] ?>

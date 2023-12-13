@@ -10,7 +10,9 @@ include_once './models/binhluan.php';
 include_once './models/loai.php';
 include_once './models/cart.php';
 include_once './models/donhang.php';
-
+// if(isset($_SESSION['cart'])){
+//     $_SESSION['cart'] = [];
+// }
 $dsdm = loai_select_all();
 if(isset($_SESSION['user'])){
     $datacart = cartAll($_SESSION['user']['id']);
