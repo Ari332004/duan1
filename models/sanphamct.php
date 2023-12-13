@@ -91,5 +91,5 @@ function detail_anh($ma_sp){
 }
 function minusSl($id,$sl){
     $sql= "UPDATE sanphamchitiet SET so_luong = so_luong - ? WHERE id = ?";
-    pdo_execute($sql, $id, $sl);
+    pdo_execute($sql, $sl, $id);
 }

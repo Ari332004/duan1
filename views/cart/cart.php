@@ -42,9 +42,9 @@
                       <?php
                         $slmax= spct_select_by_id($cart['ma_spct']);
                         $slgh = countSL($cart['ma_spct']);
+                        $slsession = array_sum(array_column($_SESSION['cart'], 'sl'))??0;
                       ?>
-                      <input min="1"
-                        max="<?= $slmax['so_luong']-$slgh['tong_sl']-array_sum(array_column($_SESSION['cart'], 'sl')) + $cart['sl']?>"
+                      <input min="1" max="<?= $slmax['so_luong']-$slgh['tong_sl']-$slsession + $cart['sl']?>"
                         value="<?= $cart['sl'] ?>" type="number" id="quantity<?= $cart['ma_spct'].$cart['ma_user']?>"
                         oninput="updateQuantity(<?= $cart['ma_spct'] ?>,<?= $cart['ma_user'] ?>, <?= $id ?>)" />
                     </td>

@@ -65,9 +65,15 @@ if (isset($_GET['act'])) {
               $pswd = $_POST['passdk'];
               $repswd = $_POST['repassdk'];
               if ($name != '' && $pswd != '' && $pswd == $repswd) {
-                  dangky($name, $pswd);
-                  $dk = "Đăng ký thành công";
-                  $colordk = 'green';
+                  if(empty(dangnhap($name,$pswd))){
+                    dangky($name, $pswd);
+                    $dk = "Đăng ký thành công";
+                    $colordk = 'green';
+                  } else {
+                    $dk = "Tài khoản đã tồn tại";
+                  $colordk = 'red';
+                  }
+                  
               } else {
             
                   $dk = "Vui lòng nhập đầy đủ và đúng thông tin";

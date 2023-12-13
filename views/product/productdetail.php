@@ -134,10 +134,11 @@ if (isset($_POST['addCart'])) {
             </div>
             <div class="product_variant quantity">
               <label>Số lượng</label>
-              <?php  $slgh = countSL($datasp['maspct']); ?>
-              <input type="number" min="1"
-                max="<?= $datasp['so_luong']-$slgh['tong_sl']-array_sum(array_column($_SESSION['cart'], 'sl')); ?>"
-                value="1" class="product_quantity" name="sl" />
+              <?php  $slgh = countSL($datasp['maspct']); 
+              $slsession = array_sum(array_column($_SESSION['cart'], 'sl'))??0;
+              ?>
+              <input type="number" min="1" max="<?= $datasp['so_luong']-$slgh['tong_sl']-$slsession; ?>" value="1"
+                class="product_quantity" name="sl" />
               <button class="button" name="addCart">Thêm vào giỏ hàng</button>
             </div>
           </form>
