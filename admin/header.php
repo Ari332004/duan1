@@ -1,5 +1,14 @@
 <?php 
-  $page = 'page='.$_GET['page'] ?? 'sanpham';
+  if(isset($_GET['page'])){
+  $page = 'page='.$_GET['page'];
+  } else{
+    $page = 'page=sanpham';
+  }
+  if(isset($_GET['act'])){
+  $act = $_GET['act'];
+  } else{
+    $act = 'list';
+  }
 ?>
 
 <!DOCTYPE html>
@@ -18,6 +27,7 @@
     href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css"
     integrity="sha512-Oy+sz5W86PK0ZIkawrG0iv7XwWhYecM3exvUtMKNJMekGFJtVAhibhRPTpmyTj8+lJCkmWfnpxKgT2OopquBHA=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
   <style>
   table .bi-check-circle-fill {
@@ -30,6 +40,10 @@
 
   table .btn.btn-danger {
     font-size: 14px;
+  }
+
+  .hide {
+    display: none;
   }
   </style>
   <link rel="stylesheet" href="./admin.css" />
@@ -45,30 +59,34 @@
       </div>
 
       <ul class="list-unstyled components">
-        <li class="active">
+        <li class="<?= $act == 'list' ? 'active':''?>">
           <a href="./index.php?<?= $page?>&act=list">
             <i class="bi bi-list-ul"></i>
             List
           </a>
         </li>
-        <li class="">
+        <?php if($page != 'page=binhluan' && $page != 'page=thongke' && $page != 'page=donhang'):?>
+        <li class="<?= $act == 'edit' ? 'active':''?>">
           <a href="index.php?<?= $page?>&act=edit">
             <i class="bi bi-pencil-square"></i>
             Edit
           </a>
         </li>
-        <li class="">
+        <?php endif?>
+        <?php if($page != 'page=thongke' && $page != 'page=anh'):?>
+        <li class="<?= $act == 'search' ? 'active':''?>">
           <a href="./index.php?<?= $page?>&act=search">
             <i class="bi bi-search"></i>
             Search
           </a>
         </li>
-        <li class="">
+        <?php endif?>
+        <!-- <li class="<?= $act == 'statistical' ? 'active':''?>">
           <a href="./index.php?<?= $page?>&act=statistical">
             <i class="bi bi-clipboard-data"></i>
             statistical
           </a>
-        </li>
+        </li> -->
         <li class="">
           <a href="../index.php">
             <i class="bi bi-box-arrow-left"></i>
@@ -82,21 +100,62 @@
     <div id="content">
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-          <a class="navbar-brand" href="./index.php?page=sanpham&act=list">Sản phẩm</a>
-        </div>
-        <div class="container-fluid">
-          <a class="navbar-brand" href="./index.php?page=sanphamct&act=list">Chi tiết sản phẩm</a>
-        </div>
-        <div class="container-fluid">
-          <a class="navbar-brand" href="./index.php?page=taikhoan&act=list">Tài khoản</a>
-        </div>
-        <div class="container-fluid">
-          <a class="navbar-brand" href="./index.php?page=binhluan&act=list">Bình luận</a>
-        </div>
-        <div class="container-fluid">
-          <a class="navbar-brand" href="./index.php?page=loai&act=list">Danh mục</a>
-        </div>
-        <div class="container-fluid">
-          <a class="navbar-brand" href="./index.php?page=donhang&act=list">Đơn hàng</a>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle <?= ($page == 'page=sanpham' || $page == 'page=sanphamct' || $page == 'page=anh') ? 'active':''?>"
+                  href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Sản Phẩm
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li>
+                    <a class="dropdown-item" href="./index.php?page=sanpham&act=list">Sản Phẩm
+                    </a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="./index.php?page=sanphamct&act=list">Sản phẩm chi tiết
+                    </a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="./index.php?page=anh&act=list">Ảnh sản phẩm
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link <?= $page == 'page=taikhoan' ? 'active':''?>"
+                  href="./index.php?page=taikhoan&act=list">Tài khoản</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link <?= $page == 'page=binhluan' ? 'active':''?>"
+                  href="./index.php?page=binhluan&act=list">Bình luận</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link <?= $page == 'page=loai' ? 'active':''?>" href="./index.php?page=loai&act=list">Danh
+                  mục</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link <?= $page == 'page=donhang' ? 'active':''?>"
+                  href="./index.php?page=donhang&act=list">Đơn hàng</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle <?= $page == 'page=thongke' ? 'active':''?>" href="#"
+                  id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Thống kê
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li>
+                    <a class="dropdown-item" href="./index.php?page=thongke&act=list">Sản phẩm
+                    </a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="./index.php?page=thongke&act=thbl">Bình luận
+                    </a>
+                  </li>
+
+                </ul>
+              </li>
+            </ul>
+          </div>
         </div>
       </nav>

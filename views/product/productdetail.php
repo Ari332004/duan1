@@ -1,1248 +1,394 @@
-    <!--breadcrumbs area start-->
-    <div class="breadcrumbs_area product_bread">
-      <div class="container">
-        <div class="row">
-          <div class="col-12">
-            <div class="breadcrumb_content">
-              <ul>
-                <li><a href="index.html">home</a></li>
-                <li>/</li>
-                <li>product details</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!--breadcrumbs area end-->
+<?php
 
-    <!--product details start-->
-    <div class="product_details">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-5 col-md-5">
-            <div class="product-details-tab">
-              <div id="img-1" class="zoomWrapper single-zoom">
-                <a href="#">
-                  <img
-                    id="zoom1"
-                    src="assets/img/product/product5.jpg"
-                    data-zoom-image="assets/img/product/product5.jpg"
-                    alt="big-1"
-                  />
+$errbl = '';
+if (isset($_POST['guiBL'])) {
+  if ($_POST['comment'] != '') {
+    if (isset($_SESSION['user'])) {
+      insert_binhluan($_POST['comment'], $_SESSION['user']['id'], $_GET['masp'], $_POST['rating']);
+      // header("Location: index.php?act=productdetail&masp=".$_GET['masp']);
+    } else {
+      $errbl = 'Vui lòng đăng nhập để gửi bình luận';
+    }
+  } else {
+    $errbl = 'Vui lòng nhập nội dung bình luận';
+  }
+}
+if (isset($_POST['addCart'])) {
+  // Kiểm tra xem có tồn tại mảng giỏ hàng hay không.
+  if (!isset($_SESSION['cart'])) {
+    // Nếu không có thì đi khởi tạo
+    $_SESSION['cart'] = [];
+  }
+
+    $maspct = $_POST['id'];
+    $tensp = $_POST['name'];
+    $giasp = $_POST['price'];
+    $anhsp = $_POST['img'];
+    $slsp = $_POST['sl'];
+    $mauser = $_POST['user'];
+
+    // Kiểm tra sản phẩm đã có trong giỏ hàng chưa
+
+    // array_column() trích xuất một cột từ mảng giỏ hàng và trả về một mảng chứ giá trị của cột id
+    if (isset($_SESSION['user'])) {
+
+      if ($mauser != 0) {
+        $dataCart = check_spct_exists($maspct, $mauser);
+      }
+      if (!empty($dataCart)) {
+        updateSL($maspct, $mauser,$slsp);
+      } else {
+        cart_insert($maspct, $tensp, $giasp, $anhsp, $slsp, $mauser);
+      }
+    } else {
+      $index = false;
+      if (!empty($_SESSION['cart'])) {
+        $index = array_search($maspct, array_column($_SESSION['cart'], 'ma_spct'));
+      }
+      if ($index !== false) {
+        $_SESSION['cart'][$index]['sl'] += $slsp;
+      } else {
+        // Nếu sản phẩm chưa tồn tại thì thêm mới vào giỏ hàng
+        $product = [
+          'ma_spct' => $maspct,
+          'tensp' => $tensp,
+          'gia' => $giasp,
+          'sl' => $slsp,
+          'anh' => $anhsp,
+          'ma_user' => 0
+        ];
+        $_SESSION['cart'][] = $product;
+        // var_dump($_SESSION['cart']);die;
+      }
+    }
+}
+?>
+<!--product details start-->
+<div class="product_details mt-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-5 col-md-5">
+        <div class="product-details-tab">
+          <div id="img-1" class="zoomWrapper single-zoom">
+            <a href="#">
+              <img id="zoom1" src="uploads/sanpham/<?= $datasp['anhsp'] ?>"
+                data-zoom-image="uploads/sanpham/<?= $datasp['anhsp'] ?>" alt="big-1" />
+            </a>
+          </div>
+
+          <div class="single-zoom-thumb">
+            <ul class="s-tab-zoom owl-carousel single-product-active" id="gallery_01">
+              <?php foreach ($dsanh as $key => $value) : ?>
+              <li>
+                <a href="#" class="elevatezoom-gallery active" data-update=""
+                  data-image="uploads/sanpham/<?= $value['img_url'] ?>"
+                  data-zoom-image="uploads/sanpham/<?= $value['img_url'] ?>">
+                  <img src="uploads/sanpham/<?= $value['img_url'] ?>" alt="zo-th-1" />
                 </a>
-              </div>
+              </li>
+              <?php endforeach ?>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-7 col-md-7">
+        <div class="product_d_right">
+          <form id="productForm" action="index.php?act=productdetail&masp=<?= $datasp['maspct'] ?>" method="post">
+            <h1><?= $datasp['ten_sp'] ?></h1>
+            <input type="text" hidden value="<?= $datasp['ma_sp'] ?>" name="masp">
+            <input type="text" hidden value="<?= $datasp['maspct'] ?>" name="id">
+            <input type="text" hidden value="<?= $datasp['ten_sp'] ?>" name="name">
+            <input type="text" hidden value="<?= $datasp['anhsp'] ?>" name="img">
+            <input type="text" hidden value="<?= isset($_SESSION['user']) ? $_SESSION['user']['id'] : 0; ?>"
+              name="user">
+            <div class="product_price">
+              <span class="current_price"><?= number_format($datasp['gia'], 0, '', ',') ?>₫</span>
+              <input type="text" hidden value="<?= $datasp['gia'] ?>" name="price">
+            </div>
+            <div class="product_desc">
+              <p>
+                <?= $datasp['mota'] ?>
+              </p>
+            </div>
 
-              <div class="single-zoom-thumb">
-                <ul
-                  class="s-tab-zoom owl-carousel single-product-active"
-                  id="gallery_01"
-                >
-                  <li>
-                    <a
-                      href="#"
-                      class="elevatezoom-gallery active"
-                      data-update=""
-                      data-image="assets/img/product/product4.jpg"
-                      data-zoom-image="assets/img/product/product4.jpg"
-                    >
-                      <img
-                        src="assets/img/s-product/product3.jpg"
-                        alt="zo-th-1"
-                      />
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      class="elevatezoom-gallery active"
-                      data-update=""
-                      data-image="assets/img/product/product6.jpg"
-                      data-zoom-image="assets/img/product/product6.jpg"
-                    >
-                      <img
-                        src="assets/img/s-product/product.jpg"
-                        alt="zo-th-1"
-                      />
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      class="elevatezoom-gallery active"
-                      data-update=""
-                      data-image="assets/img/product/product8.jpg"
-                      data-zoom-image="assets/img/product/product8.jpg"
-                    >
-                      <img
-                        src="assets/img/s-product/product2.jpg"
-                        alt="zo-th-1"
-                      />
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      class="elevatezoom-gallery active"
-                      data-update=""
-                      data-image="assets/img/product/product2.jpg"
-                      data-zoom-image="assets/img/product/product2.jpg"
-                    >
-                      <img
-                        src="assets/img/s-product/product4.jpg"
-                        alt="zo-th-1"
-                      />
-                    </a>
-                  </li>
-                </ul>
+            <div class="product_variant color">
+              <h3>Màu</h3>
+              <select class="niceselect_option" id="color" name="produc_color" onchange="submitForm()">
+                <!-- <option value="0">Chọn màu</option> -->
+                <?php foreach ($dsmau as $key => $value) : ?>
+                <option value="<?= $value['id'] ?>" <?= $value['id'] == $datasp['ma_mau'] ? ' selected' : '' ?>>
+                  <?= $value['ten_mau'] ?>
+                </option>
+                <?php endforeach ?>
+              </select>
+            </div>
+            <div class="product_variant color">
+              <h3>Chất liệu</h3>
+              <select class="niceselect_option" id="produc_cl" name="produc_cl" onchange="submitForm()">
+                <!-- <option selected value="0">Chọn chất liệu</option> -->
+                <?php foreach ($dschatlieu as $key => $value) : ?>
+                <option value="<?= $value['id'] ?>" <?= $value['id'] == $datasp['ma_cl'] ? ' selected' : '' ?>>
+                  <?= $value['ten_cl'] ?></option>
+                <?php endforeach ?>
+              </select>
+            </div>
+            <div class="product_variant quantity">
+              <label>Số lượng</label>
+              <?php  $slgh = countSL($datasp['maspct']);
+              if(isset($_SESSION['cart'])){
+                $slsession = array_sum(array_column($_SESSION['cart'], 'sl'));
+              } else {
+                $slsession = 0;
+              }
+              ?>
+              <input type="number" min="1" max="<?= $datasp['so_luong']-$slgh['tong_sl']-$slsession; ?>" value="1"
+                class="product_quantity" name="sl" />
+              <button class="button" name="addCart">Thêm vào giỏ hàng</button>
+            </div>
+          </form>
+          <div class="priduct_social">
+            <h3>Share on:</h3>
+            <ul>
+              <li>
+                <a href="#"><i class="fa fa-rss"></i></a>
+              </li>
+              <li>
+                <a href="#"><i class="fa fa-vimeo"></i></a>
+              </li>
+              <li>
+                <a href="#"><i class="fa fa-tumblr"></i></a>
+              </li>
+              <li>
+                <a href="#"><i class="fa fa-pinterest"></i></a>
+              </li>
+              <li>
+                <a href="#"><i class="fa fa-linkedin"></i></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--product details end-->
+
+<!--product info start-->
+<div class="product_d_info" id="product_d_info">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="product_d_inner">
+          <div class="product_info_button">
+            <ul class="nav" role="tablist">
+              <li>
+                <a class="active" data-toggle="tab" href="#info" role="tab" aria-controls="info"
+                  aria-selected="false">Mô Tả</a>
+              </li>
+              <li id="review_form">
+                <a data-toggle="tab" href="#reviews" role="tab" aria-controls="reviews"
+                  aria-selected="false">Reviews</a>
+              </li>
+            </ul>
+          </div>
+          <div class="tab-content">
+            <div class="tab-pane fade show active" id="info" role="tabpanel">
+              <div class="product_info_content">
+                <p>
+                  <?= $datasp['mota'] ?>
+                </p>
               </div>
             </div>
-          </div>
-          <div class="col-lg-7 col-md-7">
-            <div class="product_d_right">
-              <form action="#">
-                <h1>Amazon Cloud Cam</h1>
-                <div class="product_ratting">
-                  <ul>
-                    <li>
-                      <a href="#"><i class="fa fa-star"></i></a>
-                    </li>
-                    <li>
-                      <a href="#"><i class="fa fa-star"></i></a>
-                    </li>
-                    <li>
-                      <a href="#"><i class="fa fa-star"></i></a>
-                    </li>
-                    <li>
-                      <a href="#"><i class="fa fa-star"></i></a>
-                    </li>
-                    <li>
-                      <a href="#"><i class="fa fa-star"></i></a>
-                    </li>
-                    <li class="review"><a href="#"> 1 review </a></li>
-                    <li class="review"><a href="#"> Write a review </a></li>
-                  </ul>
-                </div>
-                <div class="product_price">
-                  <span class="current_price">$70.00</span>
-                </div>
-                <div class="product_desc">
-                  <p>
-                    More room to move. With 80GB or 160GB of storage and up to
-                    40 hours of battery life, the new iPod classic lets you
-                    enjoy up to 40,000 songs or up to 200 hours of video or any
-                    combination wherever you go. Cover Flow. Browse through your
-                    music collection by flipping through album art. Select an
-                    album to turn it over and see the track list. Enhanced
-                    interface. Experience a whole new way to browse and view
-                    your music and video. Sleeker design. Beautiful, durable,
-                    and sleeker than ever, iPod classic now features an anodized
-                    aluminum and polish..
-                  </p>
-                </div>
 
-                <div class="product_variant color">
-                  <h3>color</h3>
-                  <select
-                    class="niceselect_option"
-                    id="color"
-                    name="produc_color"
-                  >
-                    <option selected value="1">choose in option</option>
-                    <option value="2">choose in option2</option>
-                    <option value="3">choose in option3</option>
-                    <option value="4">choose in option4</option>
-                  </select>
-                </div>
-                <div class="product_variant size">
-                  <h3>size</h3>
-                  <select
-                    class="niceselect_option"
-                    id="color1"
-                    name="produc_color"
-                  >
-                    <option selected value="1">size</option>
-                    <option value="2">x</option>
-                    <option value="2">xl</option>
-                    <option value="3">md</option>
-                    <option value="4">xxl</option>
-                    <option value="4">s</option>
-                  </select>
-                </div>
-                <div class="product_variant quantity">
-                  <label>quantity</label>
-                  <input min="1" max="100" value="1" type="number" />
-                  <button class="button" type="submit">add to cart</button>
-                </div>
-                <div class="product_d_action">
+            <div class="tab-pane fade" id="reviews" role="tabpanel">
+              <div class="product_info_content">
+                <p>
+                  <?= $datasp['mota'] ?>
+                </p>
+              </div>
+              <?php foreach ($databl as $bl) : ?>
+              <div class="product_info_inner">
+                <div class="product_ratting mb-10">
                   <ul>
                     <li>
-                      <a href="#" title="Add to wishlist"
-                        ><i class="fa fa-heart-o" aria-hidden="true"></i> Add to
-                        Wish List</a
-                      >
+                      <a href="#"><i class="fa fa-star <?= $bl['rate'] < 1 ? 'star_gray' : '' ?>"></i></a>
                     </li>
                     <li>
-                      <a href="#" title="Add to Compare"
-                        ><i class="fa fa-sliders" aria-hidden="true"></i>
-                        Compare this Product</a
-                      >
+                      <a href="#"><i class="fa fa-star <?= $bl['rate'] < 2 ? 'star_gray' : '' ?>"></i></a>
+                    </li>
+                    <li>
+                      <a href="#"><i class="fa fa-star <?= $bl['rate'] < 3 ? 'star_gray' : '' ?>"></i></a>
+                    </li>
+                    <li>
+                      <a href="#"><i class="fa fa-star <?= $bl['rate'] < 4 ? 'star_gray' : '' ?>"></i></a>
+                    </li>
+                    <li>
+                      <a href="#"><i class="fa fa-star <?= $bl['rate'] < 5 ? 'star_gray' : '' ?>"></i></a>
                     </li>
                   </ul>
+                  <p><?= $bl['ngay_bl'] ?></p>
                 </div>
-              </form>
-              <div class="priduct_social">
-                <h3>Share on:</h3>
-                <ul>
-                  <li>
-                    <a href="#"><i class="fa fa-rss"></i></a>
-                  </li>
-                  <li>
-                    <a href="#"><i class="fa fa-vimeo"></i></a>
-                  </li>
-                  <li>
-                    <a href="#"><i class="fa fa-tumblr"></i></a>
-                  </li>
-                  <li>
-                    <a href="#"><i class="fa fa-pinterest"></i></a>
-                  </li>
-                  <li>
-                    <a href="#"><i class="fa fa-linkedin"></i></a>
-                  </li>
-                </ul>
+                <div class="product_demo">
+                  <strong><?= $bl['username'] ?></strong>
+                  <p><?= $bl['noi_dung'] ?></p>
+                </div>
+              </div>
+              <?php endforeach ?>
+              <div class="product_review_form">
+                <form method="post">
+                  <h2>Bình luận</h2>
+                  <div class="row">
+                    <div class="col-12">
+                      <div style="display: flex; align-items: self-start; gap: 5px;">
+
+                        <label for="review_comment">Đánh giá của bạn về sản phẩm </label>
+                        <div class="rating">
+                          <input type="radio" id="star1" name="rating" value="1" hidden />
+                          <i id="star1" class="rating__star fa fa-star"></i>
+                          <input type="radio" id="star2" name="rating" value="1" hidden />
+                          <i id="star2" class="rating__star fa fa-star"></i>
+                          <input type="radio" id="star3" name="rating" value="1" hidden />
+                          <i id="star3" class="rating__star fa fa-star"></i>
+                          <input type="radio" id="star4" name="rating" value="1" hidden />
+                          <i id="star4" class="rating__star fa fa-star"></i>
+                          <input type="radio" id="star5" name="rating" value="1" hidden />
+                          <i id="star5" class="rating__star fa fa-star"></i>
+                        </div>
+                      </div>
+
+                      <input type="number" name="rating" id="rating-input" value="5" hidden />
+                      <textarea name="comment" id="review_comment"></textarea>
+                    </div>
+                    <!-- <div class="col-lg-6 col-md-6">
+                         <label for="author">Name</label>
+                         <input id="author" type="text" />
+                       </div>
+                       <div class="col-lg-6 col-md-6">
+                         <label for="email">Email </label>
+                         <input id="email" type="text" />
+                       </div> -->
+                  </div>
+                  <button name="guiBL">Gửi</button>
+                  <p style="color: red;"><?= $errbl ?></p>
+                </form>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <!--product details end-->
+  </div>
+</div>
+<!--product info end-->
 
-    <!--product info start-->
-    <div class="product_d_info">
-      <div class="container">
-        <div class="row">
-          <div class="col-12">
-            <div class="product_d_inner">
-              <div class="product_info_button">
-                <ul class="nav" role="tablist">
-                  <li>
-                    <a
-                      class="active"
-                      data-toggle="tab"
-                      href="#info"
-                      role="tab"
-                      aria-controls="info"
-                      aria-selected="false"
-                      >More info</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      data-toggle="tab"
-                      href="#sheet"
-                      role="tab"
-                      aria-controls="sheet"
-                      aria-selected="false"
-                      >Data sheet</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      data-toggle="tab"
-                      href="#reviews"
-                      role="tab"
-                      aria-controls="reviews"
-                      aria-selected="false"
-                      >Reviews</a
-                    >
-                  </li>
-                </ul>
-              </div>
-              <div class="tab-content">
-                <div
-                  class="tab-pane fade show active"
-                  id="info"
-                  role="tabpanel"
-                >
-                  <div class="product_info_content">
-                    <p>
-                      Fashion has been creating well-designed collections since
-                      2010. The brand offers feminine designs delivering stylish
-                      separates and statement dresses which have since evolved
-                      into a full ready-to-wear collection in which every item
-                      is a vital part of a woman's wardrobe. The result? Cool,
-                      easy, chic looks with youthful elegance and unmistakable
-                      signature style. All the beautiful pieces are made in
-                      Italy and manufactured with the greatest attention. Now
-                      Fashion extends to a range of accessories including shoes,
-                      hats, belts and more!
-                    </p>
-                  </div>
-                </div>
 
-                <div class="tab-pane fade" id="sheet" role="tabpanel">
-                  <div class="product_d_table">
-                    <form action="#">
-                      <table>
-                        <tbody>
-                          <tr>
-                            <td class="first_child">Compositions</td>
-                            <td>Polyester</td>
-                          </tr>
-                          <tr>
-                            <td class="first_child">Styles</td>
-                            <td>Girly</td>
-                          </tr>
-                          <tr>
-                            <td class="first_child">Properties</td>
-                            <td>Short Dress</td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </form>
-                  </div>
-                  <div class="product_info_content">
-                    <p>
-                      Fashion has been creating well-designed collections since
-                      2010. The brand offers feminine designs delivering stylish
-                      separates and statement dresses which have since evolved
-                      into a full ready-to-wear collection in which every item
-                      is a vital part of a woman's wardrobe. The result? Cool,
-                      easy, chic looks with youthful elegance and unmistakable
-                      signature style. All the beautiful pieces are made in
-                      Italy and manufactured with the greatest attention. Now
-                      Fashion extends to a range of accessories including shoes,
-                      hats, belts and more!
-                    </p>
-                  </div>
-                </div>
-                <div class="tab-pane fade" id="reviews" role="tabpanel">
-                  <div class="product_info_content">
-                    <p>
-                      Fashion has been creating well-designed collections since
-                      2010. The brand offers feminine designs delivering stylish
-                      separates and statement dresses which have since evolved
-                      into a full ready-to-wear collection in which every item
-                      is a vital part of a woman's wardrobe. The result? Cool,
-                      easy, chic looks with youthful elegance and unmistakable
-                      signature style. All the beautiful pieces are made in
-                      Italy and manufactured with the greatest attention. Now
-                      Fashion extends to a range of accessories including shoes,
-                      hats, belts and more!
-                    </p>
-                  </div>
-                  <div class="product_info_inner">
-                    <div class="product_ratting mb-10">
+
+<!--product section area start-->
+<section class="product_section upsell_product">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="section_title">
+          <h2>Sản phẩm cùng loại</h2>
+        </div>
+      </div>
+    </div>
+    <div class="product_area">
+      <div class="row">
+        <div class="product_carousel product_three_column4 owl-carousel">
+          <?php foreach ($spnew as $sp) : ?>
+          <div class="col-lg-3">
+            <div class="single_product">
+              <div class="product_thumb">
+                <a class="primary_img" href="index.php?act=productdetail&masp=<?= $sp['maspct'] ?>"><img
+                    src="uploads/sanpham/<?= $sp['anhsp'] ?>" alt="" /></a>
+                <div class="product_action">
+                  <div class="hover_action">
+                    <a href="#"><i class="fa fa-plus"></i></a>
+                    <div class="action_button">
                       <ul>
                         <li>
-                          <a href="#"><i class="fa fa-star"></i></a>
-                        </li>
-                        <li>
-                          <a href="#"><i class="fa fa-star"></i></a>
-                        </li>
-                        <li>
-                          <a href="#"><i class="fa fa-star"></i></a>
-                        </li>
-                        <li>
-                          <a href="#"><i class="fa fa-star"></i></a>
-                        </li>
-                        <li>
-                          <a href="#"><i class="fa fa-star"></i></a>
+                          <a title="add to cart"
+                            onclick="addToCart(<?= $sp['maspct'] ?>, '<?= $sp['ten_sp'] ?>', <?= $sp['gia'] ?>, '<?= $sp['anhsp'] ?>', 1, <?= isset($_SESSION['user'])?$_SESSION['user']['id']:0; ?>)"><i
+                              class="fa fa-shopping-basket" aria-hidden="true"></i></a>
                         </li>
                       </ul>
-                      <strong>Posthemes</strong>
-                      <p>09/07/2018</p>
                     </div>
-                    <div class="product_demo">
-                      <strong>demo</strong>
-                      <p>That's OK!</p>
-                    </div>
-                  </div>
-                  <div class="product_review_form">
-                    <form action="#">
-                      <h2>Add a review</h2>
-                      <p>
-                        Your email address will not be published. Required
-                        fields are marked
-                      </p>
-                      <div class="row">
-                        <div class="col-12">
-                          <label for="review_comment">Your review </label>
-                          <textarea
-                            name="comment"
-                            id="review_comment"
-                          ></textarea>
-                        </div>
-                        <div class="col-lg-6 col-md-6">
-                          <label for="author">Name</label>
-                          <input id="author" type="text" />
-                        </div>
-                        <div class="col-lg-6 col-md-6">
-                          <label for="email">Email </label>
-                          <input id="email" type="text" />
-                        </div>
-                      </div>
-                      <button type="submit">Submit</button>
-                    </form>
                   </div>
                 </div>
+                <div class="quick_button">
+                  <a href="index.php?act=productdetail&masp=<?= $sp['maspct'] ?>" title="quick_view">Xem sản phẩm</a>
+                </div>
+              </div>
+              <div class="product_content">
+                <h3>
+                  <a href="index.php?act=productdetail&masp=<?= $sp['maspct'] ?>"><?= $sp['ten_sp'] ?></a>
+                </h3>
+                <span class="current_price"><?= $sp['gia'] ?>₫</span>
               </div>
             </div>
           </div>
+          <?php endforeach ?>
         </div>
       </div>
     </div>
-    <!--product info end-->
+  </div>
+</section>
+<!--product section area end-->
+<script>
+// function sl() {
+//   console.log(document.querySelector(".product_quantity").value);
+//   if (document.querySelector(".product_quantity").value <= 0) {
+//     document.querySelector(".product_quantity").value = 1;
+//   }
+// }
+const inputSl = document.querySelector(".product_quantity");
+inputSl.addEventListener("change", function() {
+  let sl = parseInt(this.value, 10);
 
-    <!--product section area start-->
-    <section class="product_section related_product">
-      <div class="container">
-        <div class="row">
-          <div class="col-12">
-            <div class="section_title">
-              <h2>Related Products</h2>
-              <p>
-                Contemporary, minimal and modern designs embody the Lavish Alice
-                handwriting
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="product_area">
-          <div class="row">
-            <div class="product_carousel product_three_column4 owl-carousel">
-              <div class="col-lg-3">
-                <div class="single_product">
-                  <div class="product_thumb">
-                    <a class="primary_img" href="product-details.html"
-                      ><img src="assets/img/product/product21.jpg" alt=""
-                    /></a>
-                    <a class="secondary_img" href="product-details.html"
-                      ><img src="assets/img/product/product22.jpg" alt=""
-                    /></a>
-                    <div class="product_action">
-                      <div class="hover_action">
-                        <a href="#"><i class="fa fa-plus"></i></a>
-                        <div class="action_button">
-                          <ul>
-                            <li>
-                              <a title="add to cart" href="cart.html"
-                                ><i
-                                  class="fa fa-shopping-basket"
-                                  aria-hidden="true"
-                                ></i
-                              ></a>
-                            </li>
-                            <li>
-                              <a href="wishlist.html" title="Add to Wishlist"
-                                ><i class="fa fa-heart-o" aria-hidden="true"></i
-                              ></a>
-                            </li>
+  if (isNaN(sl) || sl < 1) {
+    sl = 1;
+  }
 
-                            <li>
-                              <a href="compare.html" title="Add to Compare"
-                                ><i class="fa fa-sliders" aria-hidden="true"></i
-                              ></a>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="quick_button">
-                      <a
-                        href="#"
-                        data-toggle="modal"
-                        data-target="#modal_box"
-                        title="quick_view"
-                        >+ quick view</a
-                      >
-                    </div>
+  if (!isNaN(inputSl.max) && sl > parseInt(inputSl.max, 10)) {
+    sl = parseInt(inputSl.max, 10);
+  }
 
-                    <div class="product_sale">
-                      <span>-7%</span>
-                    </div>
-                  </div>
-                  <div class="product_content">
-                    <h3>
-                      <a href="product-details.html"
-                        >Marshall Portable Bluetooth</a
-                      >
-                    </h3>
-                    <span class="current_price">£60.00</span>
-                    <span class="old_price">£86.00</span>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-3">
-                <div class="single_product">
-                  <div class="product_thumb">
-                    <a class="primary_img" href="product-details.html"
-                      ><img src="assets/img/product/product27.jpg" alt=""
-                    /></a>
-                    <a class="secondary_img" href="product-details.html"
-                      ><img src="assets/img/product/product28.jpg" alt=""
-                    /></a>
-                    <div class="product_action">
-                      <div class="hover_action">
-                        <a href="#"><i class="fa fa-plus"></i></a>
-                        <div class="action_button">
-                          <ul>
-                            <li>
-                              <a title="add to cart" href="cart.html"
-                                ><i
-                                  class="fa fa-shopping-basket"
-                                  aria-hidden="true"
-                                ></i
-                              ></a>
-                            </li>
-                            <li>
-                              <a href="wishlist.html" title="Add to Wishlist"
-                                ><i class="fa fa-heart-o" aria-hidden="true"></i
-                              ></a>
-                            </li>
+  this.value = sl;
+});
+const ratingStars = [...document.getElementsByClassName("rating__star")];
+const ratingInput = document.getElementById("rating-input");
 
-                            <li>
-                              <a href="compare.html" title="Add to Compare"
-                                ><i class="fa fa-sliders" aria-hidden="true"></i
-                              ></a>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="quick_button">
-                      <a
-                        href="#"
-                        data-toggle="modal"
-                        data-target="#modal_box"
-                        title="quick_view"
-                        >+ quick view</a
-                      >
-                    </div>
-                  </div>
-                  <div class="product_content">
-                    <h3>
-                      <a href="product-details.html">Koss KPH7 Portable</a>
-                    </h3>
-                    <span class="current_price">£60.00</span>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-3">
-                <div class="single_product">
-                  <div class="product_thumb">
-                    <a class="primary_img" href="product-details.html"
-                      ><img src="assets/img/product/product6.jpg" alt=""
-                    /></a>
-                    <a class="secondary_img" href="product-details.html"
-                      ><img src="assets/img/product/product5.jpg" alt=""
-                    /></a>
-                    <div class="product_action">
-                      <div class="hover_action">
-                        <a href="#"><i class="fa fa-plus"></i></a>
-                        <div class="action_button">
-                          <ul>
-                            <li>
-                              <a title="add to cart" href="cart.html"
-                                ><i
-                                  class="fa fa-shopping-basket"
-                                  aria-hidden="true"
-                                ></i
-                              ></a>
-                            </li>
-                            <li>
-                              <a href="wishlist.html" title="Add to Wishlist"
-                                ><i class="fa fa-heart-o" aria-hidden="true"></i
-                              ></a>
-                            </li>
+function executeRating(stars) {
+  const starClassActive = "rating__star fa fa-star";
+  const starClassInactive = "rating__star fa fa-star star_gray";
+  const starsLength = stars.length;
+  let i;
+  stars.map((star) => {
+    star.onclick = () => {
+      i = stars.indexOf(star);
 
-                            <li>
-                              <a href="compare.html" title="Add to Compare"
-                                ><i class="fa fa-sliders" aria-hidden="true"></i
-                              ></a>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="quick_button">
-                      <a
-                        href="#"
-                        data-toggle="modal"
-                        data-target="#modal_box"
-                        title="quick_view"
-                        >+ quick view</a
-                      >
-                    </div>
-                  </div>
-                  <div class="product_content">
-                    <h3>
-                      <a href="product-details.html">Beats Solo2 Solo 2</a>
-                    </h3>
-                    <span class="current_price">£60.00</span>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-3">
-                <div class="single_product">
-                  <div class="product_thumb">
-                    <a class="primary_img" href="product-details.html"
-                      ><img src="assets/img/product/product7.jpg" alt=""
-                    /></a>
-                    <a class="secondary_img" href="product-details.html"
-                      ><img src="assets/img/product/product8.jpg" alt=""
-                    /></a>
-                    <div class="product_action">
-                      <div class="hover_action">
-                        <a href="#"><i class="fa fa-plus"></i></a>
-                        <div class="action_button">
-                          <ul>
-                            <li>
-                              <a title="add to cart" href="cart.html"
-                                ><i
-                                  class="fa fa-shopping-basket"
-                                  aria-hidden="true"
-                                ></i
-                              ></a>
-                            </li>
-                            <li>
-                              <a href="wishlist.html" title="Add to Wishlist"
-                                ><i class="fa fa-heart-o" aria-hidden="true"></i
-                              ></a>
-                            </li>
+      if (star.className === starClassInactive) {
+        ratingInput.value = i + 1;
+        for (i; i >= 0; --i) stars[i].className = starClassActive;
+      } else {
+        ratingInput.value = i;
+        for (i; i < starsLength; ++i) stars[i].className = starClassInactive;
+      }
+    };
+  });
+}
+executeRating(ratingStars);
+</script>
 
-                            <li>
-                              <a href="compare.html" title="Add to Compare"
-                                ><i class="fa fa-sliders" aria-hidden="true"></i
-                              ></a>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="quick_button">
-                      <a
-                        href="#"
-                        data-toggle="modal"
-                        data-target="#modal_box"
-                        title="quick_view"
-                        >+ quick view</a
-                      >
-                    </div>
+<script>
+function submitForm() {
+  // Lấy thẻ form
+  var productForm = document.querySelector("#productForm");
 
-                    <div class="product_sale">
-                      <span>-7%</span>
-                    </div>
-                  </div>
-                  <div class="product_content">
-                    <h3><a href="product-details.html">Beats EP Wired</a></h3>
-                    <span class="current_price">£60.00</span>
-                    <span class="old_price">£86.00</span>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-3">
-                <div class="single_product">
-                  <div class="product_thumb">
-                    <a class="primary_img" href="product-details.html"
-                      ><img src="assets/img/product/product24.jpg" alt=""
-                    /></a>
-                    <a class="secondary_img" href="product-details.html"
-                      ><img src="assets/img/product/product25.jpg" alt=""
-                    /></a>
-                    <div class="product_action">
-                      <div class="hover_action">
-                        <a href="#"><i class="fa fa-plus"></i></a>
-                        <div class="action_button">
-                          <ul>
-                            <li>
-                              <a title="add to cart" href="cart.html"
-                                ><i
-                                  class="fa fa-shopping-basket"
-                                  aria-hidden="true"
-                                ></i
-                              ></a>
-                            </li>
-                            <li>
-                              <a href="wishlist.html" title="Add to Wishlist"
-                                ><i class="fa fa-heart-o" aria-hidden="true"></i
-                              ></a>
-                            </li>
 
-                            <li>
-                              <a href="compare.html" title="Add to Compare"
-                                ><i class="fa fa-sliders" aria-hidden="true"></i
-                              ></a>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="quick_button">
-                      <a
-                        href="#"
-                        data-toggle="modal"
-                        data-target="#modal_box"
-                        title="quick_view"
-                        >+ quick view</a
-                      >
-                    </div>
-                  </div>
-                  <div class="product_content">
-                    <h3>
-                      <a href="product-details.html"
-                        >Bose SoundLink Bluetooth</a
-                      >
-                    </h3>
-                    <span class="current_price">£60.00</span>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-3">
-                <div class="single_product">
-                  <div class="product_thumb">
-                    <a class="primary_img" href="product-details.html"
-                      ><img src="assets/img/product/product10.jpg" alt=""
-                    /></a>
-                    <a class="secondary_img" href="product-details.html"
-                      ><img src="assets/img/product/product11.jpg" alt=""
-                    /></a>
-                    <div class="product_action">
-                      <div class="hover_action">
-                        <a href="#"><i class="fa fa-plus"></i></a>
-                        <div class="action_button">
-                          <ul>
-                            <li>
-                              <a title="add to cart" href="cart.html"
-                                ><i
-                                  class="fa fa-shopping-basket"
-                                  aria-hidden="true"
-                                ></i
-                              ></a>
-                            </li>
-                            <li>
-                              <a href="wishlist.html" title="Add to Wishlist"
-                                ><i class="fa fa-heart-o" aria-hidden="true"></i
-                              ></a>
-                            </li>
-
-                            <li>
-                              <a href="compare.html" title="Add to Compare"
-                                ><i class="fa fa-sliders" aria-hidden="true"></i
-                              ></a>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="quick_button">
-                      <a
-                        href="#"
-                        data-toggle="modal"
-                        data-target="#modal_box"
-                        title="quick_view"
-                        >+ quick view</a
-                      >
-                    </div>
-
-                    <div class="product_sale">
-                      <span>-7%</span>
-                    </div>
-                  </div>
-                  <div class="product_content">
-                    <h3>
-                      <a href="product-details.html">Apple iPhone SE 16GB</a>
-                    </h3>
-                    <span class="current_price">£60.00</span>
-                    <span class="old_price">£86.00</span>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-3">
-                <div class="single_product">
-                  <div class="product_thumb">
-                    <a class="primary_img" href="product-details.html"
-                      ><img src="assets/img/product/product23.jpg" alt=""
-                    /></a>
-                    <a class="secondary_img" href="product-details.html"
-                      ><img src="assets/img/product/product24.jpg" alt=""
-                    /></a>
-                    <div class="product_action">
-                      <div class="hover_action">
-                        <a href="#"><i class="fa fa-plus"></i></a>
-                        <div class="action_button">
-                          <ul>
-                            <li>
-                              <a title="add to cart" href="cart.html"
-                                ><i
-                                  class="fa fa-shopping-basket"
-                                  aria-hidden="true"
-                                ></i
-                              ></a>
-                            </li>
-                            <li>
-                              <a href="wishlist.html" title="Add to Wishlist"
-                                ><i class="fa fa-heart-o" aria-hidden="true"></i
-                              ></a>
-                            </li>
-
-                            <li>
-                              <a href="compare.html" title="Add to Compare"
-                                ><i class="fa fa-sliders" aria-hidden="true"></i
-                              ></a>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="quick_button">
-                      <a
-                        href="#"
-                        data-toggle="modal"
-                        data-target="#modal_box"
-                        title="quick_view"
-                        >+ quick view</a
-                      >
-                    </div>
-                  </div>
-                  <div class="product_content">
-                    <h3>
-                      <a href="product-details.html">JBL Flip 3 Portable</a>
-                    </h3>
-                    <span class="current_price">£60.00</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!--product section area end-->
-
-    <!--product section area start-->
-    <section class="product_section upsell_product">
-      <div class="container">
-        <div class="row">
-          <div class="col-12">
-            <div class="section_title">
-              <h2>Upsell Products</h2>
-              <p>
-                Contemporary, minimal and modern designs embody the Lavish Alice
-                handwriting
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="product_area">
-          <div class="row">
-            <div class="product_carousel product_three_column4 owl-carousel">
-              <div class="col-lg-3">
-                <div class="single_product">
-                  <div class="product_thumb">
-                    <a class="primary_img" href="product-details.html"
-                      ><img src="assets/img/product/product15.jpg" alt=""
-                    /></a>
-                    <a class="secondary_img" href="product-details.html"
-                      ><img src="assets/img/product/product16.jpg" alt=""
-                    /></a>
-                    <div class="product_action">
-                      <div class="hover_action">
-                        <a href="#"><i class="fa fa-plus"></i></a>
-                        <div class="action_button">
-                          <ul>
-                            <li>
-                              <a title="add to cart" href="cart.html"
-                                ><i
-                                  class="fa fa-shopping-basket"
-                                  aria-hidden="true"
-                                ></i
-                              ></a>
-                            </li>
-                            <li>
-                              <a href="wishlist.html" title="Add to Wishlist"
-                                ><i class="fa fa-heart-o" aria-hidden="true"></i
-                              ></a>
-                            </li>
-
-                            <li>
-                              <a href="compare.html" title="Add to Compare"
-                                ><i class="fa fa-sliders" aria-hidden="true"></i
-                              ></a>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="quick_button">
-                      <a
-                        href="#"
-                        data-toggle="modal"
-                        data-target="#modal_box"
-                        title="quick_view"
-                        >+ quick view</a
-                      >
-                    </div>
-
-                    <div class="product_sale">
-                      <span>-7%</span>
-                    </div>
-                  </div>
-                  <div class="product_content">
-                    <h3>
-                      <a href="product-details.html"
-                        >Marshall Portable Bluetooth</a
-                      >
-                    </h3>
-                    <span class="current_price">£60.00</span>
-                    <span class="old_price">£86.00</span>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-3">
-                <div class="single_product">
-                  <div class="product_thumb">
-                    <a class="primary_img" href="product-details.html"
-                      ><img src="assets/img/product/product17.jpg" alt=""
-                    /></a>
-                    <a class="secondary_img" href="product-details.html"
-                      ><img src="assets/img/product/product18.jpg" alt=""
-                    /></a>
-                    <div class="product_action">
-                      <div class="hover_action">
-                        <a href="#"><i class="fa fa-plus"></i></a>
-                        <div class="action_button">
-                          <ul>
-                            <li>
-                              <a title="add to cart" href="cart.html"
-                                ><i
-                                  class="fa fa-shopping-basket"
-                                  aria-hidden="true"
-                                ></i
-                              ></a>
-                            </li>
-                            <li>
-                              <a href="wishlist.html" title="Add to Wishlist"
-                                ><i class="fa fa-heart-o" aria-hidden="true"></i
-                              ></a>
-                            </li>
-
-                            <li>
-                              <a href="compare.html" title="Add to Compare"
-                                ><i class="fa fa-sliders" aria-hidden="true"></i
-                              ></a>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="quick_button">
-                      <a
-                        href="#"
-                        data-toggle="modal"
-                        data-target="#modal_box"
-                        title="quick_view"
-                        >+ quick view</a
-                      >
-                    </div>
-                  </div>
-                  <div class="product_content">
-                    <h3>
-                      <a href="product-details.html">Koss KPH7 Portable</a>
-                    </h3>
-                    <span class="current_price">£60.00</span>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-3">
-                <div class="single_product">
-                  <div class="product_thumb">
-                    <a class="primary_img" href="product-details.html"
-                      ><img src="assets/img/product/product19.jpg" alt=""
-                    /></a>
-                    <a class="secondary_img" href="product-details.html"
-                      ><img src="assets/img/product/product20.jpg" alt=""
-                    /></a>
-                    <div class="product_action">
-                      <div class="hover_action">
-                        <a href="#"><i class="fa fa-plus"></i></a>
-                        <div class="action_button">
-                          <ul>
-                            <li>
-                              <a title="add to cart" href="cart.html"
-                                ><i
-                                  class="fa fa-shopping-basket"
-                                  aria-hidden="true"
-                                ></i
-                              ></a>
-                            </li>
-                            <li>
-                              <a href="wishlist.html" title="Add to Wishlist"
-                                ><i class="fa fa-heart-o" aria-hidden="true"></i
-                              ></a>
-                            </li>
-
-                            <li>
-                              <a href="compare.html" title="Add to Compare"
-                                ><i class="fa fa-sliders" aria-hidden="true"></i
-                              ></a>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="quick_button">
-                      <a
-                        href="#"
-                        data-toggle="modal"
-                        data-target="#modal_box"
-                        title="quick_view"
-                        >+ quick view</a
-                      >
-                    </div>
-                  </div>
-                  <div class="product_content">
-                    <h3>
-                      <a href="product-details.html">Beats Solo2 Solo 2</a>
-                    </h3>
-                    <span class="current_price">£60.00</span>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-3">
-                <div class="single_product">
-                  <div class="product_thumb">
-                    <a class="primary_img" href="product-details.html"
-                      ><img src="assets/img/product/product7.jpg" alt=""
-                    /></a>
-                    <a class="secondary_img" href="product-details.html"
-                      ><img src="assets/img/product/product8.jpg" alt=""
-                    /></a>
-                    <div class="product_action">
-                      <div class="hover_action">
-                        <a href="#"><i class="fa fa-plus"></i></a>
-                        <div class="action_button">
-                          <ul>
-                            <li>
-                              <a title="add to cart" href="cart.html"
-                                ><i
-                                  class="fa fa-shopping-basket"
-                                  aria-hidden="true"
-                                ></i
-                              ></a>
-                            </li>
-                            <li>
-                              <a href="wishlist.html" title="Add to Wishlist"
-                                ><i class="fa fa-heart-o" aria-hidden="true"></i
-                              ></a>
-                            </li>
-
-                            <li>
-                              <a href="compare.html" title="Add to Compare"
-                                ><i class="fa fa-sliders" aria-hidden="true"></i
-                              ></a>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="quick_button">
-                      <a
-                        href="#"
-                        data-toggle="modal"
-                        data-target="#modal_box"
-                        title="quick_view"
-                        >+ quick view</a
-                      >
-                    </div>
-
-                    <div class="product_sale">
-                      <span>-7%</span>
-                    </div>
-                  </div>
-                  <div class="product_content">
-                    <h3><a href="product-details.html">Beats EP Wired</a></h3>
-                    <span class="current_price">£60.00</span>
-                    <span class="old_price">£86.00</span>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-3">
-                <div class="single_product">
-                  <div class="product_thumb">
-                    <a class="primary_img" href="product-details.html"
-                      ><img src="assets/img/product/product24.jpg" alt=""
-                    /></a>
-                    <a class="secondary_img" href="product-details.html"
-                      ><img src="assets/img/product/product25.jpg" alt=""
-                    /></a>
-                    <div class="product_action">
-                      <div class="hover_action">
-                        <a href="#"><i class="fa fa-plus"></i></a>
-                        <div class="action_button">
-                          <ul>
-                            <li>
-                              <a title="add to cart" href="cart.html"
-                                ><i
-                                  class="fa fa-shopping-basket"
-                                  aria-hidden="true"
-                                ></i
-                              ></a>
-                            </li>
-                            <li>
-                              <a href="wishlist.html" title="Add to Wishlist"
-                                ><i class="fa fa-heart-o" aria-hidden="true"></i
-                              ></a>
-                            </li>
-
-                            <li>
-                              <a href="compare.html" title="Add to Compare"
-                                ><i class="fa fa-sliders" aria-hidden="true"></i
-                              ></a>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="quick_button">
-                      <a
-                        href="#"
-                        data-toggle="modal"
-                        data-target="#modal_box"
-                        title="quick_view"
-                        >+ quick view</a
-                      >
-                    </div>
-                  </div>
-                  <div class="product_content">
-                    <h3>
-                      <a href="product-details.html"
-                        >Bose SoundLink Bluetooth</a
-                      >
-                    </h3>
-                    <span class="current_price">£60.00</span>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-3">
-                <div class="single_product">
-                  <div class="product_thumb">
-                    <a class="primary_img" href="product-details.html"
-                      ><img src="assets/img/product/product10.jpg" alt=""
-                    /></a>
-                    <a class="secondary_img" href="product-details.html"
-                      ><img src="assets/img/product/product11.jpg" alt=""
-                    /></a>
-                    <div class="product_action">
-                      <div class="hover_action">
-                        <a href="#"><i class="fa fa-plus"></i></a>
-                        <div class="action_button">
-                          <ul>
-                            <li>
-                              <a title="add to cart" href="cart.html"
-                                ><i
-                                  class="fa fa-shopping-basket"
-                                  aria-hidden="true"
-                                ></i
-                              ></a>
-                            </li>
-                            <li>
-                              <a href="wishlist.html" title="Add to Wishlist"
-                                ><i class="fa fa-heart-o" aria-hidden="true"></i
-                              ></a>
-                            </li>
-
-                            <li>
-                              <a href="compare.html" title="Add to Compare"
-                                ><i class="fa fa-sliders" aria-hidden="true"></i
-                              ></a>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="quick_button">
-                      <a
-                        href="#"
-                        data-toggle="modal"
-                        data-target="#modal_box"
-                        title="quick_view"
-                        >+ quick view</a
-                      >
-                    </div>
-
-                    <div class="product_sale">
-                      <span>-7%</span>
-                    </div>
-                  </div>
-                  <div class="product_content">
-                    <h3>
-                      <a href="product-details.html">Apple iPhone SE 16GB</a>
-                    </h3>
-                    <span class="current_price">£60.00</span>
-                    <span class="old_price">£86.00</span>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-3">
-                <div class="single_product">
-                  <div class="product_thumb">
-                    <a class="primary_img" href="product-details.html"
-                      ><img src="assets/img/product/product23.jpg" alt=""
-                    /></a>
-                    <a class="secondary_img" href="product-details.html"
-                      ><img src="assets/img/product/product24.jpg" alt=""
-                    /></a>
-                    <div class="product_action">
-                      <div class="hover_action">
-                        <a href="#"><i class="fa fa-plus"></i></a>
-                        <div class="action_button">
-                          <ul>
-                            <li>
-                              <a title="add to cart" href="cart.html"
-                                ><i
-                                  class="fa fa-shopping-basket"
-                                  aria-hidden="true"
-                                ></i
-                              ></a>
-                            </li>
-                            <li>
-                              <a href="wishlist.html" title="Add to Wishlist"
-                                ><i class="fa fa-heart-o" aria-hidden="true"></i
-                              ></a>
-                            </li>
-
-                            <li>
-                              <a href="compare.html" title="Add to Compare"
-                                ><i class="fa fa-sliders" aria-hidden="true"></i
-                              ></a>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="quick_button">
-                      <a
-                        href="#"
-                        data-toggle="modal"
-                        data-target="#modal_box"
-                        title="quick_view"
-                        >+ quick view</a
-                      >
-                    </div>
-                  </div>
-                  <div class="product_content">
-                    <h3>
-                      <a href="product-details.html">JBL Flip 3 Portable</a>
-                    </h3>
-                    <span class="current_price">£60.00</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!--product section area end-->
+  // Gửi dữ liệu form khi có sự thay đổi
+  productForm.submit();
+  console.log("Function is called");
+}
+</script>

@@ -1,6 +1,6 @@
 <!--slider area start-->
 <div class="slider_area slider_style home_three_slider owl-carousel">
-  <div class="single_slider" data-bgimg="assets/img/slider/slider4.jpg">
+  <div class="single_slider" data-bgimg="assets/img/banner/banner4.jpg">
     <div class="container">
       <div class="row align-items-center">
         <div class="col-12">
@@ -9,13 +9,13 @@
             <p>
               the wooboom clothing summer collection is back at half price
             </p>
-            <a href="shop.html">Discover Now</a>
+            <a href="index.php?act=product">Discover Now</a>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <div class="single_slider" data-bgimg="assets/img/slider/slider5.jpg">
+  <div class="single_slider" data-bgimg="assets/img/banner/banner2.jpg">
     <div class="container">
       <div class="row align-items-center">
         <div class="col-12">
@@ -24,13 +24,13 @@
             <p>
               the wooboom clothing summer collection is back at half price
             </p>
-            <a href="shop.html">Discover Now</a>
+            <a href="index.php?act=product">Discover Now</a>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <div class="single_slider" data-bgimg="assets/img/slider/slider6.jpg">
+  <div class="single_slider" data-bgimg="assets/img/banner/banner3.jpg">
     <div class="container">
       <div class="row align-items-center">
         <div class="col-12">
@@ -39,7 +39,7 @@
             <p>
               the wooboom clothing summer collection is back at half price
             </p>
-            <a href="shop.html">Discover Now</a>
+            <a href="index.php?act=product">Discover Now</a>
           </div>
         </div>
       </div>
@@ -55,21 +55,21 @@
       <div class="col-lg-4 col-md-6">
         <div class="banner_area">
           <div class="banner_thumb">
-            <a href="shop.html"><img src="assets/img/bg/banner8.jpg" alt="#" /></a>
+            <a href="index.php?act=product"><img src="assets/img/banner/banner7.jpg" alt="#" /></a>
           </div>
         </div>
       </div>
       <div class="col-lg-4 col-md-6">
         <div class="banner_area">
           <div class="banner_thumb">
-            <a href="shop.html"><img src="assets/img/bg/banner9.jpg" alt="#" /></a>
+            <a href="index.php?act=product"><img src="assets/img/banner/banner8.jpg" alt="#" /></a>
           </div>
         </div>
       </div>
       <div class="col-lg-4 col-md-6">
         <div class="banner_area bottom">
           <div class="banner_thumb">
-            <a href="shop.html"><img src="assets/img/bg/banner10.jpg" alt="#" /></a>
+            <a href="index.php?act=product"><img src="assets/img/banner/banner13.jpg" alt="#" /></a>
           </div>
         </div>
       </div>
@@ -90,983 +90,42 @@
       </div>
     </div>
     <div class="product_area">
-      <div class="row">
-        <div class="col-12">
-          <div class="product_tab_button">
-            <ul class="nav" role="tablist">
-              <li>
-                <a class="active" data-toggle="tab" href="#clothing" role="tab" aria-controls="clothing"
-                  aria-selected="true">Women’s</a>
-              </li>
-              <li>
-                <a data-toggle="tab" href="#handbag" role="tab" aria-controls="handbag" aria-selected="false">Men’s</a>
-              </li>
-              <li>
-                <a data-toggle="tab" href="#shoes" role="tab" aria-controls="shoes" aria-selected="false">Kid's</a>
-              </li>
-              <li>
-                <a data-toggle="tab" href="#accessories" role="tab" aria-controls="accessories"
-                  aria-selected="false">Shoes</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
       <div class="tab-content">
-        <div class="tab-pane fade show active" id="clothing" role="tabpanel">
-          <div class="product_container">
-            <div class="row product_column4">
-              <div class="col-lg-3">
-                <div class="single_product">
-                  <div class="product_thumb">
-                    <a class="primary_img" href="product-details.html"><img src="assets/img/product/product21.jpg"
-                        alt="" /></a>
-                    <a class="secondary_img" href="product-details.html"><img src="assets/img/product/product22.jpg"
-                        alt="" /></a>
-
-                    <div class="quick_button">
-                      <a href="#" title="quick_view">Xem sản phẩm</a>
-                    </div>
-
-                    <div class="product_sale">
-                      <span>-7%</span>
-                    </div>
-                  </div>
-                  <div class="product_content">
-                    <h3>
-                      <a href="product-details.html">Marshall Portable Bluetooth</a>
-                    </h3>
-                    <span class="current_price">£60.00</span>
-                    <span class="old_price">£86.00</span>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-3">
-                <div class="single_product">
-                  <div class="product_thumb">
-                    <a class="primary_img" href="product-details.html"><img src="assets/img/product/product4.jpg"
-                        alt="" /></a>
-                    <a class="secondary_img" href="product-details.html"><img src="assets/img/product/product3.jpg"
-                        alt="" /></a>
-
-                    <div class="quick_button">
-                      <a href="#" title="quick_view">Xem sản phẩm</a>
-                    </div>
-                  </div>
-                  <div class="product_content">
-                    <h3>
-                      <a href="product-details.html">Koss KPH7 Portable</a>
-                    </h3>
-                    <span class="current_price">£60.00</span>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-3">
-                <div class="single_product">
-                  <div class="product_thumb">
-                    <a class="primary_img" href="product-details.html"><img src="assets/img/product/product6.jpg"
-                        alt="" /></a>
-                    <a class="secondary_img" href="product-details.html"><img src="assets/img/product/product5.jpg"
-                        alt="" /></a>
-
-                    <div class="quick_button">
-                      <a href="#" title="quick_view">Xem sản phẩm</a>
-                    </div>
-                  </div>
-                  <div class="product_content">
-                    <h3>
-                      <a href="product-details.html">Beats Solo2 Solo 2</a>
-                    </h3>
-                    <span class="current_price">£60.00</span>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-3">
-                <div class="single_product">
-                  <div class="product_thumb">
-                    <a class="primary_img" href="product-details.html"><img src="assets/img/product/product7.jpg"
-                        alt="" /></a>
-                    <a class="secondary_img" href="product-details.html"><img src="assets/img/product/product8.jpg"
-                        alt="" /></a>
-
-                    <div class="quick_button">
-                      <a href="#" title="quick_view">Xem sản phẩm</a>
-                    </div>
-
-                    <div class="product_sale">
-                      <span>-7%</span>
-                    </div>
-                  </div>
-                  <div class="product_content">
-                    <h3>
-                      <a href="product-details.html">Beats EP Wired</a>
-                    </h3>
-                    <span class="current_price">£60.00</span>
-                    <span class="old_price">£86.00</span>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-3">
-                <div class="single_product">
-                  <div class="product_thumb">
-                    <a class="primary_img" href="product-details.html"><img src="assets/img/product/product24.jpg"
-                        alt="" /></a>
-                    <a class="secondary_img" href="product-details.html"><img src="assets/img/product/product25.jpg"
-                        alt="" /></a>
-
-                    <div class="quick_button">
-                      <a href="#" title="quick_view">Xem sản phẩm</a>
-                    </div>
-                  </div>
-                  <div class="product_content">
-                    <h3>
-                      <a href="product-details.html">Bose SoundLink Bluetooth</a>
-                    </h3>
-                    <span class="current_price">£60.00</span>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-3">
-                <div class="single_product">
-                  <div class="product_thumb">
-                    <a class="primary_img" href="product-details.html"><img src="assets/img/product/product10.jpg"
-                        alt="" /></a>
-                    <a class="secondary_img" href="product-details.html"><img src="assets/img/product/product11.jpg"
-                        alt="" /></a>
-
-                    <div class="quick_button">
-                      <a href="#" title="quick_view">Xem sản phẩm</a>
-                    </div>
-
-                    <div class="product_sale">
-                      <span>-7%</span>
-                    </div>
-                  </div>
-                  <div class="product_content">
-                    <h3>
-                      <a href="product-details.html">Apple iPhone SE 16GB</a>
-                    </h3>
-                    <span class="current_price">£60.00</span>
-                    <span class="old_price">£86.00</span>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-3">
-                <div class="single_product">
-                  <div class="product_thumb">
-                    <a class="primary_img" href="product-details.html"><img src="assets/img/product/product23.jpg"
-                        alt="" /></a>
-                    <a class="secondary_img" href="product-details.html"><img src="assets/img/product/product24.jpg"
-                        alt="" /></a>
-
-                    <div class="quick_button">
-                      <a href="#" title="quick_view">Xem sản phẩm</a>
-                    </div>
-                    <div class="double_base">
-                      <div class="product_sale">
-                        <span>-7%</span>
-                      </div>
-                      <div class="label_product">
-                        <span>new</span>
+        <div class="product_container">
+          <div class="row product_column4">
+            <?php foreach ($spnew as $sp) : ?>
+            <div class="col-lg-3">
+              <div class="single_product">
+                <div class="product_thumb">
+                  <a class="primary_img" href="index.php?act=productdetail&masp=<?= $sp['maspct'] ?>"><img
+                      src="uploads/sanpham/<?= $sp['anhsp']?>" alt="" /></a>
+                  <div class="product_action">
+                    <div class="hover_action">
+                      <a href="#"><i class="fa fa-plus"></i></a>
+                      <div class="action_button">
+                        <ul>
+                          <li>
+                            <a title="add to cart"
+                              onclick="addToCart(<?= $sp['maspct'] ?>, '<?= $sp['ten_sp'] ?>', <?= $sp['gia'] ?>, '<?= $sp['anhsp'] ?>', 1, <?= isset($_SESSION['user'])?$_SESSION['user']['id']:0; ?>)"><i
+                                class="fa fa-shopping-basket" aria-hidden="true"></i></a>
+                          </li>
+                        </ul>
                       </div>
                     </div>
                   </div>
-                  <div class="product_content">
-                    <h3>
-                      <a href="product-details.html">JBL Flip 3 Portable</a>
-                    </h3>
-                    <span class="current_price">£60.00</span>
+                  <div class="quick_button">
+                    <a href="index.php?act=productdetail&masp=<?= $sp['maspct'] ?>" title="quick_view">Xem sản phẩm</a>
                   </div>
                 </div>
-              </div>
-              <div class="col-lg-3">
-                <div class="single_product">
-                  <div class="product_thumb">
-                    <a class="primary_img" href="product-details.html"><img src="assets/img/product/product15.jpg"
-                        alt="" /></a>
-                    <a class="secondary_img" href="product-details.html"><img src="assets/img/product/product16.jpg"
-                        alt="" /></a>
-
-                    <div class="quick_button">
-                      <a href="#" title="quick_view">Xem sản phẩm</a>
-                    </div>
-
-                    <div class="product_sale">
-                      <span>-7%</span>
-                    </div>
-                  </div>
-                  <div class="product_content">
-                    <h3>
-                      <a href="product-details.html">Beats Solo Wireless</a>
-                    </h3>
-                    <span class="current_price">£60.00</span>
-                    <span class="old_price">£86.00</span>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-3">
-                <div class="single_product">
-                  <div class="product_thumb">
-                    <a class="primary_img" href="product-details.html"><img src="assets/img/product/product18.jpg"
-                        alt="" /></a>
-                    <a class="secondary_img" href="product-details.html"><img src="assets/img/product/product17.jpg"
-                        alt="" /></a>
-
-                    <div class="quick_button">
-                      <a href="#" title="quick_view">Xem sản phẩm</a>
-                    </div>
-                    <div class="label_product">
-                      <span>new</span>
-                    </div>
-                  </div>
-                  <div class="product_content">
-                    <h3>
-                      <a href="product-details.html">Apple iPad with Retina</a>
-                    </h3>
-                    <span class="current_price">£60.00</span>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-3">
-                <div class="single_product">
-                  <div class="product_thumb">
-                    <a class="primary_img" href="product-details.html"><img src="assets/img/product/product19.jpg"
-                        alt="" /></a>
-                    <a class="secondary_img" href="product-details.html"><img src="assets/img/product/product20.jpg"
-                        alt="" /></a>
-
-                    <div class="quick_button">
-                      <a href="#" title="quick_view">Xem sản phẩm</a>
-                    </div>
-
-                    <div class="product_sale">
-                      <span>-7%</span>
-                    </div>
-                  </div>
-                  <div class="product_content">
-                    <h3>
-                      <a href="product-details.html">Marshall Portable Bluetooth</a>
-                    </h3>
-                    <span class="current_price">£60.00</span>
-                    <span class="old_price">£86.00</span>
-                  </div>
+                <div class="product_content">
+                  <h3>
+                    <a href="index.php?act=productdetail&masp=<?= $sp['maspct'] ?>"><?= $sp['ten_sp'] ?></a>
+                  </h3>
+                  <span class="current_price"><?= number_format($sp['gia'], 0, '', ',') ?>₫</span>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-        <div class="tab-pane fade" id="handbag" role="tabpanel">
-          <div class="product_container">
-            <div class="row product_column4">
-              <div class="col-lg-3">
-                <div class="single_product">
-                  <div class="product_thumb">
-                    <a class="primary_img" href="product-details.html"><img src="assets/img/product/product20.jpg"
-                        alt="" /></a>
-                    <a class="secondary_img" href="product-details.html"><img src="assets/img/product/product19.jpg"
-                        alt="" /></a>
-
-                    <div class="quick_button">
-                      <a href="#" title="quick_view">Xem sản phẩm</a>
-                    </div>
-                  </div>
-                  <div class="product_content">
-                    <h3>
-                      <a href="product-details.html">Marshall Portable Bluetooth</a>
-                    </h3>
-                    <span class="current_price">£60.00</span>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-3">
-                <div class="single_product">
-                  <div class="product_thumb">
-                    <a class="primary_img" href="product-details.html"><img src="assets/img/product/product19.jpg"
-                        alt="" /></a>
-                    <a class="secondary_img" href="product-details.html"><img src="assets/img/product/product18.jpg"
-                        alt="" /></a>
-
-                    <div class="quick_button">
-                      <a href="#" title="quick_view">Xem sản phẩm</a>
-                    </div>
-                    <div class="label_product">
-                      <span>new</span>
-                    </div>
-                  </div>
-                  <div class="product_content">
-                    <h3>
-                      <a href="product-details.html">Koss KPH7 Portable</a>
-                    </h3>
-                    <span class="current_price">£60.00</span>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-3">
-                <div class="single_product">
-                  <div class="product_thumb">
-                    <a class="primary_img" href="product-details.html"><img src="assets/img/product/product17.jpg"
-                        alt="" /></a>
-                    <a class="secondary_img" href="product-details.html"><img src="assets/img/product/product16.jpg"
-                        alt="" /></a>
-
-                    <div class="quick_button">
-                      <a href="#" title="quick_view">Xem sản phẩm</a>
-                    </div>
-
-                    <div class="product_sale">
-                      <span>-7%</span>
-                    </div>
-                  </div>
-                  <div class="product_content">
-                    <h3>
-                      <a href="product-details.html">Beats Solo2 Solo 2</a>
-                    </h3>
-                    <span class="current_price">£60.00</span>
-                    <span class="old_price">£86.00</span>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-3">
-                <div class="single_product">
-                  <div class="product_thumb">
-                    <a class="primary_img" href="product-details.html"><img src="assets/img/product/product15.jpg"
-                        alt="" /></a>
-                    <a class="secondary_img" href="product-details.html"><img src="assets/img/product/product14.jpg"
-                        alt="" /></a>
-
-                    <div class="quick_button">
-                      <a href="#" title="quick_view">Xem sản phẩm</a>
-                    </div>
-
-                    <div class="product_sale">
-                      <span>-7%</span>
-                    </div>
-                  </div>
-                  <div class="product_content">
-                    <h3>
-                      <a href="product-details.html">Beats EP Wired</a>
-                    </h3>
-                    <span class="current_price">£60.00</span>
-                    <span class="old_price">£86.00</span>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-3">
-                <div class="single_product">
-                  <div class="product_thumb">
-                    <a class="primary_img" href="product-details.html"><img src="assets/img/product/product13.jpg"
-                        alt="" /></a>
-                    <a class="secondary_img" href="product-details.html"><img src="assets/img/product/product12.jpg"
-                        alt="" /></a>
-
-                    <div class="quick_button">
-                      <a href="#" title="quick_view">Xem sản phẩm</a>
-                    </div>
-                  </div>
-                  <div class="product_content">
-                    <h3>
-                      <a href="product-details.html">Bose SoundLink Bluetooth</a>
-                    </h3>
-                    <span class="current_price">£60.00</span>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-3">
-                <div class="single_product">
-                  <div class="product_thumb">
-                    <a class="primary_img" href="product-details.html"><img src="assets/img/product/product11.jpg"
-                        alt="" /></a>
-                    <a class="secondary_img" href="product-details.html"><img src="assets/img/product/product10.jpg"
-                        alt="" /></a>
-
-                    <div class="quick_button">
-                      <a href="#" title="quick_view">Xem sản phẩm</a>
-                    </div>
-
-                    <div class="product_sale">
-                      <span>-7%</span>
-                    </div>
-                  </div>
-                  <div class="product_content">
-                    <h3>
-                      <a href="product-details.html">Apple iPhone SE 16GB</a>
-                    </h3>
-                    <span class="current_price">£60.00</span>
-                    <span class="old_price">£86.00</span>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-3">
-                <div class="single_product">
-                  <div class="product_thumb">
-                    <a class="primary_img" href="product-details.html"><img src="assets/img/product/product9.jpg"
-                        alt="" /></a>
-                    <a class="secondary_img" href="product-details.html"><img src="assets/img/product/product18.jpg"
-                        alt="" /></a>
-
-                    <div class="quick_button">
-                      <a href="#" title="quick_view">Xem sản phẩm</a>
-                    </div>
-                    <div class="label_product">
-                      <span>new</span>
-                    </div>
-                  </div>
-                  <div class="product_content">
-                    <h3>
-                      <a href="product-details.html">JBL Flip 3 Portable</a>
-                    </h3>
-                    <span class="current_price">£60.00</span>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-3">
-                <div class="single_product">
-                  <div class="product_thumb">
-                    <a class="primary_img" href="product-details.html"><img src="assets/img/product/product7.jpg"
-                        alt="" /></a>
-                    <a class="secondary_img" href="product-details.html"><img src="assets/img/product/product6.jpg"
-                        alt="" /></a>
-
-                    <div class="quick_button">
-                      <a href="#" title="quick_view">Xem sản phẩm</a>
-                    </div>
-
-                    <div class="product_sale">
-                      <span>-7%</span>
-                    </div>
-                  </div>
-                  <div class="product_content">
-                    <h3>
-                      <a href="product-details.html">Beats Solo Wireless</a>
-                    </h3>
-                    <span class="current_price">£60.00</span>
-                    <span class="old_price">£86.00</span>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-3">
-                <div class="single_product">
-                  <div class="product_thumb">
-                    <a class="primary_img" href="product-details.html"><img src="assets/img/product/product5.jpg"
-                        alt="" /></a>
-                    <a class="secondary_img" href="product-details.html"><img src="assets/img/product/product4.jpg"
-                        alt="" /></a>
-
-                    <div class="quick_button">
-                      <a href="#" title="quick_view">Xem sản phẩm</a>
-                    </div>
-                  </div>
-                  <div class="product_content">
-                    <h3>
-                      <a href="product-details.html">Apple iPad with Retina</a>
-                    </h3>
-                    <span class="current_price">£60.00</span>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-3">
-                <div class="single_product">
-                  <div class="product_thumb">
-                    <a class="primary_img" href="product-details.html"><img src="assets/img/product/product3.jpg"
-                        alt="" /></a>
-                    <a class="secondary_img" href="product-details.html"><img src="assets/img/product/product2.jpg"
-                        alt="" /></a>
-
-                    <div class="quick_button">
-                      <a href="#" title="quick_view">Xem sản phẩm</a>
-                    </div>
-
-                    <div class="product_sale">
-                      <span>-7%</span>
-                    </div>
-                  </div>
-                  <div class="product_content">
-                    <h3>
-                      <a href="product-details.html">Marshall Portable Bluetooth</a>
-                    </h3>
-                    <span class="current_price">£60.00</span>
-                    <span class="old_price">£86.00</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="tab-pane fade" id="shoes" role="tabpanel">
-          <div class="product_container">
-            <div class="row product_column4">
-              <div class="col-lg-3">
-                <div class="single_product">
-                  <div class="product_thumb">
-                    <a class="primary_img" href="product-details.html"><img src="assets/img/product/product10.jpg"
-                        alt="" /></a>
-                    <a class="secondary_img" href="product-details.html"><img src="assets/img/product/product11.jpg"
-                        alt="" /></a>
-
-                    <div class="quick_button">
-                      <a href="#" title="quick_view">Xem sản phẩm</a>
-                    </div>
-                    <div class="label_product">
-                      <span>new</span>
-                    </div>
-                  </div>
-                  <div class="product_content">
-                    <h3>
-                      <a href="product-details.html">Marshall Portable Bluetooth</a>
-                    </h3>
-                    <span class="current_price">£60.00</span>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-3">
-                <div class="single_product">
-                  <div class="product_thumb">
-                    <a class="primary_img" href="product-details.html"><img src="assets/img/product/product11.jpg"
-                        alt="" /></a>
-                    <a class="secondary_img" href="product-details.html"><img src="assets/img/product/product12.jpg"
-                        alt="" /></a>
-
-                    <div class="quick_button">
-                      <a href="#" title="quick_view">Xem sản phẩm</a>
-                    </div>
-                  </div>
-                  <div class="product_content">
-                    <h3>
-                      <a href="product-details.html">Koss KPH7 Portable</a>
-                    </h3>
-                    <span class="current_price">£60.00</span>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-3">
-                <div class="single_product">
-                  <div class="product_thumb">
-                    <a class="primary_img" href="product-details.html"><img src="assets/img/product/product13.jpg"
-                        alt="" /></a>
-                    <a class="secondary_img" href="product-details.html"><img src="assets/img/product/product9.jpg"
-                        alt="" /></a>
-
-                    <div class="quick_button">
-                      <a href="#" title="quick_view">Xem sản phẩm</a>
-                    </div>
-
-                    <div class="product_sale">
-                      <span>-7%</span>
-                    </div>
-                  </div>
-                  <div class="product_content">
-                    <h3>
-                      <a href="product-details.html">Beats Solo2 Solo 2</a>
-                    </h3>
-                    <span class="current_price">£60.00</span>
-                    <span class="old_price">£86.00</span>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-3">
-                <div class="single_product">
-                  <div class="product_thumb">
-                    <a class="primary_img" href="product-details.html"><img src="assets/img/product/product8.jpg"
-                        alt="" /></a>
-                    <a class="secondary_img" href="product-details.html"><img src="assets/img/product/product7.jpg"
-                        alt="" /></a>
-
-                    <div class="quick_button">
-                      <a href="#" title="quick_view">Xem sản phẩm</a>
-                    </div>
-                  </div>
-                  <div class="product_content">
-                    <h3>
-                      <a href="product-details.html">Beats EP Wired</a>
-                    </h3>
-                    <span class="current_price">£60.00</span>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-3">
-                <div class="single_product">
-                  <div class="product_thumb">
-                    <a class="primary_img" href="product-details.html"><img src="assets/img/product/product12.jpg"
-                        alt="" /></a>
-                    <a class="secondary_img" href="product-details.html"><img src="assets/img/product/product13.jpg"
-                        alt="" /></a>
-
-                    <div class="quick_button">
-                      <a href="#" title="quick_view">Xem sản phẩm</a>
-                    </div>
-
-                    <div class="product_sale">
-                      <span>-7%</span>
-                    </div>
-                  </div>
-                  <div class="product_content">
-                    <h3>
-                      <a href="product-details.html">Bose SoundLink Bluetooth</a>
-                    </h3>
-                    <span class="current_price">£60.00</span>
-                    <span class="old_price">£86.00</span>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-3">
-                <div class="single_product">
-                  <div class="product_thumb">
-                    <a class="primary_img" href="product-details.html"><img src="assets/img/product/product10.jpg"
-                        alt="" /></a>
-                    <a class="secondary_img" href="product-details.html"><img src="assets/img/product/product11.jpg"
-                        alt="" /></a>
-
-                    <div class="quick_button">
-                      <a href="#" title="quick_view">Xem sản phẩm</a>
-                    </div>
-                  </div>
-                  <div class="product_content">
-                    <h3>
-                      <a href="product-details.html">Apple iPhone SE 16GB</a>
-                    </h3>
-                    <span class="current_price">£60.00</span>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-3">
-                <div class="single_product">
-                  <div class="product_thumb">
-                    <a class="primary_img" href="product-details.html"><img src="assets/img/product/product13.jpg"
-                        alt="" /></a>
-                    <a class="secondary_img" href="product-details.html"><img src="assets/img/product/product14.jpg"
-                        alt="" /></a>
-
-                    <div class="quick_button">
-                      <a href="#" title="quick_view">Xem sản phẩm</a>
-                    </div>
-                    <div class="double_base">
-                      <div class="product_sale">
-                        <span>-7%</span>
-                      </div>
-                      <div class="label_product">
-                        <span>new</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="product_content">
-                    <h3>
-                      <a href="product-details.html">JBL Flip 3 Portable</a>
-                    </h3>
-                    <span class="current_price">£60.00</span>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-3">
-                <div class="single_product">
-                  <div class="product_thumb">
-                    <a class="primary_img" href="product-details.html"><img src="assets/img/product/product15.jpg"
-                        alt="" /></a>
-                    <a class="secondary_img" href="product-details.html"><img src="assets/img/product/product16.jpg"
-                        alt="" /></a>
-
-                    <div class="quick_button">
-                      <a href="#" title="quick_view">Xem sản phẩm</a>
-                    </div>
-
-                    <div class="product_sale">
-                      <span>-7%</span>
-                    </div>
-                  </div>
-                  <div class="product_content">
-                    <h3>
-                      <a href="product-details.html">Beats Solo Wireless</a>
-                    </h3>
-                    <span class="current_price">£60.00</span>
-                    <span class="old_price">£86.00</span>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-3">
-                <div class="single_product">
-                  <div class="product_thumb">
-                    <a class="primary_img" href="product-details.html"><img src="assets/img/product/product18.jpg"
-                        alt="" /></a>
-                    <a class="secondary_img" href="product-details.html"><img src="assets/img/product/product17.jpg"
-                        alt="" /></a>
-
-                    <div class="quick_button">
-                      <a href="#" title="quick_view">Xem sản phẩm</a>
-                    </div>
-                  </div>
-                  <div class="product_content">
-                    <h3>
-                      <a href="product-details.html">Apple iPad with Retina</a>
-                    </h3>
-                    <span class="current_price">£60.00</span>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-3">
-                <div class="single_product">
-                  <div class="product_thumb">
-                    <a class="primary_img" href="product-details.html"><img src="assets/img/product/product19.jpg"
-                        alt="" /></a>
-                    <a class="secondary_img" href="product-details.html"><img src="assets/img/product/product20.jpg"
-                        alt="" /></a>
-
-                    <div class="quick_button">
-                      <a href="#" title="quick_view">Xem sản phẩm</a>
-                    </div>
-
-                    <div class="product_sale">
-                      <span>-7%</span>
-                    </div>
-                  </div>
-                  <div class="product_content">
-                    <h3>
-                      <a href="product-details.html">Marshall Portable Bluetooth</a>
-                    </h3>
-                    <span class="current_price">£60.00</span>
-                    <span class="old_price">£86.00</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="tab-pane fade" id="accessories" role="tabpanel">
-          <div class="product_container">
-            <div class="row product_column4">
-              <div class="col-lg-3">
-                <div class="single_product">
-                  <div class="product_thumb">
-                    <a class="primary_img" href="product-details.html"><img src="assets/img/product/product1.jpg"
-                        alt="" /></a>
-                    <a class="secondary_img" href="product-details.html"><img src="assets/img/product/product2.jpg"
-                        alt="" /></a>
-
-                    <div class="quick_button">
-                      <a href="#" title="quick_view">Xem sản phẩm</a>
-                    </div>
-
-                    <div class="product_sale">
-                      <span>-7%</span>
-                    </div>
-                  </div>
-                  <div class="product_content">
-                    <h3>
-                      <a href="product-details.html">Marshall Portable Bluetooth</a>
-                    </h3>
-                    <span class="current_price">£60.00</span>
-                    <span class="old_price">£86.00</span>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-3">
-                <div class="single_product">
-                  <div class="product_thumb">
-                    <a class="primary_img" href="product-details.html"><img src="assets/img/product/product4.jpg"
-                        alt="" /></a>
-                    <a class="secondary_img" href="product-details.html"><img src="assets/img/product/product3.jpg"
-                        alt="" /></a>
-
-                    <div class="quick_button">
-                      <a href="#" title="quick_view">Xem sản phẩm</a>
-                    </div>
-
-                    <div class="product_sale">
-                      <span>-7%</span>
-                    </div>
-                  </div>
-                  <div class="product_content">
-                    <h3>
-                      <a href="product-details.html">Koss KPH7 Portable</a>
-                    </h3>
-                    <span class="current_price">£60.00</span>
-                    <span class="old_price">£86.00</span>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-3">
-                <div class="single_product">
-                  <div class="product_thumb">
-                    <a class="primary_img" href="product-details.html"><img src="assets/img/product/product6.jpg"
-                        alt="" /></a>
-                    <a class="secondary_img" href="product-details.html"><img src="assets/img/product/product5.jpg"
-                        alt="" /></a>
-
-                    <div class="quick_button">
-                      <a href="#" title="quick_view">Xem sản phẩm</a>
-                    </div>
-                    <div class="label_product">
-                      <span>new</span>
-                    </div>
-                  </div>
-                  <div class="product_content">
-                    <h3>
-                      <a href="product-details.html">Beats Solo2 Solo 2</a>
-                    </h3>
-                    <span class="current_price">£60.00</span>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-3">
-                <div class="single_product">
-                  <div class="product_thumb">
-                    <a class="primary_img" href="product-details.html"><img src="assets/img/product/product7.jpg"
-                        alt="" /></a>
-                    <a class="secondary_img" href="product-details.html"><img src="assets/img/product/product8.jpg"
-                        alt="" /></a>
-
-                    <div class="quick_button">
-                      <a href="#" title="quick_view">Xem sản phẩm</a>
-                    </div>
-                  </div>
-                  <div class="product_content">
-                    <h3>
-                      <a href="product-details.html">Beats EP Wired</a>
-                    </h3>
-                    <span class="current_price">£60.00</span>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-3">
-                <div class="single_product">
-                  <div class="product_thumb">
-                    <a class="primary_img" href="product-details.html"><img src="assets/img/product/product10.jpg"
-                        alt="" /></a>
-                    <a class="secondary_img" href="product-details.html"><img src="assets/img/product/product9.jpg"
-                        alt="" /></a>
-
-                    <div class="quick_button">
-                      <a href="#" title="quick_view">Xem sản phẩm</a>
-                    </div>
-                  </div>
-                  <div class="product_content">
-                    <h3>
-                      <a href="product-details.html">Bose SoundLink Bluetooth</a>
-                    </h3>
-                    <span class="current_price">£60.00</span>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-3">
-                <div class="single_product">
-                  <div class="product_thumb">
-                    <a class="primary_img" href="product-details.html"><img src="assets/img/product/product10.jpg"
-                        alt="" /></a>
-                    <a class="secondary_img" href="product-details.html"><img src="assets/img/product/product11.jpg"
-                        alt="" /></a>
-
-                    <div class="quick_button">
-                      <a href="#" title="quick_view">Xem sản phẩm</a>
-                    </div>
-                  </div>
-                  <div class="product_content">
-                    <h3>
-                      <a href="product-details.html">Apple iPhone SE 16GB</a>
-                    </h3>
-                    <span class="current_price">£60.00</span>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-3">
-                <div class="single_product">
-                  <div class="product_thumb">
-                    <a class="primary_img" href="product-details.html"><img src="assets/img/product/product13.jpg"
-                        alt="" /></a>
-                    <a class="secondary_img" href="product-details.html"><img src="assets/img/product/product14.jpg"
-                        alt="" /></a>
-
-                    <div class="quick_button">
-                      <a href="#" title="quick_view">Xem sản phẩm</a>
-                    </div>
-                    <div class="double_base">
-                      <div class="product_sale">
-                        <span>-7%</span>
-                      </div>
-                      <div class="label_product">
-                        <span>new</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="product_content">
-                    <h3>
-                      <a href="product-details.html">JBL Flip 3 Portable</a>
-                    </h3>
-                    <span class="current_price">£60.00</span>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-3">
-                <div class="single_product">
-                  <div class="product_thumb">
-                    <a class="primary_img" href="product-details.html"><img src="assets/img/product/product15.jpg"
-                        alt="" /></a>
-                    <a class="secondary_img" href="product-details.html"><img src="assets/img/product/product16.jpg"
-                        alt="" /></a>
-
-                    <div class="quick_button">
-                      <a href="#" title="quick_view">Xem sản phẩm</a>
-                    </div>
-
-                    <div class="product_sale">
-                      <span>-7%</span>
-                    </div>
-                  </div>
-                  <div class="product_content">
-                    <h3>
-                      <a href="product-details.html">Beats Solo Wireless</a>
-                    </h3>
-                    <span class="current_price">£60.00</span>
-                    <span class="old_price">£86.00</span>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-3">
-                <div class="single_product">
-                  <div class="product_thumb">
-                    <a class="primary_img" href="product-details.html"><img src="assets/img/product/product18.jpg"
-                        alt="" /></a>
-                    <a class="secondary_img" href="product-details.html"><img src="assets/img/product/product17.jpg"
-                        alt="" /></a>
-
-                    <div class="quick_button">
-                      <a href="#" title="quick_view">Xem sản phẩm</a>
-                    </div>
-                    <div class="label_product">
-                      <span>new</span>
-                    </div>
-                  </div>
-                  <div class="product_content">
-                    <h3>
-                      <a href="product-details.html">Apple iPad with Retina</a>
-                    </h3>
-                    <span class="current_price">£60.00</span>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-3">
-                <div class="single_product">
-                  <div class="product_thumb">
-                    <a class="primary_img" href="product-details.html"><img src="assets/img/product/product19.jpg"
-                        alt="" /></a>
-                    <a class="secondary_img" href="product-details.html"><img src="assets/img/product/product20.jpg"
-                        alt="" /></a>
-
-                    <div class="quick_button">
-                      <a href="#" title="quick_view">Xem sản phẩm</a>
-                    </div>
-
-                    <div class="product_sale">
-                      <span>-7%</span>
-                    </div>
-                  </div>
-                  <div class="product_content">
-                    <h3>
-                      <a href="product-details.html">Marshall Portable Bluetooth</a>
-                    </h3>
-                    <span class="current_price">£60.00</span>
-                    <span class="old_price">£86.00</span>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <?php endforeach ?>
           </div>
         </div>
       </div>
@@ -1082,13 +141,13 @@
       <div class="col-lg-6 col-md-6">
         <div class="banner_area">
           <div class="banner_thumb">
-            <a href="shop.html"><img src="assets/img/bg/banner11.jpg" alt="#" /></a>
+            <a href="index.php?act=product"><img src="assets/img/banner/banner15.jpg" alt="#" /></a>
             <div class="banner_content">
               <h1>
-                Handbag <br />
-                Men’s Collection
+                Owndays <br />
+                500 store
               </h1>
-              <a href="shop.html">Discover Now</a>
+              <a href="index.php?act=product">Discover Now</a>
             </div>
           </div>
         </div>
@@ -1096,13 +155,13 @@
       <div class="col-lg-6 col-md-6">
         <div class="banner_area">
           <div class="banner_thumb">
-            <a href="shop.html"><img src="assets/img/bg/banner12.jpg" alt="#" /></a>
+            <a href="index.php?act=product"><img src="assets/img/banner/banner14.jpg" alt="#" /></a>
             <div class="banner_content">
               <h1>
-                Sneaker <br />
-                Men’s Collection
+                Memory <br />
+                Metal
               </h1>
-              <a href="shop.html">Discover Now</a>
+              <a href="index.php?act=product">Discover Now</a>
             </div>
           </div>
         </div>
@@ -1126,171 +185,39 @@
     <div class="product_area">
       <div class="row">
         <div class="product_carousel product_three_column4 owl-carousel">
+          <?php foreach ($spnew as $sp) : ?>
           <div class="col-lg-3">
             <div class="single_product">
               <div class="product_thumb">
-                <a class="primary_img" href="product-details.html"><img src="assets/img/product/product21.jpg"
-                    alt="" /></a>
-                <a class="secondary_img" href="product-details.html"><img src="assets/img/product/product22.jpg"
-                    alt="" /></a>
+                <a class="primary_img" href="index.php?act=productdetail&masp=<?= $sp['maspct'] ?>"><img
+                    src="uploads/sanpham/<?= $sp['anhsp']?>" alt="" /></a>
                 <div class="product_action">
                   <div class="hover_action">
                     <a href="#"><i class="fa fa-plus"></i></a>
                     <div class="action_button">
                       <ul>
                         <li>
-                          <a title="add to cart" href="cart.html"><i class="fa fa-shopping-basket"
-                              aria-hidden="true"></i></a>
+                          <a title="add to cart"
+                            onclick="addToCart(<?= $sp['maspct'] ?>, '<?= $sp['ten_sp'] ?>', <?= $sp['gia'] ?>, '<?= $sp['anhsp'] ?>', 1, <?= isset($_SESSION['user'])?$_SESSION['user']['id']:0; ?>)"><i
+                              class="fa fa-shopping-basket" aria-hidden="true"></i></a>
                         </li>
                       </ul>
                     </div>
                   </div>
                 </div>
                 <div class="quick_button">
-                  <a href="#" title="quick_view">Xem sản phẩm</a>
-                </div>
-
-                <div class="product_sale">
-                  <span>-7%</span>
+                  <a href="index.php?act=productdetail&masp=<?= $sp['maspct'] ?>" title="quick_view">Xem sản phẩm</a>
                 </div>
               </div>
               <div class="product_content">
                 <h3>
-                  <a href="product-details.html">Marshall Portable Bluetooth</a>
+                  <a href="index.php?act=productdetail&masp=<?= $sp['maspct'] ?>"><?= $sp['ten_sp'] ?></a>
                 </h3>
-                <span class="current_price">£60.00</span>
-                <span class="old_price">£86.00</span>
+                <span class="current_price"><?= number_format($sp['gia'], 0, '', ',') ?>₫</span>
               </div>
             </div>
           </div>
-          <div class="col-lg-3">
-            <div class="single_product">
-              <div class="product_thumb">
-                <a class="primary_img" href="product-details.html"><img src="assets/img/product/product27.jpg"
-                    alt="" /></a>
-                <a class="secondary_img" href="product-details.html"><img src="assets/img/product/product28.jpg"
-                    alt="" /></a>
-
-                <div class="quick_button">
-                  <a href="#" title="quick_view">Xem sản phẩm</a>
-                </div>
-              </div>
-              <div class="product_content">
-                <h3>
-                  <a href="product-details.html">Koss KPH7 Portable</a>
-                </h3>
-                <span class="current_price">£60.00</span>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3">
-            <div class="single_product">
-              <div class="product_thumb">
-                <a class="primary_img" href="product-details.html"><img src="assets/img/product/product6.jpg"
-                    alt="" /></a>
-                <a class="secondary_img" href="product-details.html"><img src="assets/img/product/product5.jpg"
-                    alt="" /></a>
-
-                <div class="quick_button">
-                  <a href="#" title="quick_view">Xem sản phẩm</a>
-                </div>
-              </div>
-              <div class="product_content">
-                <h3>
-                  <a href="product-details.html">Beats Solo2 Solo 2</a>
-                </h3>
-                <span class="current_price">£60.00</span>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3">
-            <div class="single_product">
-              <div class="product_thumb">
-                <a class="primary_img" href="product-details.html"><img src="assets/img/product/product7.jpg"
-                    alt="" /></a>
-                <a class="secondary_img" href="product-details.html"><img src="assets/img/product/product8.jpg"
-                    alt="" /></a>
-
-                <div class="quick_button">
-                  <a href="#" title="quick_view">Xem sản phẩm</a>
-                </div>
-
-                <div class="product_sale">
-                  <span>-7%</span>
-                </div>
-              </div>
-              <div class="product_content">
-                <h3><a href="product-details.html">Beats EP Wired</a></h3>
-                <span class="current_price">£60.00</span>
-                <span class="old_price">£86.00</span>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3">
-            <div class="single_product">
-              <div class="product_thumb">
-                <a class="primary_img" href="product-details.html"><img src="assets/img/product/product24.jpg"
-                    alt="" /></a>
-                <a class="secondary_img" href="product-details.html"><img src="assets/img/product/product25.jpg"
-                    alt="" /></a>
-
-                <div class="quick_button">
-                  <a href="#" title="quick_view">Xem sản phẩm</a>
-                </div>
-              </div>
-              <div class="product_content">
-                <h3>
-                  <a href="product-details.html">Bose SoundLink Bluetooth</a>
-                </h3>
-                <span class="current_price">£60.00</span>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3">
-            <div class="single_product">
-              <div class="product_thumb">
-                <a class="primary_img" href="product-details.html"><img src="assets/img/product/product10.jpg"
-                    alt="" /></a>
-                <a class="secondary_img" href="product-details.html"><img src="assets/img/product/product11.jpg"
-                    alt="" /></a>
-
-                <div class="quick_button">
-                  <a href="#" title="quick_view">Xem sản phẩm</a>
-                </div>
-
-                <div class="product_sale">
-                  <span>-7%</span>
-                </div>
-              </div>
-              <div class="product_content">
-                <h3>
-                  <a href="product-details.html">Apple iPhone SE 16GB</a>
-                </h3>
-                <span class="current_price">£60.00</span>
-                <span class="old_price">£86.00</span>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3">
-            <div class="single_product">
-              <div class="product_thumb">
-                <a class="primary_img" href="product-details.html"><img src="assets/img/product/product23.jpg"
-                    alt="" /></a>
-                <a class="secondary_img" href="product-details.html"><img src="assets/img/product/product24.jpg"
-                    alt="" /></a>
-
-                <div class="quick_button">
-                  <a href="#" title="quick_view">Xem sản phẩm</a>
-                </div>
-              </div>
-              <div class="product_content">
-                <h3>
-                  <a href="product-details.html">JBL Flip 3 Portable</a>
-                </h3>
-                <span class="current_price">£60.00</span>
-              </div>
-            </div>
-          </div>
+          <?php endforeach ?>
         </div>
       </div>
     </div>
