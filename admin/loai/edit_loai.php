@@ -16,6 +16,7 @@
         $kq = loai_update($id, $name);
         $msg = "Chỉnh sửa thành công";
         $color = "green";
+        header('Location: index.php?page=loai&act=list');
       } else {
         $kq = loai_insert($name);
         $msg = "Thêm mới thành công";

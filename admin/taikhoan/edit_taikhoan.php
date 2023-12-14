@@ -46,6 +46,7 @@
           tai_khoan_update($idTK, $password, $name, $email,$anh, $vai_tro, $phone, $dia_tri);
           $msg = "Chỉnh sửa tài khoản thành công";
           $color = "green";
+          header('Location: index.php?page=taikhoan&act=list');
         } else {
           tai_khoan_insert($password, $name, $email, $anh, $vai_tro, $phone,$dia_tri);
           $msg = "Thêm mới tài khoản thành công";

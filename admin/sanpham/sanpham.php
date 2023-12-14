@@ -19,7 +19,7 @@
     // Xóa các mục đã chọn khỏi cơ sở dữ liệu.
     hang_hoa_delete_multi($arrID);
   
-    header('Location: index.php?act=sanpham');
+    header('Location: index.php?page=sanpham&act=list');
     
   }
   

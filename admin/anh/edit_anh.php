@@ -26,6 +26,7 @@
           $kq = anh_update($id, $img_url,$ma_sp);
           $msg = "Chỉnh sửa thành công";
           $color = "green";
+          header('Location: index.php?page=anh&act=list');
         } else {
           $kq = anh_insert($img_url,$ma_sp);
           $msg = "Thêm mới thành công";

@@ -15,7 +15,6 @@
           <th scope="col">Mã</th>
           <th scope="col">Tên</th>
           <th scope="col">Màu</th>
-          <th scope="col">SL trong kho</th>
           <th scope="col">SL đã bán</th>
           <th scope="col">Tỉ lệ bán</th>
           <th scope="col">Tổng doanh thu</th>
@@ -28,10 +27,9 @@
           <td><?= $value['ma_sp']; ?></td>
           <td><?= $value['ten_sp']; ?></td>
           <td><?= $value['ten_mau']; ?></td>
-          <td><?= $value['tong_so_luong']; ?></td>
           <td><?= $value['so_luong_da_ban']; ?></td>
           <td><?= $value['ti_le_ban']; ?></td>
-          <td><?= $value['tong_tien_ban'];  ?> VNĐ</td>
+          <td><?= number_format($value['tong_tien_ban'], 0, '', ',');  ?>₫</td>
 
 
         </tr>

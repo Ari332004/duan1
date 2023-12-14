@@ -28,6 +28,7 @@
         san_pham_update($idSP, $name, $iddm, $price, $mota,$anh);
         $msg = "Chỉnh sửa thành công";
         $color = "green";
+        header('Location: index.php?page=sanpham&act=list');
       } else {
         san_pham_insert($name,$iddm, $price,$mota,$anh);
         $msg = "Thêm mới thành công";

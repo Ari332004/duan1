@@ -22,6 +22,7 @@ if (isset($_POST['submit'])) {
             spct_update($idspct, $ma_sp, $ten_mau, $ten_cl, $so_luong);
             $msg = "Chỉnh sửa thành công";
             $color = "green";
+            header('Location: index.php?page=sanphamct&act=list');
           } else {
             spct_insert($ma_sp, $ten_mau, $ten_cl, $so_luong);
             $msg = "Thêm mới thành công";
