@@ -11,7 +11,7 @@ function thongke_sp($start_date = null, $end_date = null) {
       $sql .= " WHERE ngay_dat_hang <= '$end_date'";
   }
 
-  $sql .= " GROUP BY DATE(ngay_dat_hang) limit 10";
+  $sql .= " GROUP BY DATE(ngay_dat_hang) order by ngay_dat_hang desc  limit 10";
 
   return pdo_query($sql);
 }
