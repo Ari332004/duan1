@@ -4,7 +4,7 @@ $msg = "";
 
 $idctdh = $_GET['idctdh'] ?? "";
 $color = "green";
-$h2 = "CHỈNH SỬA THỂ LOẠI";
+$h2 = "CHỈNH SỬA TRẠNG THÁI";
 $result = select_trangthai_by_id($idctdh);
 $dataloai = selectall_trangthaidh();
 if (isset($_POST['submit'])) {

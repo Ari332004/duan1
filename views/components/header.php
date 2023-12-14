@@ -240,17 +240,15 @@
           <div class="row align-items-center">
             <div class="col-lg-4">
               <div class="search_bar">
-                <form action="#">
+                <form action="?act=product" method="post">
                   <select class="select_option" name="select" id="categori">
                     <option selected value="0">All</option>
                     <?php foreach ($dsdm as $dm) : ?>
                     <option value="<?= $dm['id']?>"><?= $dm['ten_dm']?></option>
                     <?php endforeach ?>
                   </select>
-                  <input placeholder="Tìm kiếm" type="text" />
-                  <button type="submit">
-                    <i class="ion-ios-search-strong"></i>
-                  </button>
+                  <input placeholder="Tìm kiếm" type="text" name="tensp" />
+                  <button type="submit" name='search'><i class="ion-ios-search-strong"></i></button>
                 </form>
               </div>
             </div>
