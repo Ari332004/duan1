@@ -11,7 +11,7 @@ function thongke_sp($start_date = null, $end_date = null) {
       $sql .= " WHERE ngay_dat_hang <= '$end_date'";
   }
 
-  $sql .= " GROUP BY DATE(ngay_dat_hang);";
+  $sql .= " GROUP BY DATE(ngay_dat_hang) limit 10";
 
   return pdo_query($sql);
 }
@@ -30,23 +30,38 @@ function thongke_sp($start_date = null, $end_date = null) {
 
   return pdo_query($sql);
 }
+function thongke_sp_theo_nam($year = null) {
+  $sql = "SELECT MONTH(ngay_dat_hang) AS thang, SUM(tong) AS doanh_thu
+  FROM donhang";
+  
+  if ($year) {
+      $start_date = $year . '-01-01';
+      $end_date = $year . '-12-31';
+      $sql .= " WHERE ngay_dat_hang BETWEEN '$start_date' AND '$end_date'";
+  }
+  
+  $sql .= " GROUP BY MONTH(ngay_dat_hang);";
+  
+  return pdo_query($sql);
+}
 function binh_luan_select_by_hang_hoa(){
-  $sql = "SELECT sanpham.ten_sp AS ten, COUNT(sanpham.id) AS soluong, 
-                MAX(binhluan.ngay_bl) AS moi,
-                MIN(binhluan.ngay_bl) AS cu,
-                sanpham.id
-            FROM sanpham
-            JOIN binhluan ON sanpham.id = binhluan.ma_sp
-            GROUP BY sanpham.ten_sp;";
-    return pdo_query($sql);
+$sql = "SELECT sanpham.ten_sp AS ten, COUNT(sanpham.id) AS soluong,
+MAX(binhluan.ngay_bl) AS moi,
+MIN(binhluan.ngay_bl) AS cu,
+sanpham.id
+FROM sanpham
+JOIN binhluan ON sanpham.id = binhluan.ma_sp
+GROUP BY sanpham.ten_sp;";
+return pdo_query($sql);
 }
 function binh_luan_select_by_khach_hang($ma_sp){
-  $sql = "SELECT b.*, u.username FROM binhluan b JOIN users u ON u.id=b.ma_user WHERE b.ma_sp=?";
-  return pdo_query($sql, $ma_sp);
+$sql = "SELECT b.*, u.username FROM binhluan b JOIN users u ON u.id=b.ma_user WHERE b.ma_sp=?";
+return pdo_query($sql, $ma_sp);
 }
 function rate_sanpham($id){
-  $sql = "SELECT r.id, r.mota AS rate_description, COUNT(b.id + 1) AS count FROM rate r LEFT JOIN binhluan b ON r.id = b.rate AND b.ma_sp = ? GROUP BY r.mota
-   order by r.id asc";
-  return pdo_query($sql, $id);
+$sql = "SELECT r.id, r.mota AS rate_description, COUNT(b.id + 1) AS count FROM rate r LEFT JOIN binhluan b ON r.id =
+b.rate AND b.ma_sp = ? GROUP BY r.mota
+order by r.id asc";
+return pdo_query($sql, $id);
 }
 ?>

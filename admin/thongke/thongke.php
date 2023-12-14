@@ -21,8 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }}
 
     $data = [['Ngày', 'Doanh thu', ['role' => 'style']]];
-    $colors = ['gray', '#76A7FA', 'stroke-color: #703593; stroke-width: 4; fill-color: #C5A5CF',
-     'stroke-color: #871B47; stroke-opacity: 0.6; stroke-width: 8; fill-color: #BC5679; fill-opacity: 0.2', '#FF00FF']; // Mảng mã màu mới
+    $colors = ['#76A7FA']; // Mảng mã màu mới
     
     if (count($results) > 0) {
         foreach ($results as $index => $row) {
