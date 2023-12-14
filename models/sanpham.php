@@ -92,7 +92,7 @@ function filterPrice($max, $min){
   $sql = "SELECT sanpham.*, sanphamct.* FROM sanpham 
           JOIN ( SELECT ma_sp, MIN(id) as maspct
                   FROM sanphamchitiet GROUP BY ma_sp ) as sanphamct ON sanpham.id = sanphamct.ma_sp
-          where gia > ? and gia < ? and status = 0"; 
+          where gia >= ? and gia <= ? and status = 0"; 
   
   return pdo_query($sql,$min, $max);
 }
